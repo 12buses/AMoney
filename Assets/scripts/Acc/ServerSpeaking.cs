@@ -18,8 +18,13 @@ public class ServerSpeaking : MonoBehaviour
         public List<string> all_logins { get; set; }
     }
 
+    public  bool Unique = false;
 
-
+    public void UniqieUserCheck()
+    {
+        //запуск запроса
+        StartCoroutine(ReturnUsersData());
+    }
 
     IEnumerator ReturnUsersData()
     {
@@ -39,20 +44,20 @@ public class ServerSpeaking : MonoBehaviour
                 string jsonResult = webRequest.downloadHandler.text;
                 Debug.Log(jsonResult);
                 Root JSONRES = JsonConvert.DeserializeObject<Root>(jsonResult);
+                StartUniqieUserCheck(JSONRES);
             }
         }
     }
 
-    public bool UniqieUserCheck()
+    //проверка на уникальность
+    void StartUniqieUserCheck(Root JSONRES)
     {
-        bool UnUnique = false;
-        //проверка на уникальность
-        StartCoroutine(ReturnUsersData());
+        Unique = false;
         foreach (var item in JSONRES.all_emails)
         {
             if (item == GetComponent<LoginRegister>()._email.text)
             {
-                UnUnique = true;
+                Unique = true;
             }
         }
 
@@ -60,10 +65,9 @@ public class ServerSpeaking : MonoBehaviour
         {
             if (item == GetComponent<LoginRegister>()._nick.text)
             {
-                UnUnique = true;
+                Unique = true;
             }
         }
-        Debug.Log(UnUnique);
-        return UnUnique;
+        Debug.Log(Unique + "Unique");
     }
 }
