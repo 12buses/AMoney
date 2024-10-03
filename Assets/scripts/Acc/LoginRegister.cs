@@ -194,7 +194,10 @@ public class LoginRegister : MonoBehaviour
 
         if(CheckPassed == true)
         {
+
             GetComponent<ServerSpeaking>().UniqieUserCheck();
+            CheckPassed = GetComponent<ServerSpeaking>().Unique;
+            Debug.Log("CheckPassed  " + CheckPassed);
         }
         
         yield return CheckPassed;
