@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 using UnityEngine;
 using UnityEngine.Networking;
@@ -52,12 +51,12 @@ public class ServerSpeaking : MonoBehaviour
     //проверка на уникальность
     void StartUniqieUserCheck(Root JSONRES)
     {
-        Unique = false;
+        Unique = true;
         foreach (var item in JSONRES.all_emails)
         {
             if (item == GetComponent<LoginRegister>()._email.text)
             {
-                Unique = true;
+                Unique = false;
             }
         }
 
@@ -65,9 +64,8 @@ public class ServerSpeaking : MonoBehaviour
         {
             if (item == GetComponent<LoginRegister>()._nick.text)
             {
-                Unique = true;
+                Unique = false;
             }
         }
-        Debug.Log(Unique + "Unique");
     }
 }
