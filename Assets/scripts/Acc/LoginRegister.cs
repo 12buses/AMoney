@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 using UnityEngine;
-using UnityEngine.Profiling.Memory.Experimental;
 using UnityEngine.UI;
 
 
@@ -15,17 +14,19 @@ public class LoginRegister : MonoBehaviour
     public InputField _pass; //поле для ввода пароля 
     public InputField _RewritePass; //поле для повторного ввода пароля 
 
-    private string OutPass;
-    private string OutLogin;
 
-    public Text ROUP_InUnityObj; //объект с текстом объясняющий почему пароль не подошёл 
-    public Text ROUL_InUnityObj; //объект с текстом объясняющий почему логин не подошёл 
-    public Text IsEmailSutible;
+    public GameObject _emailGameObject; // поле для ввода почты gameobject
+    public GameObject _passGameObject; //поле для ввода пароля gameobject
+    public GameObject _RewritePassGameObject; //поле для повторного ввода пароля gameobject
+    public GameObject RegisterButton; //кнопка регестрации
 
-    private bool CheckPassed;//прошла ли проверка
+    private string OutUnsuitability;
 
-    private List<string> ReasonOfUnsuitablePassword;    //текст объясняющий почему пароль не подошёл 
-    private List<string> ReasonOfUnsuitableNick;    //текст объясняющий почему логин не подошёл 
+
+    public Text ROU_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+
+
+    private List<string> ReasonOfUnsuitablity;    //текст объясняющий почему проверка не пройдена
 
 
     public class user //класс пользователей
@@ -41,167 +42,199 @@ public class LoginRegister : MonoBehaviour
         }
     }
 
-    
 
 
-
-    public void Register()//регестрация
+    private void Start()
     {
-        ReasonOfUnsuitablePassword = new List<string>();
-        ReasonOfUnsuitableNick = new List<string>();
-        OutPass = null;
-        OutLogin = null;
-        ROUP_InUnityObj.text = "";
-        ROUL_InUnityObj.text = "";
-        CheckPassed = true; //сбрасывает значение проверки пароля на надёжность
+        _nick.onValueChanged.AddListener(delegate { LoginChecking(); });
+        _email.onValueChanged.AddListener(delegate { EmailCheck(); });
+        _pass.onValueChanged.AddListener(delegate { PassCheckingField1(); });
+        _RewritePass.onValueChanged.AddListener(delegate { PassCheckingField2(); });
+    }
 
-        if (_email.text != null && _pass.text != null && _pass.text == _RewritePass.text && _nick.text != null) //проверка что поля заполнены и поля для ввода пароля совподают
+    void LoginChecking()
+    {
+        bool LoginCheckPassed = true;
+        //проверка логина 
+        ReasonOfUnsuitablity = new List<string>() { };
+        OutUnsuitability = null;
+
+        if (_nick.text.Length < 3 || _nick.text.Length > 15)
         {
-            StartCoroutine(NameEmailPassCheking()); //вызов проверки пароля на безопасность, почты и нейма на уникальность,  следуйший код выполниться после завершения этого
+            LoginCheckPassed = false;
+            ReasonOfUnsuitablity.Add("*Логин должен быть длиной от 3 до 15 символов.");
+        }
 
-            if (CheckPassed == true) //если пароль подходит
+        if (!Regex.IsMatch(_nick.text, @"^[a-zA-Z0-9]"))
+        {
+            ReasonOfUnsuitablity.Add("*Логин может содержать только латинские буквы и цифры.");
+            LoginCheckPassed = false;
+        }
+
+
+        if (LoginCheckPassed == true)
+        {
+            _emailGameObject.SetActive(true);
+        }
+        else 
+        {
+            _emailGameObject.SetActive(false);
+            _passGameObject.SetActive(false);
+            _RewritePassGameObject.SetActive(false);
+
+            foreach (var item in ReasonOfUnsuitablity)
             {
-                Debug.Log("в поля всё введено верно");
-                ROUL_InUnityObj.text = "в поля всё введено верно";
-                ROUP_InUnityObj.text = "в поля всё введено верно";
-                IsEmailSutible.text = "Почта введена" + CheckPassed;
+                OutUnsuitability = OutUnsuitability + item + System.Environment.NewLine;
             }
-            else //если пароль не подходит
-            {
-                foreach (var item in ReasonOfUnsuitablePassword)
-                {
-                    OutPass = OutPass + item + System.Environment.NewLine;
-                }
-                ROUP_InUnityObj.text = OutPass; //вывод почему пароль не подходит
+        }
+        ROU_InUnityObj.text = OutUnsuitability; //вывод почему ник не подходит
 
-                foreach (var item in ReasonOfUnsuitableNick)
-                {
-                    OutLogin = OutLogin + item + System.Environment.NewLine;
-                }
-                ROUL_InUnityObj.text = OutLogin; //вывод почему ник не подходит
+    }
+    
+    void EmailCheck()
+    {
+        //проверка почты 
+        bool EmailCheckPassed = true;
 
-                IsEmailSutible.text = "Почта введена" + CheckPassed;
-            }
+        if (_email.text.Length > 50)// Проверяем длину адреса
+        {
+            EmailCheckPassed = false;
+        }
+
+
+        if (Regex.IsMatch(_email.text, @"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+$") != true)
+        {
+            EmailCheckPassed = false;
+        }
+
+        if (Regex.IsMatch(_email.text, @"\.\.") || Regex.IsMatch(_email.text, @"^[&][=][+][<][>][,][`]$"))
+        {
+            EmailCheckPassed = false;
+        }
+
+        if (_email.text.Contains(" "))
+        {
+            EmailCheckPassed = false;
+        }
+
+        if (_email.text.Contains('@') == false) // Проверяем наличие одного символа @
+        {
+            EmailCheckPassed = false;
         }
         else
         {
-            ROUP_InUnityObj.text = "*Поля ввода почты, имени либо пароля не заполнены. Пароль должен содержть цифру, быть не менне 6 символов и включать в себя заглавную и строчную букву."; //вывод ошибки
+            if (_email.text.IndexOf('@') <= 0 ||
+                _email.text.IndexOf('@') >= _email.text.Length - 1) // Проверяем, что до и после @ есть хотя бы один допустимый символ
+            {
+                EmailCheckPassed = false;
+            }
         }
 
+        if (EmailCheckPassed == true)
+        {
+            _passGameObject.SetActive(true);
+            ROU_InUnityObj.text = null; //вывод почему ник не подходит
+        }
+        else
+        {
+            _passGameObject.SetActive(false);
+            _RewritePassGameObject.SetActive(false);
+            ROU_InUnityObj.text = "*Почта введена некоректно."; //вывод почему ник не подходит
+        }
+        
     }
 
-    
-
-    IEnumerator NameEmailPassCheking() 
-    {    
+    void PassCheckingField1 ()
+    {
         //проверка пароля на соответсвие требованиям 
         bool IsLetter = true;
+        OutUnsuitability = null;   
+        ReasonOfUnsuitablity = new List<string>();
+        bool PassField1CheckPassed = true;
 
         if (_pass.text.Length < 6 || _pass.text.Length > 15)
         {
-            ReasonOfUnsuitablePassword.Add("*Количество символов в пароле должно быть не меньше 6");
-            CheckPassed = false;
+            ReasonOfUnsuitablity.Add("*Количество символов в пароле должно быть не меньше 6");
+            PassField1CheckPassed = false;
         }
 
         string _allowedCharsInPass = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!?@#$%^&*_-+()[]{}></\\|\"'.,:;";
+
         if (_pass.text.All(c => _allowedCharsInPass.Contains(c)) == false)
         {
-            ReasonOfUnsuitablePassword.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы, также в пароле могут использоваться только латинские буквы, цифры и эти символы: ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \\ | \" ' . , : ;.");
+            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы, также в пароле могут использоваться только латинские буквы, цифры и эти символы: ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \\ | \" ' . , : ;.");
             IsLetter = false;
-            CheckPassed = false;
+            PassField1CheckPassed = false;
         }
-
 
         if (_pass.text.Any(char.IsLetter) == false)
         {
-            ReasonOfUnsuitablePassword.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
+            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
             IsLetter = false;
-            CheckPassed = false;
+            PassField1CheckPassed = false;
         }
-
 
         if (_pass.text.Any(char.IsDigit) == false)
         {
-            ReasonOfUnsuitablePassword.Add("*Пароль должен содержать хотя-бы 1 цифру");
-            CheckPassed = false;
+            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 цифру");
+            PassField1CheckPassed = false;
         }
-
 
         if (_pass.text.Any(char.IsLower) == false && IsLetter == true)
         {
-            ReasonOfUnsuitablePassword.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
-            CheckPassed = false;
+            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
+            PassField1CheckPassed = false;
         }
 
 
         if (_pass.text.Any(char.IsUpper) == false && IsLetter == true)
         {
-            ReasonOfUnsuitablePassword.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
-            CheckPassed = false;
+            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
+            PassField1CheckPassed = false;
         }
 
-
-        //проверка почты 
-        if (_email.text.Length > 50)// Проверяем длину адреса
+        if (PassField1CheckPassed == true)
         {
-            CheckPassed = false;
-        }
-
-        
-        if (_email.text.IndexOf('@') != _email.text.LastIndexOf('@')) // Проверяем наличие одного символа @
-        {
-            CheckPassed = false;
+            _RewritePassGameObject.SetActive(true);
         }
         else
         {
-            int atIndex = _email.text.IndexOf('@');
-            if (atIndex <= 0 || atIndex >= _email.text.Length - 1) // Проверяем, что до и после @ есть хотя бы один допустимый символ
-            {
-                CheckPassed = false;
-            }
+            _RewritePassGameObject.SetActive(false);
         }
-        
 
-        if (Regex.IsMatch(_email.text, @"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+$") != true)
+        foreach (var item in ReasonOfUnsuitablity)
         {
-            CheckPassed = false;
+            OutUnsuitability = OutUnsuitability + item + System.Environment.NewLine;
         }
+        ROU_InUnityObj.text = OutUnsuitability; //вывод почему пароль не подходит
+    }
 
-        if (Regex.IsMatch(_email.text, @"\.\.") || Regex.IsMatch(_email.text, @"^[&][=][+][<][>][,][`]$"))
+    void PassCheckingField2 ()
+    {
+        if (_RewritePass.text == _pass.text)
         {
-            CheckPassed = false;
+            ROU_InUnityObj.text = null; //вывод почему пароль не подходит
+            RegisterButton.SetActive(true);
         }
-
-        if (_email.text.Contains(" "))
+        else
         {
-            CheckPassed = false;
+            RegisterButton.SetActive(false);
+            ROU_InUnityObj.text = "*Пароли не совподают."; //вывод почему пароль не подходит
         }
+    }
 
-
-
-        //проверка логина 
-        if (_nick.text.Length < 3 || _nick.text.Length > 15) 
+    public void Register()//регестрация
+    {
+        GetComponent<ServerSpeaking>().UniqieUserCheck();
+        if(GetComponent<ServerSpeaking>().Unique == true)
         {
-            CheckPassed = false;
-            ReasonOfUnsuitableNick.Add("*Логин должен быть длиной от 3 до 15 символов.");
+            ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
+            Debug.Log("Проверка прошла успешно, в том числе на уникальность.");
         }
-
-        if (!Regex.IsMatch(_nick.text, @"^[a-zA-Z0-9]{3,15}$"))
+        else
         {
-            ReasonOfUnsuitableNick.Add("*Логин может содержать только латинские буквы и цифры.");
-            CheckPassed = false;
+            ROU_InUnityObj.text = "*Такой аккаунт уже существует.";
+            Debug.Log("*Такой аккаунт уже существует.");
         }
-
-        if(CheckPassed == true)
-        {
-
-            GetComponent<ServerSpeaking>().UniqieUserCheck();
-            CheckPassed = GetComponent<ServerSpeaking>().Unique;
-            Debug.Log("CheckPassed  " + CheckPassed);
-        }
-        
-        yield return CheckPassed;
-        StopCoroutine(NameEmailPassCheking()); //заверешение проверки => переход назад к функции
-    
     }
 }
