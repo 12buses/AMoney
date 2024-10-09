@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 1131736322}
   - component: {fileID: 1131736321}
   m_Layer: 5
-  m_Name: Enter NIck Name
+  m_Name: EnterLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1624,7 +1624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3613578d7c459504da1542329bfdf932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unique: 0
 --- !u!114 &1363073580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,7 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880ab01e5e265fd4897c5de9cc0232c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nick: {fileID: 1131736321}
+  _login: {fileID: 1131736321}
   _email: {fileID: 610028834}
   _pass: {fileID: 1895005377}
   _RewritePass: {fileID: 904051920}

@@ -6,10 +6,13 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
+using DataNamespace;
+
+
 
 public class LoginRegister : MonoBehaviour
 {
-    public InputField _nick; //ник
+    public InputField _login; //ник
     public InputField _email; // поле для ввода почты
     public InputField _pass; //поле для ввода пароля 
     public InputField _RewritePass; //поле для повторного ввода пароля 
@@ -29,24 +32,10 @@ public class LoginRegister : MonoBehaviour
     private List<string> ReasonOfUnsuitablity;    //текст объясняющий почему проверка не пройдена
 
 
-    public class user //класс пользователей
-    {
-        public string _name { get; set; }
-        public string _mail { get; set; }
-        public string _password { get; set; }
-        public user(string name, string mail, string password)
-        {
-            _name = name;
-            _mail = mail;
-            _password = password;
-        }
-    }
-
-
 
     private void Start()
     {
-        _nick.onValueChanged.AddListener(delegate { LoginChecking(); });
+        _login.onValueChanged.AddListener(delegate { LoginChecking(); });
         _email.onValueChanged.AddListener(delegate { EmailCheck(); });
         _pass.onValueChanged.AddListener(delegate { PassCheckingField1(); });
         _RewritePass.onValueChanged.AddListener(delegate { PassCheckingField2(); });
@@ -59,13 +48,13 @@ public class LoginRegister : MonoBehaviour
         ReasonOfUnsuitablity = new List<string>() { };
         OutUnsuitability = null;
 
-        if (_nick.text.Length < 3 || _nick.text.Length > 15)
+        if (_login.text.Length < 3 || _login.text.Length > 15)
         {
             LoginCheckPassed = false;
             ReasonOfUnsuitablity.Add("*Логин должен быть длиной от 3 до 15 символов.");
         }
 
-        if (!Regex.IsMatch(_nick.text, @"^[a-zA-Z0-9]"))
+        if (!Regex.IsMatch(_login.text, @"^[a-zA-Z0-9]"))
         {
             ReasonOfUnsuitablity.Add("*Логин может содержать только латинские буквы и цифры.");
             LoginCheckPassed = false;
@@ -76,7 +65,7 @@ public class LoginRegister : MonoBehaviour
         {
             _emailGameObject.SetActive(true);
         }
-        else 
+        else
         {
             _emailGameObject.SetActive(false);
             _passGameObject.SetActive(false);
@@ -90,7 +79,7 @@ public class LoginRegister : MonoBehaviour
         ROU_InUnityObj.text = OutUnsuitability; //вывод почему ник не подходит
 
     }
-    
+
     void EmailCheck()
     {
         //проверка почты 
@@ -141,14 +130,14 @@ public class LoginRegister : MonoBehaviour
             _RewritePassGameObject.SetActive(false);
             ROU_InUnityObj.text = "*Почта введена некоректно."; //вывод почему ник не подходит
         }
-        
+
     }
 
-    void PassCheckingField1 ()
+    void PassCheckingField1()
     {
         //проверка пароля на соответсвие требованиям 
         bool IsLetter = true;
-        OutUnsuitability = null;   
+        OutUnsuitability = null;
         ReasonOfUnsuitablity = new List<string>();
         bool PassField1CheckPassed = true;
 
@@ -209,7 +198,7 @@ public class LoginRegister : MonoBehaviour
         ROU_InUnityObj.text = OutUnsuitability; //вывод почему пароль не подходит
     }
 
-    void PassCheckingField2 ()
+    void PassCheckingField2()
     {
         if (_RewritePass.text == _pass.text)
         {
@@ -223,18 +212,28 @@ public class LoginRegister : MonoBehaviour
         }
     }
 
-    public void Register()//регестрация
+    public void Register()//Нажатие на кнопку регестрации
     {
-        GetComponent<ServerSpeaking>().UniqieUserCheck();
-        if(GetComponent<ServerSpeaking>().Unique == true)
+        GetComponent<ServerSpeaking>().UniqieUserCheck(_login.text, _email.text);
+    }
+
+
+    public void WhenWeGotUniqueCheckResult(UniqueCheck uniqueCheck)
+    {
+        if (uniqueCheck.EmailIsUnique == true)
         {
-            ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
-            Debug.Log("Проверка прошла успешно, в том числе на уникальность.");
+            if (uniqueCheck.LoginIsUnique == true)
+            {
+                ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
+            }
+            else
+            {
+                ROU_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
+            }
         }
         else
         {
-            ROU_InUnityObj.text = "*Такой аккаунт уже существует.";
-            Debug.Log("*Такой аккаунт уже существует.");
+            ROU_InUnityObj.text = "*Аккаунт на эту почту уже зарегстрирован, попробуйте войти.";
         }
     }
 }

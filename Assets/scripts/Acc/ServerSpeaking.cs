@@ -1,71 +1,62 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 using UnityEngine;
 using UnityEngine.Networking;
 
-using Newtonsoft.Json;
+using DataNamespace;
+
 
 public class ServerSpeaking : MonoBehaviour
 {
 
-    private string url = "http://195.2.79.241:5000/api/all_data";
+    private string url = "http://195.2.79.241:5000/api/check_user";
 
-    public class Root
+    public delegate void UniqieUserCheckEndDelegate(UniqueCheck Unique);
+    public event UniqieUserCheckEndDelegate UniqieUserCheckEnd;
+
+
+
+    public void UniqieUserCheck(string login, string email)
     {
-        public List<string> all_emails { get; set; }
-        public List<string> all_logins { get; set; }
+        //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        UniqieUserCheckEnd += GetComponent<LoginRegister>().WhenWeGotUniqueCheckResult;
+        User userDataClass = new User(login, email);
+        Debug.Log(userDataClass.Name + "userDataClass.Name");
+        Debug.Log(userDataClass.Mail + "userDataClass.Mail");
+        string userDataString = JsonUtility.ToJson(userDataClass);
+        byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString); ;
+        Debug.Log(userDataString + " userData");
+        StartCoroutine(ReturnUsersData(userDataRaw));
     }
 
-    public  bool Unique = false;
-
-    public void UniqieUserCheck()
+    IEnumerator ReturnUsersData(byte[] userDataRaw)
     {
-        //запуск запроса
-        StartCoroutine(ReturnUsersData());
-    }
-
-    IEnumerator ReturnUsersData()
-    {
-
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))//получение данных о проверке уникальности данных пользавателя 
+        using (UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(url, "POST"))//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         {
-            // Отправляем запрос
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+            webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
+            webRequest.SetRequestHeader("Content-Type", "application/json");
             yield return webRequest.SendWebRequest();
-            // Проверяем наличие ошибок
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("Ошибка: " + webRequest.error);
+                Debug.LogError("РћС€РёР±РєР°:" + webRequest.error);
             }
             else
             {
-                // Получаем данные и десерелизуем данные
-                string jsonResult = webRequest.downloadHandler.text;
-                Debug.Log(jsonResult);
-                Root JSONRES = JsonConvert.DeserializeObject<Root>(jsonResult);
-                StartUniqieUserCheck(JSONRES);
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                ResultToJson(webRequest.downloadHandler.text);
             }
         }
     }
-
-    //проверка на уникальность
-    void StartUniqieUserCheck(Root JSONRES)
+    private void ResultToJson(string dowloadedText)
     {
-        Unique = true;
-        foreach (var item in JSONRES.all_emails)
-        {
-            if (item == GetComponent<LoginRegister>()._email.text)
-            {
-                Unique = false;
-            }
-        }
-
-        foreach (var item in JSONRES.all_logins)
-        {
-            if (item == GetComponent<LoginRegister>()._nick.text)
-            {
-                Unique = false;
-            }
-        }
+        Debug.Log(dowloadedText + "dowloadedText");
+        UniqueCheck UniqueCheck = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
+        UniqieUserCheckEnd(UniqueCheck);
     }
 }
+
