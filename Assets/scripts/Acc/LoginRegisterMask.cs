@@ -10,7 +10,7 @@ using DataNamespace;
 
 
 
-public class LoginRegister : MonoBehaviour
+public class LoginRegisterMask : MonoBehaviour
 {
     public InputField _login; //ник
     public InputField _email; // поле для ввода почты
@@ -209,31 +209,6 @@ public class LoginRegister : MonoBehaviour
         {
             RegisterButton.SetActive(false);
             ROU_InUnityObj.text = "*Пароли не совподают."; //вывод почему пароль не подходит
-        }
-    }
-
-    public void Register()//Нажатие на кнопку регестрации
-    {
-        GetComponent<ServerSpeaking>().UniqieUserCheck(_login.text, _email.text);
-    }
-
-
-    public void WhenWeGotUniqueCheckResult(UniqueCheck uniqueCheck)
-    {
-        if (uniqueCheck.EmailIsUnique == true)
-        {
-            if (uniqueCheck.LoginIsUnique == true)
-            {
-                ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
-            }
-            else
-            {
-                ROU_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
-            }
-        }
-        else
-        {
-            ROU_InUnityObj.text = "*Аккаунт на эту почту уже зарегстрирован, попробуйте войти.";
         }
     }
 }

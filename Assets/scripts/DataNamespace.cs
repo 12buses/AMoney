@@ -2,8 +2,8 @@ namespace DataNamespace
 {
     public class User //класс пользователей
     {
-        public string Name { get; set; }
-        public string Mail { get; set; }
+        public string Name;
+        public string Mail;
         public User(string name, string mail)
         {
             Name = name;

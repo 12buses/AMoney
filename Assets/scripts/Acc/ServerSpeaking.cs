@@ -4,25 +4,28 @@ using System.Text;
 
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 using DataNamespace;
 
 
 public class ServerSpeaking : MonoBehaviour
 {
+    public User userDataClass;
+
+    public InputField _login; //ник
+    public InputField _email; // поле для ввода почты
 
     private string url = "http://195.2.79.241:5000/api/check_user";
 
-    public delegate void UniqieUserCheckEndDelegate(UniqueCheck Unique);
-    public event UniqieUserCheckEndDelegate UniqieUserCheckEnd;
+
+    public Text ROU_InUnityObj; //объект с текстом объясняющий почему данные не подходят
 
 
 
-    public void UniqieUserCheck(string login, string email)
+    public void Register()//Нажатие на кнопку регестрации
     {
-        //������ �������
-        UniqieUserCheckEnd += GetComponent<LoginRegister>().WhenWeGotUniqueCheckResult;
-        User userDataClass = new User(login, email);
+        userDataClass = new User(_login.text, _email.text);
         Debug.Log(userDataClass.Name + "userDataClass.Name");
         Debug.Log(userDataClass.Mail + "userDataClass.Mail");
         string userDataString = JsonUtility.ToJson(userDataClass);
@@ -30,6 +33,29 @@ public class ServerSpeaking : MonoBehaviour
         Debug.Log(userDataString + " userData");
         StartCoroutine(ReturnUsersData(userDataRaw));
     }
+
+
+    public void WhenWeGotUniqueCheckResult(string dowloadedText)    
+    {
+        Debug.Log(dowloadedText + "dowloadedText");
+        UniqueCheck UniqueCheck = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
+        if (UniqueCheck.EmailIsUnique == true)
+        {
+            if (UniqueCheck.LoginIsUnique == true)
+            {
+                ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
+            }
+            else
+            {
+                ROU_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
+            }
+        }
+        else
+        {
+            ROU_InUnityObj.text = "*Аккаунт на эту почту уже зарегстрирован, попробуйте войти.";
+        }
+    }
+
 
     IEnumerator ReturnUsersData(byte[] userDataRaw)
     {
@@ -48,15 +74,9 @@ public class ServerSpeaking : MonoBehaviour
             else
             {
                 // �������� ������ � ������������ ������
-                ResultToJson(webRequest.downloadHandler.text);
+                WhenWeGotUniqueCheckResult(webRequest.downloadHandler.text);
             }
         }
-    }
-    private void ResultToJson(string dowloadedText)
-    {
-        Debug.Log(dowloadedText + "dowloadedText");
-        UniqueCheck UniqueCheck = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
-        UniqieUserCheckEnd(UniqueCheck);
     }
 }
 
