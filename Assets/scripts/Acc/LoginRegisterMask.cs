@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 using DataNamespace;
 
@@ -12,38 +13,37 @@ using DataNamespace;
 
 public class LoginRegisterMask : MonoBehaviour
 {
-    public InputField _login; //ник
-    public InputField _email; // поле для ввода почты
-    public InputField _pass; //поле для ввода пароля 
-    public InputField _RewritePass; //поле для повторного ввода пароля 
+    public TMP_InputField _login; //ник
+    public TMP_InputField _email; // поле для ввода почты
+    public TMP_InputField _pass; //поле для ввода пароля 
+    public Button Button;
 
-
-    public GameObject _emailGameObject; // поле для ввода почты gameobject
-    public GameObject _passGameObject; //поле для ввода пароля gameobject
-    public GameObject _RewritePassGameObject; //поле для повторного ввода пароля gameobject
     public GameObject RegisterButton; //кнопка регестрации
+    public GameObject _loginGameObject; //ник
+    public GameObject _emailGameObject; // поле для ввода почты
+    public GameObject _passGameObject; //поле для ввода пароля 
 
     private string OutUnsuitability;
 
-
-    public Text ROU_InUnityObj; //объект с текстом объясняющий почему данные не подходят
-
+    public TMP_Text ROUL_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+    public TMP_Text ROUP_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+    public TMP_Text ROUEM_InUnityObj; //объект с текстом объясняющий почему данные не подходят
 
     private List<string> ReasonOfUnsuitablity;    //текст объясняющий почему проверка не пройдена
 
+    private bool LoginCheckPassed = false;
+    private bool EmailCheckPassed = false;
+    private bool PassFieldCheckPassed = false;
+
+    public Sprite InActiveButton;
+    public Sprite IsActiveButton;
+    public Sprite InputField;
+    public Sprite InputFieldWrong;
 
 
-    private void Start()
+    public void LoginChecking()
     {
-        _login.onValueChanged.AddListener(delegate { LoginChecking(); });
-        _email.onValueChanged.AddListener(delegate { EmailCheck(); });
-        _pass.onValueChanged.AddListener(delegate { PassCheckingField1(); });
-        _RewritePass.onValueChanged.AddListener(delegate { PassCheckingField2(); });
-    }
-
-    void LoginChecking()
-    {
-        bool LoginCheckPassed = true;
+        LoginCheckPassed = true;
         //проверка логина 
         ReasonOfUnsuitablity = new List<string>() { };
         OutUnsuitability = null;
@@ -63,27 +63,25 @@ public class LoginRegisterMask : MonoBehaviour
 
         if (LoginCheckPassed == true)
         {
-            _emailGameObject.SetActive(true);
+            _loginGameObject.GetComponent<Image>().sprite = InputField;
+            SetActiveButton();
         }
         else
         {
-            _emailGameObject.SetActive(false);
-            _passGameObject.SetActive(false);
-            _RewritePassGameObject.SetActive(false);
-
             foreach (var item in ReasonOfUnsuitablity)
             {
                 OutUnsuitability = OutUnsuitability + item + System.Environment.NewLine;
             }
+            _loginGameObject.GetComponent<Image>().sprite = InputFieldWrong;
         }
-        ROU_InUnityObj.text = OutUnsuitability; //вывод почему ник не подходит
-
+        ROUL_InUnityObj.text = OutUnsuitability; //вывод почему ник не подходит
+        SetActiveButton();
     }
 
-    void EmailCheck()
+    public void EmailCheck()
     {
         //проверка почты 
-        bool EmailCheckPassed = true;
+        EmailCheckPassed = true;
 
         if (_email.text.Length > 50)// Проверяем длину адреса
         {
@@ -121,94 +119,99 @@ public class LoginRegisterMask : MonoBehaviour
 
         if (EmailCheckPassed == true)
         {
-            _passGameObject.SetActive(true);
-            ROU_InUnityObj.text = null; //вывод почему ник не подходит
+            ROUEM_InUnityObj.text = null;
+            _emailGameObject.GetComponent<Image>().sprite = InputField;
         }
         else
         {
-            _passGameObject.SetActive(false);
-            _RewritePassGameObject.SetActive(false);
-            ROU_InUnityObj.text = "*Почта введена некоректно."; //вывод почему ник не подходит
+            ROUEM_InUnityObj.text = "*Почта введена некоректно."; //вывод, что почта не подходит
+            _emailGameObject.GetComponent<Image>().sprite = InputFieldWrong;
         }
-
+        SetActiveButton();
     }
 
-    void PassCheckingField1()
+    public void PassCheckingField()
     {
         //проверка пароля на соответсвие требованиям 
         bool IsLetter = true;
         OutUnsuitability = null;
         ReasonOfUnsuitablity = new List<string>();
-        bool PassField1CheckPassed = true;
+        PassFieldCheckPassed = true;
 
         if (_pass.text.Length < 6 || _pass.text.Length > 15)
         {
-            ReasonOfUnsuitablity.Add("*Количество символов в пароле должно быть не меньше 6");
-            PassField1CheckPassed = false;
+            ReasonOfUnsuitablity.Add("*Количество символов в пароле от 6 до 15");
+            PassFieldCheckPassed = false;
         }
 
         string _allowedCharsInPass = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!?@#$%^&*_-+()[]{}></\\|\"'.,:;";
 
         if (_pass.text.All(c => _allowedCharsInPass.Contains(c)) == false)
         {
-            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы, также в пароле могут использоваться только латинские буквы, цифры и эти символы: ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \\ | \" ' . , : ;.");
+            ReasonOfUnsuitablity.Add("*Возможно у вас в пароле есть запрещенные символы.");
             IsLetter = false;
-            PassField1CheckPassed = false;
+            PassFieldCheckPassed = false;
         }
 
         if (_pass.text.Any(char.IsLetter) == false)
         {
             ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
             IsLetter = false;
-            PassField1CheckPassed = false;
+            PassFieldCheckPassed = false;
+        }
+        else
+        {
+            if (_pass.text.Any(char.IsLower) == false && IsLetter == true)
+            {
+                ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную букву");
+                PassFieldCheckPassed = false;
+            }
+
+
+            if (_pass.text.Any(char.IsUpper) == false && IsLetter == true)
+            {
+                ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 заглавную букву");
+                PassFieldCheckPassed = false;
+            }
         }
 
         if (_pass.text.Any(char.IsDigit) == false)
         {
             ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 цифру");
-            PassField1CheckPassed = false;
+            PassFieldCheckPassed = false;
         }
 
-        if (_pass.text.Any(char.IsLower) == false && IsLetter == true)
-        {
-            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
-            PassField1CheckPassed = false;
-        }
+        
 
-
-        if (_pass.text.Any(char.IsUpper) == false && IsLetter == true)
+        if (PassFieldCheckPassed == true)
         {
-            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
-            PassField1CheckPassed = false;
-        }
-
-        if (PassField1CheckPassed == true)
-        {
-            _RewritePassGameObject.SetActive(true);
+            ROUP_InUnityObj.text = null;
+            _passGameObject.GetComponent<Image>().sprite = InputField;
+            
         }
         else
         {
-            _RewritePassGameObject.SetActive(false);
+            foreach (var item in ReasonOfUnsuitablity)
+            {
+                OutUnsuitability = OutUnsuitability + item + System.Environment.NewLine;
+            }
+            ROUP_InUnityObj.text = OutUnsuitability; //вывод почему пароль не подходит
+            _passGameObject.GetComponent<Image>().sprite = InputFieldWrong;
         }
-
-        foreach (var item in ReasonOfUnsuitablity)
-        {
-            OutUnsuitability = OutUnsuitability + item + System.Environment.NewLine;
-        }
-        ROU_InUnityObj.text = OutUnsuitability; //вывод почему пароль не подходит
+        SetActiveButton();
     }
 
-    void PassCheckingField2()
+    public void SetActiveButton()
     {
-        if (_RewritePass.text == _pass.text)
+        if(LoginCheckPassed == true && EmailCheckPassed == true && PassFieldCheckPassed == true)
         {
-            ROU_InUnityObj.text = null; //вывод почему пароль не подходит
-            RegisterButton.SetActive(true);
+            Button.enabled = true;
+            RegisterButton.GetComponent<Image>().sprite = IsActiveButton;
         }
         else
         {
-            RegisterButton.SetActive(false);
-            ROU_InUnityObj.text = "*Пароли не совподают."; //вывод почему пароль не подходит
+            Button.enabled = false;
+            RegisterButton.GetComponent<Image>().sprite = InActiveButton;
         }
     }
 }

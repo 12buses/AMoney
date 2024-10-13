@@ -11,8 +11,8 @@ using DataNamespace;
 
 public class ServerSpeaking : MonoBehaviour
 {
-	public User userDataObj;
-	public OurUser OurUserObj;
+	
+	
 
 	public InputField _login; //ник
 	public InputField _email; // поле для ввода почты
@@ -20,14 +20,16 @@ public class ServerSpeaking : MonoBehaviour
 
 	private string url = "http://195.2.79.241:5000/api/check_user";
 
+	public UniqueCheck UniqueCheckResultObj;
 
-	public Text ROU_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+
+    public Text ROU_InUnityObj; //объект с текстом объясняющий почему данные не подходят
 
 
 
 	public void Register()//Нажатие на кнопку регестрации
 	{
-		userDataObj = new User(_login.text, _email.text);
+		User userDataObj = new User(_login.text, _email.text);
 		string userDataString = JsonUtility.ToJson(userDataObj);
 		byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString); ;
 		Debug.Log(userDataString + " userData");
@@ -38,17 +40,18 @@ public class ServerSpeaking : MonoBehaviour
 	public void WhenWeGotUniqueCheckResult(string dowloadedText)    
 	{
 		Debug.Log(dowloadedText + "dowloadedText");
-		UniqueCheck UniqueCheck = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
-		if (UniqueCheck.EmailIsUnique == false)
+		UniqueCheckResultObj = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
+        Debug.Log(UniqueCheckResultObj.LoginIsUnique + " UniqueCheckResultObj.LoginIsUnique" + UniqueCheckResultObj.EmailIsUnique + " UniqueCheckResultObj.EmailIsUnique");
+        if (UniqueCheckResultObj.EmailIsUnique == false)
 		{
-			if (UniqueCheck.LoginIsUnique == false)
+			if (UniqueCheckResultObj.LoginIsUnique == false)
 			{
 				ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
 			}
 			else
 			{
 				ROU_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
-				OurUserObj = new OurUser(_login.text, _email.text, _pass.text);
+				OurUser OurUserObj = new OurUser(_login.text, _email.text, _pass.text);
 				string OurUserDataString = JsonUtility.ToJson(OurUserObj);
 				byte[] OurUserDataRaw = Encoding.UTF8.GetBytes(OurUserDataString); ;
 				StartCoroutine(ReturnUsersData(OurUserDataRaw, "Register"));
