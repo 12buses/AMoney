@@ -205,8 +205,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1363073580}
-        m_TargetAssemblyTypeName: LoginRegister, Assembly-CSharp
+      - m_Target: {fileID: 1363073579}
+        m_TargetAssemblyTypeName: ServerSpeaking, Assembly-CSharp
         m_MethodName: Register
         m_Mode: 1
         m_Arguments:
@@ -1624,6 +1624,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3613578d7c459504da1542329bfdf932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _login: {fileID: 1131736321}
+  _email: {fileID: 610028834}
+  _pass: {fileID: 0}
+  ROU_InUnityObj: {fileID: 1835081715}
 --- !u!114 &1363073580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1736,7 +1740,7 @@ GameObject:
   - component: {fileID: 1835081716}
   - component: {fileID: 1835081715}
   m_Layer: 5
-  m_Name: EmailSuitblity
+  m_Name: Suitblity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

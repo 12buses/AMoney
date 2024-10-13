@@ -14,7 +14,7 @@ namespace DataNamespace
 
     public class OurUser : User
     {
-        public string _password { get; set; }
+        public string _password;
         public OurUser(string name, string mail, string password)
             : base(name, mail)
         {
@@ -24,8 +24,8 @@ namespace DataNamespace
 
     public class UniqueCheck
     {
-        public bool EmailIsUnique { get; set; }
-        public bool LoginIsUnique { get; set; }
+        public bool EmailIsUnique;  
+        public bool LoginIsUnique;
         public UniqueCheck(bool EmailUnique, bool LoginUnique)
         {
             EmailIsUnique = EmailUnique;
