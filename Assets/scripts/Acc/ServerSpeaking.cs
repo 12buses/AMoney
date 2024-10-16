@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using TMPro;
 
 using DataNamespace;
 
@@ -14,26 +15,26 @@ public class ServerSpeaking : MonoBehaviour
 	
 	
 
-	public InputField _login; //ник
-	public InputField _email; // поле для ввода почты
-	public InputField _pass; //поле для ввода пароля 
+	public TMP_InputField _login; //ник
+	public TMP_InputField _email; // поле для ввода почты
+	public TMP_InputField _pass; //поле для ввода пароля 
 
 	private string url = "http://195.2.79.241:5000/api/check_user";
 
 	public UniqueCheck UniqueCheckResultObj;
 
 
-    public Text ROU_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+    public TMP_Text ROUL_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+    public TMP_Text ROUE_InUnityObj; //объект с текстом объясняющий почему данные не подходят
 
 
-
-	public void Register()//Нажатие на кнопку регестрации
+    public void Register()//Нажатие на кнопку регестрации
 	{
 		User userDataObj = new User(_login.text, _email.text);
 		string userDataString = JsonUtility.ToJson(userDataObj);
 		byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString); ;
 		Debug.Log(userDataString + " userData");
-		StartCoroutine(ReturnUsersData(userDataRaw, "UniqueCheck"));
+		StartCoroutine(ReturnUsersData(userDataRaw));
 	}
 
 
@@ -41,30 +42,23 @@ public class ServerSpeaking : MonoBehaviour
 	{
 		Debug.Log(dowloadedText + "dowloadedText");
 		UniqueCheckResultObj = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
-        Debug.Log(UniqueCheckResultObj.LoginIsUnique + " UniqueCheckResultObj.LoginIsUnique" + UniqueCheckResultObj.EmailIsUnique + " UniqueCheckResultObj.EmailIsUnique");
-        if (UniqueCheckResultObj.EmailIsUnique == false)
+        Debug.Log(UniqueCheckResultObj.login + " UniqueCheckResultObj.LoginIsUnique" + UniqueCheckResultObj.email + " UniqueCheckResultObj.EmailIsUnique");
+        if (UniqueCheckResultObj.email == false)
 		{
-			if (UniqueCheckResultObj.LoginIsUnique == false)
-			{
-				ROU_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
-			}
-			else
-			{
-				ROU_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
-				OurUser OurUserObj = new OurUser(_login.text, _email.text, _pass.text);
-				string OurUserDataString = JsonUtility.ToJson(OurUserObj);
-				byte[] OurUserDataRaw = Encoding.UTF8.GetBytes(OurUserDataString); ;
-				StartCoroutine(ReturnUsersData(OurUserDataRaw, "Register"));
-			}   
+            ROUE_InUnityObj.text = "*Аккаунт на эту почту уже зарегстрирован, попробуйте войти.";
 		}
-		else
-		{
-			ROU_InUnityObj.text = "*Аккаунт на эту почту уже зарегстрирован, попробуйте войти.";
-		}
-	}
+        if (UniqueCheckResultObj.login == true)
+        {
+            ROUL_InUnityObj.text = "Проверка прошла успешно, в том числе на уникальность.";
+        }
+        else
+        {
+            ROUL_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
+        }
+    }
 
 
-	IEnumerator ReturnUsersData(byte[] userDataRaw, string ReqType)
+	IEnumerator ReturnUsersData(byte[] userDataRaw)
 	{
 		using (UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(url, "POST"))//��������� ������ � �������� ������������ ������ ������������ 
 		{
@@ -80,17 +74,8 @@ public class ServerSpeaking : MonoBehaviour
 			}
 			else
 			{
-				switch (ReqType)
-				{
-					case "UniqueCheck":
-						WhenWeGotUniqueCheckResult(webRequest.downloadHandler.text);
-						break;
-					case "Register":
-                        Debug.Log(webRequest.downloadHandler.text);
-                        break;
-                    default :
-						break;
-				}
+				WhenWeGotUniqueCheckResult(webRequest.downloadHandler.text);
+			
 			}
 		}
 	}

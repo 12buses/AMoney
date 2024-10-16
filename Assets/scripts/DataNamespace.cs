@@ -2,12 +2,12 @@ namespace DataNamespace
 {
     public class User //класс пользователей
     {
-        public string Name;
-        public string Mail;
+        public string login;
+        public string email;
         public User(string name, string mail)
         {
-            Name = name;
-            Mail = mail;
+            login = name;
+            email = mail;
 
         }
     }
@@ -24,12 +24,12 @@ namespace DataNamespace
 
     public class UniqueCheck
     {
-        public bool EmailIsUnique;  
-        public bool LoginIsUnique;
+        public bool email;  
+        public bool login;
         public UniqueCheck(bool EmailUnique, bool LoginUnique)
         {
-            EmailIsUnique = EmailUnique;
-            LoginIsUnique = LoginUnique;
+            email = EmailUnique;
+            login = LoginUnique;
 
         }
     }
