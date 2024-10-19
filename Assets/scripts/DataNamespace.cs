@@ -14,11 +14,11 @@ namespace DataNamespace
 
     public class OurUser : User
     {
-        public string _password;
-        public OurUser(string name, string mail, string password)
+        public string password;
+        public OurUser(string name, string mail, string pass)
             : base(name, mail)
         {
-            _password = password;
+            password = pass;
         }
     }
 
