@@ -4993,7 +4993,6 @@ GameObject:
   - component: {fileID: 1852179818}
   - component: {fileID: 1852179821}
   - component: {fileID: 1852179820}
-  - component: {fileID: 1852179819}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -5020,33 +5019,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1852179819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852179817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880ab01e5e265fd4897c5de9cc0232c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _login: {fileID: 0}
-  _email: {fileID: 0}
-  _pass: {fileID: 0}
-  Button: {fileID: 0}
-  RegisterButton: {fileID: 0}
-  _loginGameObject: {fileID: 0}
-  _emailGameObject: {fileID: 0}
-  _passGameObject: {fileID: 0}
-  ROUL_InUnityObj: {fileID: 0}
-  ROUP_InUnityObj: {fileID: 0}
-  ROUEM_InUnityObj: {fileID: 0}
-  InActiveButton: {fileID: 0}
-  IsActiveButton: {fileID: 0}
-  InputField: {fileID: 0}
-  InputFieldWrong: {fileID: 0}
 --- !u!114 &1852179820
 MonoBehaviour:
   m_ObjectHideFlags: 0
