@@ -25,7 +25,6 @@ public class auth : MonoBehaviour
 		{
 			login = name;
 			this.password = password;
-
 		}
 	}
 

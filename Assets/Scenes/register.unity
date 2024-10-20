@@ -1634,9 +1634,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1432238688524100466}
   - component: {fileID: 1800152151862245594}
-  - component: {fileID: 4730248016471891443}
-  - component: {fileID: 8325758267046221903}
   - component: {fileID: 3523589991967369667}
+  - component: {fileID: 3523589991967369668}
   m_Layer: 5
   m_Name: Register
   m_TagString: Untagged
@@ -2238,6 +2237,19 @@ MonoBehaviour:
     login: 
   ROUL_InUnityObj: {fileID: 79067829005858594}
   ROUE_InUnityObj: {fileID: 246176472199734740}
+--- !u!114 &3523589991967369668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061038372167883730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: Main
 --- !u!222 &3637591463009675250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2875,9 +2887,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3523589991967369667}
+      - m_Target: {fileID: 2061038372167883730}
         m_TargetAssemblyTypeName: CheckPReg, Assembly-CSharp
-        m_MethodName: Register
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2920,27 +2932,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4730248016471891443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2061038372167883730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3613578d7c459504da1542329bfdf932, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _login: {fileID: 3760144508992715925}
-  _email: {fileID: 2515630059125599135}
-  _pass: {fileID: 568505658158494719}
-  url: http://195.2.79.241:5000/api/check_user
-  ROUL_InUnityObj: {fileID: 79067829005858594}
-  ROUE_InUnityObj: {fileID: 246176472199734740}
-  UniqueCheckResultObj:
-    email: 
-    login: 
 --- !u!224 &4741332458150052919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4667,22 +4658,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8325758267046221903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2061038372167883730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5448e732d160c694ca91a1a33c469e65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Login: {fileID: 3760144508992715925}
-  email: {fileID: 2515630059125599135}
-  pass: {fileID: 568505658158494719}
-  RegisterUrl: http://195.2.79.241:5000/api/user_register
 --- !u!114 &8338356665033315699
 MonoBehaviour:
   m_ObjectHideFlags: 0

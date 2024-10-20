@@ -1188,8 +1188,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: auth, Assembly-CSharp
+      - m_Target: {fileID: 7727004457508863580}
+        m_TargetAssemblyTypeName: AuthPGetInfo, Assembly-CSharp
         m_MethodName: authorization
         m_Mode: 1
         m_Arguments:
@@ -3245,6 +3245,8 @@ GameObject:
   - component: {fileID: 3059394120711488724}
   - component: {fileID: 6530577423713839494}
   - component: {fileID: 2600463318927640439}
+  - component: {fileID: 7727004457508863581}
+  - component: {fileID: 7727004457508863580}
   m_Layer: 5
   m_Name: in
   m_TagString: Untagged
@@ -3252,6 +3254,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7727004457508863580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727004457508863579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d8e8658e06a2042aa2b9b0a44f11be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  login: {fileID: 1823006687371314267}
+  password: {fileID: 6450085665412370043}
+  ROUE_InUnityObj: {fileID: 160085590}
+  ROUL_InUnityObj: {fileID: 8650785783024140788}
+  URLAuth: http://195.2.79.241:5000/api/user_authorize
+  URLGetInfo: 'http://195.2.79.241:5000/api/data '
+--- !u!114 &7727004457508863581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727004457508863579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: Main
 --- !u!1 &7728806428889798426
 GameObject:
   m_ObjectHideFlags: 0
