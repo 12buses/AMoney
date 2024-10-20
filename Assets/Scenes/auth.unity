@@ -1170,6 +1170,7 @@ GameObject:
   - component: {fileID: 6816935202641825850}
   - component: {fileID: 3224266437920329795}
   - component: {fileID: 6837842162678608392}
+  - component: {fileID: 9123767009460842524}
   m_Layer: 5
   m_Name: "\u0441\u0442\u0440\u0435\u043B\u043A\u0430"
   m_TagString: Untagged
@@ -1234,6 +1235,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6375700920049026447}
+  - {fileID: 6750853915261240665}
   m_Father: {fileID: 4448928270821960932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.48483446}
@@ -1660,7 +1662,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3981503111684936328}
-  - {fileID: 6750853915261240665}
   - {fileID: 3151425181857975375}
   - {fileID: 9123767009460842523}
   - {fileID: 4207733858152317878}
@@ -2600,15 +2601,15 @@ RectTransform:
   m_GameObject: {fileID: 4126496400763965427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.781009, y: 4.1097026, z: 4.1097026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6754189847579550792}
-  m_Father: {fileID: 4448928270821960932}
+  m_Father: {fileID: 3151425181857975375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.6098758}
   m_AnchorMax: {x: 0.5, y: 0.6098758}
-  m_AnchoredPosition: {x: 1.0272999, y: -0.32633972}
+  m_AnchoredPosition: {x: -0.09787357, y: 56.60154}
   m_SizeDelta: {x: 118.3857, y: 24.365997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6754189847579550792
@@ -2683,7 +2684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3224266437920329795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9123767009460842524}
+        m_TargetAssemblyTypeName: changescene, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6853737093585366842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3668,6 +3681,19 @@ RectTransform:
   m_AnchoredPosition: {x: 10.811035, y: 3.4555054}
   m_SizeDelta: {x: 16.174011, y: 6.9110107}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9123767009460842524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810144285763455688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: RegOrAuthMenu
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

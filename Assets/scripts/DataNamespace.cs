@@ -14,23 +14,20 @@ namespace DataNamespace
 
     public class OurUser : User
     {
-        public string _password;
-        public OurUser(string name, string mail, string password)
+        public string password;
+        public OurUser(string name, string mail, string pass)
             : base(name, mail)
         {
-            _password = password;
+            password = pass;
         }
     }
 
+
+
+    [System.Serializable]
     public class UniqueCheck
     {
-        public bool email;  
-        public bool login;
-        public UniqueCheck(bool EmailUnique, bool LoginUnique)
-        {
-            email = EmailUnique;
-            login = LoginUnique;
-
-        }
+        public string email;  
+        public string login;
     }
 }
