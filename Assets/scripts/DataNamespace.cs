@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 namespace DataNamespace
 {
+    [System.Serializable]
     public class User //класс пользователей
     {
         public string login;
@@ -12,25 +15,45 @@ namespace DataNamespace
         }
     }
 
+    [System.Serializable]
+    public class WalletsData
+    {
+        public int id_user;
+        public List<Wallet> wallets;
+    }
+
+    [System.Serializable]
+    public class Wallet
+    {
+        public int balance;
+        public string name;
+        public string currency;
+        public int id_wallet;
+    }
+
+    [System.Serializable]
     public class OurUser : User
     {
-        public string _password;
-        public OurUser(string name, string mail, string password)
+        public string password;
+        public OurUser(string name, string mail, string pass)
             : base(name, mail)
         {
-            _password = password;
+            password = pass;
         }
     }
 
+    [System.Serializable]
+    public class Info
+    {
+        public string email;
+        public int id;
+        public string login;
+    }
+
+    [System.Serializable]
     public class UniqueCheck
     {
-        public bool email;  
-        public bool login;
-        public UniqueCheck(bool EmailUnique, bool LoginUnique)
-        {
-            email = EmailUnique;
-            login = LoginUnique;
-
-        }
+        public string email;  
+        public string login;
     }
 }

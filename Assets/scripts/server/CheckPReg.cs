@@ -12,91 +12,117 @@ using DataNamespace;
 
 public class CheckPReg : MonoBehaviour
 {
-    public TMP_InputField _login; //ник
-    public TMP_InputField _email; // поле для ввода почты
-    public TMP_InputField _pass; //поле для ввода пароля 
+	public TMP_InputField _login; //ник
+	public TMP_InputField _email; // поле для ввода почты
+	public TMP_InputField _pass; //поле для ввода пароля 
 
-    private string url = "http://195.2.79.241:5000/api/check_user";
+	public string RegisterUrl = "http://195.2.79.241:5000/api/user_register";
+	public string url = "http://195.2.79.241:5000/api/check_user";
 
-    public UniqueCheck UniqueCheckResultObj;
+	public UniqueCheck UniqueCheckResultObj;
 
-    public TMP_Text ROUL_InUnityObj; //объект с текстом объясняющий почему данные не подходят
-    public TMP_Text ROUE_InUnityObj; //объект с текстом объясняющий почему данные не подходят
-
-
-    public void Register()//Нажатие на кнопку регестрации
-    {
-        User userDataObj = new User(_login.text, _email.text);
-        string userDataString = JsonUtility.ToJson(userDataObj);
-        byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString); ;
-        Debug.Log(userDataString + " userData");
-        StartCoroutine(ReturnUsersData(userDataRaw));
-    }
+	public TMP_Text ROUL_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+	public TMP_Text ROUE_InUnityObj; //объект с текстом объясняющий почему данные не подходят
 
 
-    void WhenWeGotUniqueCheckResult(string dowloadedText)
-    {
-        Debug.Log(dowloadedText + "dowloadedText");
-        UniqueCheckResultObj = JsonUtility.FromJson<UniqueCheck>(dowloadedText);
-        Debug.Log(UniqueCheckResultObj.login + " UniqueCheckResultObj.LoginIsUnique" + UniqueCheckResultObj.email + " UniqueCheckResultObj.EmailIsUnique");
-        if (UniqueCheckResultObj.email == true && UniqueCheckResultObj.login == true)
-        {
-            OurUser userDataObj = new OurUser(_login.text, _email.text, _pass.text);
-            string userDataString = JsonUtility.ToJson(userDataObj);
-            byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString);
-            StartCoroutine(Register(userDataRaw));
-            IEnumerator Register(byte[] userDataRaw)
-            {
-                using (UnityWebRequest webRequest = UnityWebRequest.PostWwwForm("http://195.2.79.241:5000/api/user_register", "POST"))//��������� ������ � �������� ������������ ������ ������������ 
-                {
-                    // ���������� ������
-                    webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
-                    webRequest.downloadHandler = new DownloadHandlerBuffer();
-                    webRequest.SetRequestHeader("Content-Type", "application/json");
-                    yield return webRequest.SendWebRequest();
-                    /*
-                    if (webRequest.result != UnityWebRequest.Result.Success)
-                    {
-                        Debug.LogError("Ошибка:" + webRequest.error);
-                    }
-                    */
+	public void Register()//Нажатие на кнопку регестрации
+	{
+		string username = _login.text;
+		string email = _email.text;
+
+		StartCoroutine(CheckUser(username, email));
+	}
+
+	void RegisterUser(string email, string login, string password)
+	{
+		Debug.Log(email + " " + login + " " + password);
+		StartCoroutine(WhenWeGotUniqueCheckResult(email, login, password));
+	}
+
+	IEnumerator WhenWeGotUniqueCheckResult(string email, string login, string password)
+	{
+		var userDataObj = new RegisterData()
+		{
+			email = email,
+			login = login,
+			password = password
+		};
+		string userDataString = JsonUtility.ToJson(userDataObj);
+
+		Debug.Log(userDataString + " userData");
+
+		UnityWebRequest request = new UnityWebRequest(RegisterUrl, "POST");
+		request.SetRequestHeader("Content-Type", "application/json");
+
+		byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString);
+		request.uploadHandler = new UploadHandlerRaw(userDataRaw);
+		request.downloadHandler = new DownloadHandlerBuffer();
+
+		yield return request.SendWebRequest();
+		// ????????? ??????? ??????
+		if (request.result != UnityWebRequest.Result.Success)
+		{
+			Debug.LogError("Ошибка:" + request.error);
+
+		}
+		else
+		{
+			Debug.Log("Успешная регистрация");
+            GetComponent<changescene>().ChangeScene();
+        }
+	}
+
+
+	IEnumerator CheckUser(string username, string email)
+	{
+	   
+		User userDataObj = new User(username, email);
+		string userDataString = JsonUtility.ToJson(userDataObj);
+
+		Debug.Log(userDataString + " userData");
+
+		UnityWebRequest request = new UnityWebRequest(url, "POST");
+		request.SetRequestHeader("Content-Type", "application/json");
+
+		byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString); 
+		request.uploadHandler = new UploadHandlerRaw(userDataRaw);
+		request.downloadHandler = new DownloadHandlerBuffer();
+		   
+		yield return request.SendWebRequest();
+			// ????????? ??????? ??????
+		if (request.result != UnityWebRequest.Result.Success)
+		{
+			Debug.LogError("Ошибка:" + request.error);
+		}
+		else
+		{
+			UniqueCheck response = JsonUtility.FromJson<UniqueCheck>(request.downloadHandler.text);
+			Debug.Log(request.downloadHandler.text);
+			if (response.login == "False" || response.email == "False")
+			{
+				Debug.Log("User zanyat");
+				if(response.login == "False")
+				{
+                    ROUL_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
+                }
+				if(response.email == "False")
+				{
+                    ROUE_InUnityObj.text = "*Аккаунт с таким email уже зарегестрирован. Попробуйте войти.";
                 }
             }
-        }
-        else
-        {
-            if (UniqueCheckResultObj.email == false)
-            {
-                ROUE_InUnityObj.text = "*Аккаунт на эту почту уже зарегстрирован, попробуйте войти.";
-            }
-            if (UniqueCheckResultObj.login == false)
-            {
-                ROUL_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
-            }
-        }
-    }
-
-
-    IEnumerator ReturnUsersData(byte[] userDataRaw)
-    {
-        using (UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(url, "POST"))//????????? ?????? ? ???????? ???????????? ?????? ???????????? 
-        {
-            // ?????????? ??????
-            webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
-            webRequest.downloadHandler = new DownloadHandlerBuffer();
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-            yield return webRequest.SendWebRequest();
-            // ????????? ??????? ??????
-            if (webRequest.result != UnityWebRequest.Result.Success)
-            {
-                Debug.LogError("Ошибка:" + webRequest.error);
-            }
-            else
-            {
-                WhenWeGotUniqueCheckResult(webRequest.downloadHandler.text);
-
-            }
-        }
-    }
+			else
+			{
+				Debug.Log("REgACtion");
+				RegisterUser(_email.text, _login.text, _pass.text);
+			}
+		}
+	}
+	[System.Serializable]
+	public class RegisterData
+	{
+		public string email;
+		public string login;
+		public string password;
+	}
 }
 
