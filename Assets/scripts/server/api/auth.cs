@@ -5,7 +5,6 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using static UnityEditor.ShaderData;
 
 public class auth : MonoBehaviour
 {

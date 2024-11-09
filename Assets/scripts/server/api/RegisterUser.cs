@@ -5,9 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using DataNamespace;
 using TMPro;
-using static UnityEditor.ShaderData;
 using System.Text;
-using UnityEditor.VersionControl;
 
 public class RegisterUser : MonoBehaviour
 {

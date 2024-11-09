@@ -5,7 +5,6 @@ using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using static UnityEditor.ShaderData;
 
 public class AddWallert : MonoBehaviour
 {
