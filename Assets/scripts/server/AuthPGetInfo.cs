@@ -83,6 +83,7 @@ public class AuthPGetInfo : MonoBehaviour
                                 {
                                     Debug.Log(webRequest.downloadHandler.text);
                                     Debug.Log("Аунтификация: успешно!");
+                                    GetComponent<changescene>().ChangeScene();
                                 }
                             }
                         }
