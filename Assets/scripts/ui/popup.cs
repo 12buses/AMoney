@@ -10,13 +10,6 @@ public class popup : MonoBehaviour
 
     public void ShowPopup()
     {
-        if(popupPanel.activeInHierarchy == true)
-        {
-            popupPanel.SetActive(false);
-        }
-        else
-        {
-            popupPanel.SetActive(true);
-        }
+        popupPanel.SetActive(!popupPanel.activeInHierarchy);
     }
 }

@@ -9,8 +9,11 @@ public class WalletList : MonoBehaviour
 {
 	public GameObject content; // Объект, содержащий элементы списка
 	public GameObject itemPrefab; // Prefab элемента списка
+	public GameObject DeleteMenu;
+    public TMP_Text DeletedMenuText;
+    public TMP_Text DeleteMenuText;
 
-    
+
 
     public void FillList(WalletsData WalletsDataObj)
 	{
@@ -19,8 +22,15 @@ public class WalletList : MonoBehaviour
 		{
 			GameObject item = Instantiate(itemPrefab, content.transform);
 			item.GetComponent<WalletListItem>().Name.text = WalletsDataObj.wallets[i].name;
+            item.GetComponent<WalletListItem>().NameString = WalletsDataObj.wallets[i].name;
             item.GetComponent<WalletListItem>().balance.text = WalletsDataObj.wallets[i].balance.ToString();
+            item.GetComponent<WalletListItem>().BalanceString = WalletsDataObj.wallets[i].balance.ToString();
             item.GetComponent<WalletListItem>().currency.text = WalletsDataObj.wallets[i].currency;
+            item.GetComponent<WalletListItem>().CurrencyString = WalletsDataObj.wallets[i].currency;
+            item.GetComponent<WalletListItem>().WalletId = WalletsDataObj.wallets[i].id_wallet;
+			item.GetComponent<WalletListItem>().DeleteMenu = DeleteMenu;
+            item.GetComponent<WalletListItem>().DeletedMenuText = DeletedMenuText;
+            item.GetComponent<WalletListItem>().DeleteMenuText = DeleteMenuText;
         }
 	}
 }

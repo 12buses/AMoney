@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 203094367916844167}
   - component: {fileID: 8187859504468048873}
   - component: {fileID: 2020633487511306409}
+  - component: {fileID: 5528950625527384924}
   m_Layer: 5
   m_Name: Delelte
   m_TagString: Untagged
@@ -119,7 +120,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8187859504468048873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5528950625527384924}
+        m_TargetAssemblyTypeName: openDeleteMenu, Assembly-CSharp
+        m_MethodName: Delete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5528950625527384924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501719282903611716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039de1c8f6dca304c8be8d9b6867531f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallet: {fileID: 3874948314497722150}
 --- !u!1 &3874948314497722150
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +203,11 @@ MonoBehaviour:
   Name: {fileID: 4484676521548939909}
   balance: {fileID: 4861551851872114053}
   currency: {fileID: 757174940218019047}
+  WalletId: 0
+  NameString: 
+  DeleteMenu: {fileID: 0}
+  DeletedMenuText: {fileID: 0}
+  DeleteMenuText: {fileID: 0}
 --- !u!1 &4982816131117605883
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +488,7 @@ GameObject:
   - component: {fileID: 3604846918156488737}
   - component: {fileID: 1876747508879489567}
   - component: {fileID: 8265801131454947386}
+  - component: {fileID: 7261451380352905691}
   m_Layer: 5
   m_Name: Edit
   m_TagString: Untagged
@@ -564,7 +596,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1876747508879489567}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7261451380352905691}
+        m_TargetAssemblyTypeName: changescene, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7261451380352905691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480114440982879321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: redakt
 --- !u!1 &8005337564542899499
 GameObject:
   m_ObjectHideFlags: 0

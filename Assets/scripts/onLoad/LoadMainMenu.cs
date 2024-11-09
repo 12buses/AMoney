@@ -29,6 +29,7 @@ public class LoadMainMenu : MonoBehaviour
     {
         Info UserInfo = GetComponent<GetUserInfo>().GetInfo();
         HelloText.text = "Привет,  " + UserInfo.login + "!";
+        PlayerPrefs.SetString("UserLogin", UserInfo.login);
         UserId x = new UserId();
         x.id = UserInfo.id;
         string userDataString = JsonUtility.ToJson(x);
