@@ -1041,7 +1041,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6638978686128798182}
+        m_TargetAssemblyTypeName: CreateWalletCheckInPutField, Assembly-CSharp
+        m_MethodName: NameCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2608,8 +2620,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -2639,7 +2651,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6638978686128798182}
+        m_TargetAssemblyTypeName: CreateWalletCheckInPutField, Assembly-CSharp
+        m_MethodName: BalanceCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2697,7 +2721,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5947fca1aede97e4cb2788a57b5c2111, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6072ed8a065a2de47b43e295ad986f09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2727,6 +2751,7 @@ GameObject:
   - component: {fileID: 1217370302653050086}
   - component: {fileID: 4071249752356462262}
   - component: {fileID: 4540915590351802216}
+  - component: {fileID: 6638978686128798182}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2734,6 +2759,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6638978686128798182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638978686128798181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0d290dd0be4d349bcf667defe4303b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Name: {fileID: 1823006687371314267}
+  _Balance: {fileID: 6450085665412370043}
+  Button: {fileID: 2600463318927640439}
+  CreateWalletButton: {fileID: 7727004457508863579}
+  _NameGameObject: {fileID: 4126496400763965427}
+  _BalanceGameObject: {fileID: 5754516130901910825}
+  InActiveButton: {fileID: 21300000, guid: 6072ed8a065a2de47b43e295ad986f09, type: 3}
+  IsActiveButton: {fileID: 21300000, guid: 5947fca1aede97e4cb2788a57b5c2111, type: 3}
+  InputField: {fileID: 21300000, guid: 64e0034453ab8304fbcc56284cd154a1, type: 3}
+  InputFieldWrong: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
 --- !u!222 &6650789125911519914
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3630,7 +3677,7 @@ GameObject:
   - component: {fileID: 7258150136395660347}
   - component: {fileID: 1820418969269465091}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3785,7 +3832,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
