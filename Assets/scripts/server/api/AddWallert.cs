@@ -11,8 +11,9 @@ public class AddWallert : MonoBehaviour
     public TMP_InputField Name;
     public TMP_InputField Balance;
     public TMP_Dropdown Currency;
+    public GameObject OBJWithReloadSceneScript;
 
-    public string Url = "http://195.2.79.241:5000/api/add_wallet";
+    public string Url = "http://195.2.79.241:5000/api_app/add_wallet";
 
     [System.Serializable]
     public class Wallet
@@ -45,10 +46,6 @@ public class AddWallert : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Ошибка:" + request.error);
-        }
-        else
-        {
-
         }
     }
 

@@ -2230,8 +2230,8 @@ MonoBehaviour:
   _login: {fileID: 3760144508992715925}
   _email: {fileID: 2515630059125599135}
   _pass: {fileID: 568505658158494719}
-  RegisterUrl: http://195.2.79.241:5000/api/user_register
-  url: http://195.2.79.241:5000/api/check_user
+  RegisterUrl: http://195.2.79.241:5000/api_app/user_register
+  url: http://195.2.79.241:5000/api_app/check_user
   UniqueCheckResultObj:
     email: 
     login: 

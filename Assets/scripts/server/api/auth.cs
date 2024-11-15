@@ -14,7 +14,7 @@ public class auth : MonoBehaviour
 	public TMP_Text ROUE_InUnityObj;
     public TMP_Text ROUL_InUnityObj;
 
-    public string URL = "http://195.2.79.241:5000/api/user_authorize";
+    public string URL = "http://195.2.79.241:5000/api_app/user_authorize";
 
 	public class User //класс пользователея
 	{

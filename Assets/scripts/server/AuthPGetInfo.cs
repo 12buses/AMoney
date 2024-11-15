@@ -10,12 +10,12 @@ public class AuthPGetInfo : MonoBehaviour
 {
     public TMP_InputField login;
     public TMP_InputField password;
-
+    public string SceneName;
     public TMP_Text ROUE_InUnityObj;
     public TMP_Text ROUL_InUnityObj;
 
-    public string URLAuth = "http://195.2.79.241:5000/api/user_authorize";
-    public string URLGetInfo = "http://195.2.79.241:5000/api/data ";
+    public string URLAuth = "http://195.2.79.241:5000/api_app/user_authorize";
+    public string URLGetInfo = "http://195.2.79.241:5000/api_app/data";
 
     public class User //класс пользователея
     {

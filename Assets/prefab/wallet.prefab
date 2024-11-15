@@ -205,9 +205,14 @@ MonoBehaviour:
   currency: {fileID: 757174940218019047}
   WalletId: 0
   NameString: 
+  BalanceString: 
+  CurrencyString: 
   DeleteMenu: {fileID: 0}
   DeletedMenuText: {fileID: 0}
   DeleteMenuText: {fileID: 0}
+  BalanceEdit: {fileID: 0}
+  NameOfWalletEdit: {fileID: 0}
+  CurrencyEdit: {fileID: 0}
 --- !u!1 &4982816131117605883
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +493,6 @@ GameObject:
   - component: {fileID: 3604846918156488737}
   - component: {fileID: 1876747508879489567}
   - component: {fileID: 8265801131454947386}
-  - component: {fileID: 7261451380352905691}
   m_Layer: 5
   m_Name: Edit
   m_TagString: Untagged
@@ -597,9 +601,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7261451380352905691}
-        m_TargetAssemblyTypeName: changescene, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 6469252083133216522}
+        m_TargetAssemblyTypeName: WalletListItem, Assembly-CSharp
+        m_MethodName: EntereEdit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -609,19 +613,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7261451380352905691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7480114440982879321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Scene: redakt
 --- !u!1 &8005337564542899499
 GameObject:
   m_ObjectHideFlags: 0

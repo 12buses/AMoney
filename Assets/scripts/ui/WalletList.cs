@@ -12,11 +12,17 @@ public class WalletList : MonoBehaviour
 	public GameObject DeleteMenu;
     public TMP_Text DeletedMenuText;
     public TMP_Text DeleteMenuText;
-
+    public TMP_InputField BalanceEdit;
+    public TMP_InputField NameOfWalletEdit;
+    public TMP_Dropdown CurrencyEdit;
+    public GameObject MainMenu;
+    public GameObject EditMenu;
+    public GameObject EditWalletSaveButton;
 
 
     public void FillList(WalletsData WalletsDataObj)
 	{
+        
 		// Создание элементов списка
 		for (int i = 0; i < WalletsDataObj.wallets.Count; i++)
 		{
@@ -31,6 +37,17 @@ public class WalletList : MonoBehaviour
 			item.GetComponent<WalletListItem>().DeleteMenu = DeleteMenu;
             item.GetComponent<WalletListItem>().DeletedMenuText = DeletedMenuText;
             item.GetComponent<WalletListItem>().DeleteMenuText = DeleteMenuText;
+            item.GetComponent<WalletListItem>().BalanceEdit = BalanceEdit;
+            item.GetComponent<WalletListItem>().NameOfWalletEdit = NameOfWalletEdit;
+            item.GetComponent<WalletListItem>().CurrencyEdit = CurrencyEdit;
+            item.GetComponent<WalletListItem>().MainMenu = MainMenu;
+            item.GetComponent<WalletListItem>().EditMenu = EditMenu;
+            item.GetComponent<WalletListItem>().EditWalletSaveButton = EditWalletSaveButton;
         }
-	}
+    }
+
+    public void DeleteList()
+    {
+        foreach (Transform child in content.GetComponent<Transform>()) Destroy(child.gameObject);
+    }
 }

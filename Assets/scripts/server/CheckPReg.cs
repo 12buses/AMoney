@@ -16,8 +16,8 @@ public class CheckPReg : MonoBehaviour
 	public TMP_InputField _email; // поле для ввода почты
 	public TMP_InputField _pass; //поле для ввода пароля 
 
-	public string RegisterUrl = "http://195.2.79.241:5000/api/user_register";
-	public string url = "http://195.2.79.241:5000/api/check_user";
+	public string RegisterUrl = "http://195.2.79.241:5000/api_app/user_register";
+	public string url = "http://195.2.79.241:5000/api_app/check_user";
 
 	public UniqueCheck UniqueCheckResultObj;
 

@@ -10,7 +10,7 @@ public class deleteInfo : MonoBehaviour
 {
     public int id_wallet;
     public GameObject nextPopUp;
-    public string Url = "http://195.2.79.241:5000/api/delete_wallet";
+    public string Url = "http://195.2.79.241:5000/api_app/delete_wallet";
     public GameObject ReloadMainSceneOBJ;
 
     [System.Serializable]
@@ -35,7 +35,7 @@ public class deleteInfo : MonoBehaviour
             webRequest.uploadHandler = new UploadHandlerRaw(WalletIdRaw);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             yield return webRequest.SendWebRequest();
-            ReloadMainSceneOBJ.GetComponent<LoadMainMenu>();
+            ReloadMainSceneOBJ.GetComponent<LoadMainMenu>().Reload();
             this.gameObject.SetActive(false);
             nextPopUp.SetActive(true);
         }

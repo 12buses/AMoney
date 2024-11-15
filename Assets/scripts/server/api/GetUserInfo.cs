@@ -8,7 +8,7 @@ using DataNamespace;
 public class GetUserInfo : MonoBehaviour
 {
 
-	public string Url = "http://195.2.79.241:5000/api/data ";
+	public string Url = "http://195.2.79.241:5000/api_app/data ";
 
 	private Info result = new Info();
 
