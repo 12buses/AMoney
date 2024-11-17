@@ -9,7 +9,7 @@ Library: E:\unity projects\AMoney\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
 --temp-folder=E:\unity projects\AMoney\Temp\Burst
---key-folder=F:/2022.3.48f1/Editor/Data/PlaybackEngines/AndroidPlayer
+--key-folder=F:/2022.3.49f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=E:\unity projects\AMoney\Library\Burst
 --output=E:\unity projects\AMoney\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
