@@ -23,6 +23,12 @@ public class AddWallert : MonoBehaviour
         public string currency;
     }
 
+    [System.Serializable]
+    public class WalletAns
+    {
+        public string existance;
+    }
+
     public void AddWallet()
     {
         StartCoroutine(AddWalletCor());

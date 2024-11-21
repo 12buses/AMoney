@@ -183,9 +183,9 @@ RectTransform:
   - {fileID: 5812108565173407469}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 2079}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 936.0927, y: 170.7475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6469252083133216522
@@ -213,6 +213,9 @@ MonoBehaviour:
   BalanceEdit: {fileID: 0}
   NameOfWalletEdit: {fileID: 0}
   CurrencyEdit: {fileID: 0}
+  EditMenu: {fileID: 0}
+  MainMenu: {fileID: 0}
+  EditWalletSaveButton: {fileID: 0}
 --- !u!1 &4982816131117605883
 GameObject:
   m_ObjectHideFlags: 0

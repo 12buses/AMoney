@@ -19,21 +19,20 @@ public class CreateWalletCheckInPutField : MonoBehaviour
     public Sprite IsActiveButton;
     public Sprite InputField;
     public Sprite InputFieldWrong;
+    public TMP_Text NameErrorText;
 
     public void NameCheck()
     {
         IfNameCheckPassed = true;
-        if (_Name.text.Length < 3 || _Name.text.Length > 15)
+        if (_Name.text.Length < 5 || _Name.text.Length > 10)
         {
             IfNameCheckPassed = false;
-        }
-        if (IfNameCheckPassed == true)
-        {
-            _NameGameObject.GetComponent<Image>().sprite = InputField;
+            _NameGameObject.GetComponent<Image>().sprite = InputFieldWrong;
+            NameErrorText.text = "Название должно иметь длину от 5 до 10 символа.";
         }
         else
         {
-            _NameGameObject.GetComponent<Image>().sprite = InputFieldWrong;
+            _NameGameObject.GetComponent<Image>().sprite = InputField;
         }
         SetActiveButton();
     }
@@ -41,18 +40,14 @@ public class CreateWalletCheckInPutField : MonoBehaviour
     public void BalanceCheck()
     {
         IfBalanceCheckPassed = true;
-        if (_Balance.text.Length < 3 || _Balance.text.Length > 15)
+        if (_Balance.text.Length < 1 || _Balance.text.Length > 1000000)
         {
             IfBalanceCheckPassed = false;
-        }
-
-        if (IfBalanceCheckPassed == true)
-        {
-            _BalanceGameObject.GetComponent<Image>().sprite = InputField;
+            _BalanceGameObject.GetComponent<Image>().sprite = InputFieldWrong;
         }
         else
         {
-            _BalanceGameObject.GetComponent<Image>().sprite = InputFieldWrong;
+            _BalanceGameObject.GetComponent<Image>().sprite = InputField;
         }
         SetActiveButton();
     }
