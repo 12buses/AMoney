@@ -23,16 +23,19 @@ public class AddWallert : MonoBehaviour
         public string currency;
     }
 
+
     [System.Serializable]
-    public class WalletAns
+    public class ServerResponseAddWallet
     {
         public string existance;
+        public string creation;
     }
 
     public void AddWallet()
     {
         StartCoroutine(AddWalletCor());
     }
+
     IEnumerator AddWalletCor()
     {
         UnityWebRequest request = new UnityWebRequest(Url, "POST");
@@ -46,13 +49,23 @@ public class AddWallert : MonoBehaviour
         byte[] WalletDataRaw = Encoding.UTF8.GetBytes(WalletDataString);
         request.uploadHandler = new UploadHandlerRaw(WalletDataRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
-
         yield return request.SendWebRequest();
+        afterReq(request);
+    }
+
+    public void afterReq(UnityWebRequest request)
+    {
+        Debug.Log('2');
+        Debug.Log(request.downloadHandler.text);
         // ????????? ??????? ??????
         if (request.result != UnityWebRequest.Result.Success)
         {
             Debug.LogError("Ошибка:" + request.error);
         }
+        else
+        {
+            ServerResponseAddWallet response = JsonUtility.FromJson<ServerResponseAddWallet>(request.downloadHandler.text);
+            Debug.Log(response.existance + " " + response.creation);
+        }
     }
-
 }
