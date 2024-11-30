@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 315a2361c3c1b8945992a6c4db1c0dd4
+=======
+<<<<<<<< HEAD:Assets/scripts/CheckInPutField.meta
+guid: 20c0e31cafe7ef24dad832e2334d9d70
+========
+guid: e1a0cff6329b5ec47ad623771a70ab6f
+>>>>>>>> ADSFS:Assets/sprites/registerPNG.meta
+>>>>>>> ADSFS
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
