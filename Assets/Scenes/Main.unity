@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e8fbfc1ecee20429d0e485d821c86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Url: 'http://195.2.79.241:5000/api/data '
+  Url: 'http://195.2.79.241:5000/api_app/data '
 --- !u!114 &43168115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
   HelloTextEdit: {fileID: 0}
   NoWallets: {fileID: 1605101695}
   WalletsTrue: {fileID: 234549611}
-  WalletsDataUrl: http://195.2.79.241:5000/api/userWallets
+  WalletsDataUrl: http://195.2.79.241:5000/api_app/userWallets
 --- !u!114 &43168116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,9 +399,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 111287770}
   itemPrefab: {fileID: 3874948314497722150, guid: 117b34ef01b07b54580dd78a0b2b3ef2, type: 3}
-  DeleteMenu: {fileID: 0}
+  DeleteMenu: {fileID: 2040338798}
   DeletedMenuText: {fileID: 0}
-  DeleteMenuText: {fileID: 0}
+  DeleteMenuText: {fileID: 304303871}
   BalanceEdit: {fileID: 0}
   NameOfWalletEdit: {fileID: 0}
   CurrencyEdit: {fileID: 0}

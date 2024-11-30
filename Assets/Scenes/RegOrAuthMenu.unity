@@ -742,7 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: register
 --- !u!114 &6276482118077078716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,7 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: auth
 --- !u!224 &7523697752965751657
 RectTransform:
   m_ObjectHideFlags: 0

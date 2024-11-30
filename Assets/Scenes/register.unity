@@ -3264,8 +3264,8 @@ MonoBehaviour:
   _login: {fileID: 465038218}
   _email: {fileID: 2002227272}
   _pass: {fileID: 1399718437}
-  RegisterUrl: http://195.2.79.241:5000/api/user_register
-  url: http://195.2.79.241:5000/api/check_user
+  RegisterUrl: http://195.2.79.241:5000/api_app/user_register
+  url: http://195.2.79.241:5000/api_app/check_user
   UniqueCheckResultObj:
     email: 
     login: 

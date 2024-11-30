@@ -439,7 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: RegOrAuthMenu
 --- !u!114 &368868956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2312,10 +2311,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   login: {fileID: 2004390277}
   password: {fileID: 1246102429}
+  SceneName: Main
   ROUE_InUnityObj: {fileID: 160085590}
   ROUL_InUnityObj: {fileID: 8650785783024140788}
-  URLAuth: http://195.2.79.241:5000/api/user_authorize
-  URLGetInfo: 'http://195.2.79.241:5000/api/data '
+  URLAuth: http://195.2.79.241:5000/api_app/user_authorize
+  URLGetInfo: 'http://195.2.79.241:5000/api_app/data '
 --- !u!114 &4516144291972482200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2911,7 +2911,7 @@ RectTransform:
   m_GameObject: {fileID: 7728806428889798426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41230166, y: 0.41230166, z: 0.41230166}
+  m_LocalScale: {x: 1.1228623, y: 1.1228623, z: 1.1228623}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8291966472209217170}
@@ -2920,7 +2920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -89.6827, y: -45.347}
+  m_AnchoredPosition: {x: -248, y: -136}
   m_SizeDelta: {x: 453.1401, y: 330.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7258150136395660347
@@ -3175,12 +3175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d8e8658e06a2042aa2b9b0a44f11be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  login: {fileID: 0}
-  password: {fileID: 0}
+  login: {fileID: 2004390277}
+  password: {fileID: 1246102429}
+  SceneName: Main
   ROUE_InUnityObj: {fileID: 160085590}
   ROUL_InUnityObj: {fileID: 8650785783024140788}
-  URLAuth: http://195.2.79.241:5000/api/user_authorize
-  URLGetInfo: 'http://195.2.79.241:5000/api/data '
+  URLAuth: http://195.2.79.241:5000/api_app/user_authorize
+  URLGetInfo: 'http://195.2.79.241:5000/api_app/data '
 --- !u!114 &7727004457508863581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3193,7 +3194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: Main
 --- !u!1 &7728806428889798426
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,7 +3279,7 @@ RectTransform:
   m_GameObject: {fileID: 8369195768968066485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41230166, y: 0.41230166, z: 0.41230166}
+  m_LocalScale: {x: 1.2177329, y: 1.2177329, z: 1.2177329}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8569120340922950198}
@@ -3288,7 +3288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -89.6827, y: -45.347}
+  m_AnchoredPosition: {x: -260, y: -178}
   m_SizeDelta: {x: 453.1401, y: 330.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8291966472209217170
@@ -3300,15 +3300,15 @@ RectTransform:
   m_GameObject: {fileID: 4800826983486732159}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6042524, y: 0.6042524, z: 0.6042524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7251981204316084387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00061798, y: 56.02851}
-  m_SizeDelta: {x: 749.92, y: 361.1803}
+  m_AnchoredPosition: {x: -10.472295, y: 51.711}
+  m_SizeDelta: {x: 474.0847, y: 226.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &8294209772299052833
 Transform:
@@ -3510,8 +3510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000016684, y: -0.000030518}
-  m_SizeDelta: {x: 749.92, y: 546.63}
+  m_AnchoredPosition: {x: 0.000016684, y: 27.7622}
+  m_SizeDelta: {x: 749.92, y: 454.7415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8650785783024140788
 MonoBehaviour:
