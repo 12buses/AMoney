@@ -57,6 +57,7 @@ public class AuthPGetInfo : MonoBehaviour
                     User UserAuthResult = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
                     if (UserAuthResult.login == "False" || UserAuthResult.password == "False")
                     {
+                        Debug.Log(webRequest.downloadHandler.text);
                         if (UserAuthResult.login == "False")
                         {
                             ROUL_InUnityObj.text = "*Такого пользавателя не существует.";
