@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 
 using DataNamespace;
+using UnityEngine.SceneManagement;
 
 
 public class CheckPReg : MonoBehaviour
@@ -23,9 +24,10 @@ public class CheckPReg : MonoBehaviour
 
 	public TMP_Text ROUL_InUnityObj; //объект с текстом объясняющий почему данные не подходят
 	public TMP_Text ROUE_InUnityObj; //объект с текстом объясняющий почему данные не подходят
+	public string SceneName;
 
 
-	public void Register()//Нажатие на кнопку регестрации
+    public void Register()//Нажатие на кнопку регестрации
 	{
 		string username = _login.text;
 		string email = _email.text;
@@ -68,7 +70,7 @@ public class CheckPReg : MonoBehaviour
 		else
 		{
 			Debug.Log("Успешная регистрация");
-            GetComponent<changescene>().ChangeScene("Main");
+            SceneManager.LoadScene(SceneName);
         }
 	}
 
@@ -103,11 +105,11 @@ public class CheckPReg : MonoBehaviour
 				Debug.Log("User zanyat");
 				if(response.login == "False")
 				{
-                    ROUL_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
+                    ROUL_InUnityObj.text = "Был введен неверный логин. Логин должен быть уникальным";
                 }
 				if(response.email == "False")
 				{
-                    ROUE_InUnityObj.text = "*Аккаунт с таким email уже зарегестрирован. Попробуйте войти.";
+                    ROUE_InUnityObj.text = "Аккаунт с таким email уже зарегестрирован. Попробуйте войти.";
                 }
             }
 			else

@@ -11,5 +11,12 @@ public class popup : MonoBehaviour
     public void ShowPopup()
     {
         popupPanel.SetActive(!popupPanel.activeInHierarchy);
+        if (popupPanel.activeInHierarchy ) { try { GameObject.FindWithTag("OpenedPopUp").SetActive(false); } catch { }
+            popupPanel.tag = "OpenedPopUp";
+        }
+        else
+        {
+            popupPanel.tag = "ClosedPopUp";
+        }
     }
 }

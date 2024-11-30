@@ -31,9 +31,9 @@ public class LoginRegisterMask : MonoBehaviour
 
     private List<string> ReasonOfUnsuitablity;    //текст объясняющий почему проверка не пройдена
 
-    private bool LoginCheckPassed = false;
-    private bool EmailCheckPassed = false;
-    private bool PassFieldCheckPassed = false;
+    private bool LoginCheckPassed = true;
+    private bool EmailCheckPassed = true;
+    private bool PassFieldCheckPassed = true;
 
     public Sprite InActiveButton;
     public Sprite IsActiveButton;
@@ -82,27 +82,38 @@ public class LoginRegisterMask : MonoBehaviour
     {
         //проверка почты 
         EmailCheckPassed = true;
+        OutUnsuitability = null;
+        ReasonOfUnsuitablity = new List<string>() { };
 
         if (_email.text.Length > 50)// Проверяем длину адреса
         {
+            ReasonOfUnsuitablity.Add("Был введен неверный адрес почтового ящика. Адрес не должен превышать 50 символов");
             EmailCheckPassed = false;
         }
 
-
-        if (Regex.IsMatch(_email.text, @"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+$") != true)
-        {
-            EmailCheckPassed = false;
-        }
 
         if (Regex.IsMatch(_email.text, @"\.\.") || Regex.IsMatch(_email.text, @"^[&][=][+][<][>][,][`]$"))
         {
             EmailCheckPassed = false;
+            ReasonOfUnsuitablity.Add("Было введено неверное имя почтового ящика. Вы можете использовать только латинские буквы, цифры, символы подчеркивания, точки и знаки минус.");
         }
-
-        if (_email.text.Contains(" "))
+        else
         {
-            EmailCheckPassed = false;
+            if (_email.text.Contains(" "))
+            {
+                EmailCheckPassed = false;
+                ReasonOfUnsuitablity.Add("Было введено неверное имя почтового ящика. Вы можете использовать только латинские буквы, цифры, символы подчеркивания, точки и знаки минус.");
+            }
+            else
+            {
+                if (Regex.IsMatch(_email.text, @"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+$") != true)
+                {
+                    EmailCheckPassed = false;
+                    ReasonOfUnsuitablity.Add("Было введено неверное имя почтового ящика. Вы можете использовать только латинские буквы, цифры, символы подчеркивания, точки и знаки минус.");
+                }
+            }
         }
+        
 
         if (_email.text.Contains('@') == false) // Проверяем наличие одного символа @
         {
@@ -114,6 +125,7 @@ public class LoginRegisterMask : MonoBehaviour
                 _email.text.IndexOf('@') >= _email.text.Length - 1) // Проверяем, что до и после @ есть хотя бы один допустимый символ
             {
                 EmailCheckPassed = false;
+                ReasonOfUnsuitablity.Add("Было введено неверное имя почтового ящика. Имя почтового ящика должно иметь один символ @.");
             }
         }
 
@@ -139,9 +151,13 @@ public class LoginRegisterMask : MonoBehaviour
         }
         else
         {
-            ROUEM_InUnityObj.text = "*Почта введена некоректно."; //вывод, что почта не подходит
+            foreach (var item in ReasonOfUnsuitablity)
+            {
+                OutUnsuitability = OutUnsuitability + item + System.Environment.NewLine;
+            }
             _emailGameObject.GetComponent<Image>().sprite = InputFieldWrong;
         }
+        ROUEM_InUnityObj.text = OutUnsuitability; //вывод, что почта не подходит
         SetActiveButton();
     }
 
