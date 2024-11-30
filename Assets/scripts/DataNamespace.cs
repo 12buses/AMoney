@@ -25,7 +25,7 @@ namespace DataNamespace
     [System.Serializable]
     public class Wallet
     {
-        public int balance;
+        public float balance;
         public string name;
         public string currency;
         public int id_wallet;
@@ -56,4 +56,6 @@ namespace DataNamespace
         public string email;  
         public string login;
     }
+
+
 }

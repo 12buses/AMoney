@@ -68,7 +68,7 @@ public class CheckPReg : MonoBehaviour
 		else
 		{
 			Debug.Log("Успешная регистрация");
-            GetComponent<changescene>().ChangeScene();
+            GetComponent<changescene>().ChangeScene("Main");
         }
 	}
 

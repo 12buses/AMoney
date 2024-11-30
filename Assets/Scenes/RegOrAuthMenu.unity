@@ -625,7 +625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -742,7 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: register
 --- !u!114 &6276482118077078716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,7 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: auth
 --- !u!224 &7523697752965751657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -926,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.7386672, y: 379.6109}
+  m_AnchoredPosition: {x: -2, y: 380}
   m_SizeDelta: {x: 100, y: 121.1402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7739871639820939696
@@ -968,7 +966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 43ba3904b120b28458843cd1c987c896, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7584c1637d054940985423ce83b9a6d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

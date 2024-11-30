@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -19,6 +20,12 @@ public class EditWallet : MonoBehaviour
         public string name;
         public string balance;
         public string currency;
+    }
+    [System.Serializable]
+    public class ServerResponseAddWallet
+    {
+        public string existance;
+        public string creation;
     }
 
     public void SaveWalletEdit()
@@ -48,7 +55,8 @@ public class EditWallet : MonoBehaviour
         }
         else
         {
-
+            ServerResponseAddWallet response = JsonUtility.FromJson<ServerResponseAddWallet>(webRequest.downloadHandler.text);
+            Debug.Log(response.existance + " " + response.creation);
         }
     }
 }

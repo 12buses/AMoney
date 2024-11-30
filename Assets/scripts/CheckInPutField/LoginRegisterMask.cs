@@ -51,12 +51,12 @@ public class LoginRegisterMask : MonoBehaviour
         if (_login.text.Length < 3 || _login.text.Length > 15)
         {
             LoginCheckPassed = false;
-            ReasonOfUnsuitablity.Add("*Логин должен быть длиной от 3 до 15 символов.");
+            ReasonOfUnsuitablity.Add("Был введен неверный логин. Логин должен иметь длину от 3 до 15 символа.");
         }
 
         if (!Regex.IsMatch(_login.text, @"^[a-zA-Z0-9]"))
         {
-            ReasonOfUnsuitablity.Add("*Логин может содержать только латинские буквы и цифры.");
+            ReasonOfUnsuitablity.Add("Был введен неверный логин. Вы можете использовать только латинские буквы, цифры.");
             LoginCheckPassed = false;
         }
 
@@ -117,6 +117,21 @@ public class LoginRegisterMask : MonoBehaviour
             }
         }
 
+        /*
+        if (_email.text.Contains('.') == false) // Проверяем наличие одного символа .
+        {
+            EmailCheckPassed = false;
+        }
+        else
+        {
+            if (_email.text.IndexOf('.') <= _email.text.IndexOf('@') ||
+                _email.text.IndexOf('.') >= _email.text.Length - 1) // Проверяем, что до и после . есть хотя бы один допустимый символ
+            {
+                EmailCheckPassed = false;
+            }
+        }
+        */
+
         if (EmailCheckPassed == true)
         {
             ROUEM_InUnityObj.text = null;
@@ -140,7 +155,7 @@ public class LoginRegisterMask : MonoBehaviour
 
         if (_pass.text.Length < 6 || _pass.text.Length > 15)
         {
-            ReasonOfUnsuitablity.Add("*Количество символов в пароле от 6 до 15");
+            ReasonOfUnsuitablity.Add("Был введен неверный пароль. Пароль должен иметь длину от 6 до 15 символа.");
             PassFieldCheckPassed = false;
         }
 
@@ -148,7 +163,7 @@ public class LoginRegisterMask : MonoBehaviour
 
         if (_pass.text.All(c => _allowedCharsInPass.Contains(c)) == false)
         {
-            ReasonOfUnsuitablity.Add("*Возможно у вас в пароле есть запрещенные символы.");
+            ReasonOfUnsuitablity.Add("Был введен неверный пароль. Вы можете ввести в поле латинские буквы, как минимум одна цифры, как минимум одна заглавная и одна строчная буква, спецсимволы.");
             IsLetter = false;
             PassFieldCheckPassed = false;
         }
