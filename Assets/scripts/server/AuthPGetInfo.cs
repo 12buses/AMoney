@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class AuthPGetInfo : MonoBehaviour
@@ -67,26 +68,8 @@ public class AuthPGetInfo : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Аунтификация: успешно?");
-                        StartCoroutine(GetInfo());
-                        IEnumerator GetInfo()
-                        {
-                            using (UnityWebRequest webRequest = UnityWebRequest.Get(URLGetInfo))
-                            {
-                                // отправка запроса
-                                yield return webRequest.SendWebRequest();
-                                if (webRequest.result != UnityWebRequest.Result.Success)
-                                {
-                                    Debug.LogError("Ошибка: " + webRequest.error);
-                                }
-                                else
-                                {
-                                    Debug.Log(webRequest.downloadHandler.text);
-                                    Debug.Log("Аунтификация: успешно!");
-                                    GetComponent<changescene>().ChangeScene();
-                                }
-                            }
-                        }
+                        Debug.Log("Аунтификация: успешно");
+                        SceneManager.LoadScene(SceneName);
                     }
                 }
             }

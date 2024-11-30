@@ -60,11 +60,11 @@ public class CheckUserDataUnique : MonoBehaviour
 				Debug.Log("User zanyat");
 				if (response.login == "False")
 				{
-					ROUL_InUnityObj.text = "*Ваш логин уже занят, попробуйте придумать другой.";
+					ROUL_InUnityObj.text = "Был введен неверный логин. Логин должен быть уникальным";
 				}
 				if (response.email == "False")
 				{
-					ROUE_InUnityObj.text = "*Аккаунт с таким email уже зарегестрирован. Попробуйте войти.";
+					ROUE_InUnityObj.text = "*Аккаунт с таким email уже зарегестрирован.";
 				}
 			}
 			else
