@@ -207,8 +207,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -144.25018}
-  m_SizeDelta: {x: 800, y: 62.5003}
+  m_AnchoredPosition: {x: -0.000015259, y: -271.5513}
+  m_SizeDelta: {x: 800, y: 155.898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160085590
 MonoBehaviour:
@@ -486,13 +486,13 @@ MonoBehaviour:
       - m_Target: {fileID: 368868955}
         m_TargetAssemblyTypeName: changescene, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: RegOrAuthMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &368868957
@@ -572,7 +572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -40}
+  m_AnchoredPosition: {x: -0, y: -131}
   m_SizeDelta: {x: 800, y: 95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246102429
@@ -654,7 +654,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4448928270821960934}
+        m_TargetAssemblyTypeName: LoginRegisterMask, Assembly-CSharp
+        m_MethodName: PassCheckingField
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1284,7 +1296,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4448928270821960934}
+        m_TargetAssemblyTypeName: LoginRegisterMask, Assembly-CSharp
+        m_MethodName: LoginChecking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1357,8 +1381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000076293945, y: 114.863365}
-  m_SizeDelta: {x: 800, y: 66.2732}
+  m_AnchoredPosition: {x: 0.000076293945, y: 86.83019}
+  m_SizeDelta: {x: 800, y: 122.3394}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &313146780770708142
 RectTransform:
@@ -1912,7 +1936,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7727004457508863579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -1971,6 +1995,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4448928270821960932}
   - component: {fileID: 4448928270821960933}
+  - component: {fileID: 4448928270821960934}
   m_Layer: 5
   m_Name: auth
   m_TagString: Untagged
@@ -2316,6 +2341,33 @@ MonoBehaviour:
   ROUL_InUnityObj: {fileID: 8650785783024140788}
   URLAuth: http://195.2.79.241:5000/api_app/user_authorize
   URLGetInfo: 'http://195.2.79.241:5000/api_app/data '
+--- !u!114 &4448928270821960934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852813935328703299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880ab01e5e265fd4897c5de9cc0232c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _login: {fileID: 2004390277}
+  _email: {fileID: 0}
+  _pass: {fileID: 1246102429}
+  Button: {fileID: 2600463318927640439}
+  RegisterButton: {fileID: 7727004457508863579}
+  _loginGameObject: {fileID: 2004390275}
+  _emailGameObject: {fileID: 0}
+  _passGameObject: {fileID: 1246102427}
+  ROUL_InUnityObj: {fileID: 8650785783024140788}
+  ROUP_InUnityObj: {fileID: 160085590}
+  ROUEM_InUnityObj: {fileID: 0}
+  InActiveButton: {fileID: 21300000, guid: 6072ed8a065a2de47b43e295ad986f09, type: 3}
+  IsActiveButton: {fileID: 21300000, guid: 5947fca1aede97e4cb2788a57b5c2111, type: 3}
+  InputField: {fileID: 21300000, guid: 64e0034453ab8304fbcc56284cd154a1, type: 3}
+  InputFieldWrong: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
 --- !u!114 &4516144291972482200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,7 +2887,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5947fca1aede97e4cb2788a57b5c2111, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6072ed8a065a2de47b43e295ad986f09, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
