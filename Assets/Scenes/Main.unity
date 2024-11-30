@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HelloText: {fileID: 2131824196}
+  HelloTextEdit: {fileID: 0}
   NoWallets: {fileID: 1605101695}
   WalletsTrue: {fileID: 234549611}
   WalletsDataUrl: http://195.2.79.241:5000/api/userWallets
@@ -398,6 +399,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 111287770}
   itemPrefab: {fileID: 3874948314497722150, guid: 117b34ef01b07b54580dd78a0b2b3ef2, type: 3}
+  DeleteMenu: {fileID: 0}
+  DeletedMenuText: {fileID: 0}
+  DeleteMenuText: {fileID: 0}
+  BalanceEdit: {fileID: 0}
+  NameOfWalletEdit: {fileID: 0}
+  CurrencyEdit: {fileID: 0}
+  MainMenu: {fileID: 0}
+  EditMenu: {fileID: 0}
+  EditWalletSaveButton: {fileID: 0}
 --- !u!1 &59157189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &484672524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1126,7 +1136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1145, y: -22}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484672525
@@ -2805,7 +2815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2040338799
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2823,7 +2833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.022521973, y: -22}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040338800
