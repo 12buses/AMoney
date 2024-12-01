@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,6 +13,11 @@ public class EditWallet : MonoBehaviour
     public TMP_Dropdown Currency;
     public int wallet_id;
     public string URL = "http://195.2.79.241:5000/api_app/wallet_edit";
+    public GameObject OBJWithReloadSceneScript;
+    public GameObject CreateWalletCanvas;
+    public GameObject MainCanvas;
+    public TMP_Text ErrorText;
+
     [System.Serializable]
     public class WalletEditClass
     {
@@ -19,6 +25,12 @@ public class EditWallet : MonoBehaviour
         public string name;
         public string balance;
         public string currency;
+    }
+    [System.Serializable]
+    public class ServerResponseAddWallet
+    {
+        public string existance;
+        public string edition;
     }
 
     public void SaveWalletEdit()
@@ -40,7 +52,7 @@ public class EditWallet : MonoBehaviour
 
         webRequest.uploadHandler = new UploadHandlerRaw(WalletEditDataRaw);
         webRequest.downloadHandler = new DownloadHandlerBuffer();
-        // отправка запроса
+
         yield return webRequest.SendWebRequest();
         if (webRequest.result != UnityWebRequest.Result.Success)
         {
@@ -48,7 +60,19 @@ public class EditWallet : MonoBehaviour
         }
         else
         {
-
+            ServerResponseAddWallet response = JsonUtility.FromJson<ServerResponseAddWallet>(webRequest.downloadHandler.text);
+            Debug.Log(webRequest.downloadHandler.text);
+            Debug.Log(response.existance + " " + response.edition + "");
+            if (response.existance == "True" && response.edition == "True")
+            {
+                MainCanvas.SetActive(true);
+                ErrorText.text = "";
+                CreateWalletCanvas.SetActive(false);
+            }
+            else
+            {
+                ErrorText.text = "Было введено неправильное название кошелька. Название кошелька должно быть уникальным";
+            }
         }
     }
 }

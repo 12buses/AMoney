@@ -11,6 +11,6 @@ public class openDeleteMenu : MonoBehaviour
         wallet.GetComponent<WalletListItem>().DeleteMenu.SetActive(true);
         wallet.GetComponent<WalletListItem>().DeleteMenu.GetComponent<deleteInfo>().id_wallet = wallet.GetComponent<WalletListItem>().WalletId;
         wallet.GetComponent<WalletListItem>().DeleteMenuText.text = "Вы уверены, что хотите удалить кошелек " + wallet.GetComponent<WalletListItem>().NameString + "?";
-        wallet.GetComponent<WalletListItem>().DeletedMenuText.text = "Кошелек " + wallet.GetComponent<WalletListItem>().NameString + "?";
+        wallet.GetComponent<WalletListItem>().DeletedMenuText.text = "Кошелек " + wallet.GetComponent<WalletListItem>().NameString + " удалён.";
     }
 }

@@ -11,7 +11,7 @@ public class WalletListItem : MonoBehaviour
     public TMP_Text currency;
     public int WalletId;
     public string NameString;
-    public string BalanceString;
+    public float BalanceFloat;
     public string CurrencyString;
     public GameObject DeleteMenu;
     public TMP_Text DeletedMenuText;
@@ -28,7 +28,7 @@ public class WalletListItem : MonoBehaviour
     public void EntereEdit()
     {
         EditWalletSaveButton.GetComponent<EditWallet>().wallet_id = WalletId;
-        BalanceEdit.text = BalanceString;
+        BalanceEdit.text = BalanceFloat.ToString("0.00");
         NameOfWalletEdit.text = NameString;
         switch (CurrencyString)
         {
@@ -42,7 +42,7 @@ public class WalletListItem : MonoBehaviour
                 CurrencyEdit.value = 2;
                 break;
             case "RUB":
-                CurrencyEdit.value = 1;
+                CurrencyEdit.value = 1; 
                 break;
             default:
                 CurrencyEdit.value = 0;

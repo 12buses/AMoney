@@ -62,6 +62,7 @@ public class LoadMainMenu : MonoBehaviour
         {
             Debug.Log(webRequest.downloadHandler.text);
             WalletsData WalletsDataOBJ = JsonUtility.FromJson<WalletsData>(webRequest.downloadHandler.text);
+         
             if(WalletsDataOBJ.wallets.Count == 0)
             {
                 NoWallets.SetActive(true);

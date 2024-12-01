@@ -279,13 +279,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6149573215381182145}
         m_TargetAssemblyTypeName: changescene, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: register
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1095522442046576355
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -742,7 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: register
 --- !u!114 &6276482118077078716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,13 +887,13 @@ MonoBehaviour:
       - m_Target: {fileID: 7451386017389488262}
         m_TargetAssemblyTypeName: changescene, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: auth
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &7451386017389488262
@@ -909,7 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70e3ab7a424e98489757b92e1b6ccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: auth
 --- !u!224 &7523697752965751657
 RectTransform:
   m_ObjectHideFlags: 0
