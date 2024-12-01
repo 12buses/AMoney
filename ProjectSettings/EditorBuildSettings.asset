@@ -17,10 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 01a1cb58b86e19946afc26e2adbd17e3
-  - enabled: 1
-    path: Assets/Scenes/redakt.unity
-    guid: 5b69851249360f14096f9541a4e2597d
-  - enabled: 1
-    path: Assets/Scenes/createWallet.unity
-    guid: f559f3ee57b593e4497c3dd69f9f022b
   m_configObjects: {}

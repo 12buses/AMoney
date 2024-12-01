@@ -14,7 +14,7 @@ public class CreateWalletCheckInPutField : MonoBehaviour
     public GameObject _NameGameObject; //поле name как gameobject
     public GameObject _BalanceGameObject; // поле Balance как gameobject
     private bool IfNameCheckPassed = false;
-    private bool IfBalanceCheckPassed = false;
+    private bool IfBalanceCheckPassed = true;
     public Sprite InActiveButton;
     public Sprite IsActiveButton;
     public Sprite InputField;
