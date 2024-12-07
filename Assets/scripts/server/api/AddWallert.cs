@@ -15,8 +15,10 @@ public class AddWallert : MonoBehaviour
     public GameObject OBJWithReloadSceneScript;
     public GameObject CreateWalletCanvas;
     public GameObject MainCanvas;
+    public GameObject WalletCreated;
     public TMP_Text ErrorText;
     public TMP_Text WalletCreatedText;
+
 
 
     public string Url = "http://195.2.79.241:5000/api_app/add_wallet";
@@ -75,6 +77,7 @@ public class AddWallert : MonoBehaviour
                         ErrorText.text = "";
                         CreateWalletCanvas.SetActive(false);
                         WalletCreatedText.text = "Кошелек " + Name.text + " - создан!";
+                        WalletCreated.SetActive(true);
                     }
                     else
                     {

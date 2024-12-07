@@ -14,7 +14,7 @@ public class CreateWalletCheckInPutField : MonoBehaviour
     public GameObject _NameGameObject; //поле name как gameobject
     public GameObject _BalanceGameObject; // поле Balance как gameobject
     private bool IfNameCheckPassed = false;
-    private bool IfBalanceCheckPassed = false;
+    private bool IfBalanceCheckPassed = true;
     public Sprite InActiveButton;
     public Sprite IsActiveButton;
     public Sprite InputField;
@@ -28,7 +28,7 @@ public class CreateWalletCheckInPutField : MonoBehaviour
         {
             IfNameCheckPassed = false;
             _NameGameObject.GetComponent<Image>().sprite = InputFieldWrong;
-            NameErrorText.text = "Было введено неправильное название кошелька. Название должно иметь длину от 5 до 10 символа";
+            NameErrorText.text = "Было введено неправильное название кошелька. Название должно иметь длину от 3 до 10 символа";
         }
         else
         {
