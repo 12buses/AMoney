@@ -183,36 +183,36 @@ public class LoginRegisterMask : MonoBehaviour
             IsLetter = false;
             PassFieldCheckPassed = false;
         }
-
-        if (_pass.text.Any(char.IsLetter) == false)
-        {
-            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
-            IsLetter = false;
-            PassFieldCheckPassed = false;
-        }
         else
         {
-            if (_pass.text.Any(char.IsLower) == false && IsLetter == true)
+            if (_pass.text.Any(char.IsLetter) == false)
             {
-                ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную букву");
+                ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную и 1 заглавную буквы");
+                IsLetter = false;
                 PassFieldCheckPassed = false;
             }
-
-
-            if (_pass.text.Any(char.IsUpper) == false && IsLetter == true)
+            else
             {
-                ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 заглавную букву");
+                if (_pass.text.Any(char.IsLower) == false && IsLetter == true)
+                {
+                    ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 строчную букву");
+                    PassFieldCheckPassed = false;
+                }
+
+
+                if (_pass.text.Any(char.IsUpper) == false && IsLetter == true)
+                {
+                    ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 заглавную букву");
+                    PassFieldCheckPassed = false;
+                }
+            }
+
+            if (_pass.text.Any(char.IsDigit) == false)
+            {
+                ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 цифру");
                 PassFieldCheckPassed = false;
             }
         }
-
-        if (_pass.text.Any(char.IsDigit) == false)
-        {
-            ReasonOfUnsuitablity.Add("*Пароль должен содержать хотя-бы 1 цифру");
-            PassFieldCheckPassed = false;
-        }
-
-        
 
         if (PassFieldCheckPassed == true)
         {
