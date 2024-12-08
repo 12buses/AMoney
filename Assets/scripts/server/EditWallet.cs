@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class EditWallet : MonoBehaviour
 {
+    public GameObject NameOfWallet;
     public TMP_InputField Name;
     public TMP_InputField Balance;
     public TMP_Dropdown Currency;
@@ -17,6 +18,8 @@ public class EditWallet : MonoBehaviour
     public GameObject CreateWalletCanvas;
     public GameObject MainCanvas;
     public TMP_Text ErrorText;
+    public Sprite InputFieldWrong;
+    public Sprite InputFieldOk;
 
     [System.Serializable]
     public class WalletEditClass
@@ -29,8 +32,8 @@ public class EditWallet : MonoBehaviour
     [System.Serializable]
     public class ServerResponseAddWallet
     {
-        public string existance;
         public string edition;
+        public string existance;
     }
 
     public void SaveWalletEdit()
@@ -41,6 +44,7 @@ public class EditWallet : MonoBehaviour
         WalletEditClassOBJ.balance = Balance.text;
         WalletEditClassOBJ.currency = Currency.captionText.text;
         string WalletEditClassString = JsonUtility.ToJson(WalletEditClassOBJ);
+        Debug.Log("Json: " + WalletEditClassString);
         byte[] WalletEditDataRaw = Encoding.UTF8.GetBytes(WalletEditClassString);
         StartCoroutine(EditWalletCOR(WalletEditDataRaw));
     }
@@ -62,16 +66,19 @@ public class EditWallet : MonoBehaviour
         {
             ServerResponseAddWallet response = JsonUtility.FromJson<ServerResponseAddWallet>(webRequest.downloadHandler.text);
             Debug.Log(webRequest.downloadHandler.text);
-            Debug.Log(response.existance + " " + response.edition + "");
+            Debug.Log($"existance: {response.existance} edition:{response.edition}");
             if (response.existance == "True" && response.edition == "True")
             {
                 MainCanvas.SetActive(true);
                 ErrorText.text = "";
                 CreateWalletCanvas.SetActive(false);
+                NameOfWallet.GetComponent<Image>().sprite = InputFieldOk;
             }
             else
             {
                 ErrorText.text = "Было введено неправильное название кошелька. Название кошелька должно быть уникальным";
+
+                NameOfWallet.GetComponent<Image>().sprite = InputFieldWrong;
             }
         }
     }

@@ -32,7 +32,7 @@ public class WalletListItem : MonoBehaviour
         NameOfWalletEdit.text = NameString;
         switch (CurrencyString)
         {
-            case "EURO":
+            case "EUR" :
                 CurrencyEdit.value = 3;
                 break;
             case "BYN":

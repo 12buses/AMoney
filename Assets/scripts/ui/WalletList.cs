@@ -22,17 +22,25 @@ public class WalletList : MonoBehaviour
 
     public void FillList(WalletsData WalletsDataObj)
 	{
-        
-		// Создание элементов списка
-		for (int i = 0; i < WalletsDataObj.wallets.Count; i++)
+        string currency;
+        // Создание элементов списка
+        for (int i = 0; i < WalletsDataObj.wallets.Count; i++)
 		{
-			GameObject item = Instantiate(itemPrefab, content.transform);
+            if (WalletsDataObj.wallets[i].currency == "EURO") 
+            { 
+                currency = "EUR";
+            } 
+            else 
+            { 
+                currency = WalletsDataObj.wallets[i].currency;
+            }
+            GameObject item = Instantiate(itemPrefab, content.transform);
 			item.GetComponent<WalletListItem>().Name.text = WalletsDataObj.wallets[i].name;
             item.GetComponent<WalletListItem>().NameString = WalletsDataObj.wallets[i].name;
             item.GetComponent<WalletListItem>().balance.text = WalletsDataObj.wallets[i].balance.ToString("0.00");
             item.GetComponent<WalletListItem>().BalanceFloat = WalletsDataObj.wallets[i].balance;
-            item.GetComponent<WalletListItem>().currency.text = WalletsDataObj.wallets[i].currency;
-            item.GetComponent<WalletListItem>().CurrencyString = WalletsDataObj.wallets[i].currency;
+            item.GetComponent<WalletListItem>().currency.text = currency;   
+            item.GetComponent<WalletListItem>().CurrencyString = currency;
             item.GetComponent<WalletListItem>().WalletId = WalletsDataObj.wallets[i].id_wallet;
 			item.GetComponent<WalletListItem>().DeleteMenu = DeleteMenu;
             item.GetComponent<WalletListItem>().DeletedMenuText = DeletedMenuText;
