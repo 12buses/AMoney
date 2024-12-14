@@ -19,4 +19,10 @@ public class popup : MonoBehaviour
             popupPanel.tag = "ClosedPopUp";
         }
     }
+
+    public void ClosePopup()
+    {
+        popupPanel.SetActive(false);
+        popupPanel.tag = "ClosedPopUp";
+    }
 }
