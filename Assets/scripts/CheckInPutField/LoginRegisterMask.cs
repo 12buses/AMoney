@@ -43,6 +43,7 @@ public class LoginRegisterMask : MonoBehaviour
 
     public void LoginChecking()
     {
+        _login.text = Regex.Replace(_login.text.Trim(), @"\s+", " ");
         LoginCheckPassed = true;
         //проверка логина 
         ReasonOfUnsuitablity = new List<string>() { };
@@ -80,6 +81,7 @@ public class LoginRegisterMask : MonoBehaviour
 
     public void EmailCheck()
     {
+        _email.text = Regex.Replace(_email.text.Trim(), @"\s+", " ");
         //проверка почты 
         EmailCheckPassed = true;
         OutUnsuitability = null;
@@ -163,6 +165,7 @@ public class LoginRegisterMask : MonoBehaviour
 
     public void PassCheckingField()
     {
+        _pass.text = Regex.Replace(_pass.text.Trim(), @"\s+", " ");
         //проверка пароля на соответсвие требованиям 
         bool IsLetter = true;
         OutUnsuitability = null;

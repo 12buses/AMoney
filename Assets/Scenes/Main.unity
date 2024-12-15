@@ -1235,9 +1235,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ifoLogin
       objectReference: {fileID: 0}
+    - target: {fileID: 1437815896762860360, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_Pivot.y
@@ -1245,27 +1249,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.8805185
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.6854383
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.8154445
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.6535617
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -10
+      value: 68.185
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1
+      value: 67.5
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1297,11 +1301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14
+      value: -160.81494
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: 322.25
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1313,6 +1317,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5650873324989000719, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6794611574565138982, guid: 847d06e29a35eeb40b59884510250c18, type: 3}
@@ -1614,7 +1622,8 @@ MonoBehaviour:
   WalletCreatedText: {fileID: 1243615601}
   InputFieldWrong: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
   NameOfWallet: {fileID: 1584181875}
-  InputFieldOk: {fileID: 0}
+  InputFieldOk: {fileID: 21300000, guid: 64e0034453ab8304fbcc56284cd154a1, type: 3}
+  buttonCreate: {fileID: 265281356}
   Url: http://195.2.79.241:5000/api_app/add_wallet
 --- !u!1 &275357347
 GameObject:
@@ -1848,7 +1857,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286665079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3236,8 +3245,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207031, y: -52.9}
-  m_SizeDelta: {x: 306, y: 366.6}
+  m_AnchoredPosition: {x: 0.00012207031, y: -52.900024}
+  m_SizeDelta: {x: 306, y: 366.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732862989
 MonoBehaviour:
@@ -4991,6 +5000,7 @@ MonoBehaviour:
   ErrorText: {fileID: 1345200835}
   InputFieldWrong: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
   InputFieldOk: {fileID: 0}
+  EditWalletButton: {fileID: 992790370}
 --- !u!1 &993230810
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,10 +5754,10 @@ RectTransform:
   - {fileID: 286665080}
   m_Father: {fileID: 1755403130}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0075226, y: -0.00018311}
-  m_SizeDelta: {x: 1079.7, y: 1920.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139964577 stripped
 MonoBehaviour:
@@ -10954,7 +10964,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088323079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

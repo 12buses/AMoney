@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class CreateWalletCheckInPutField : MonoBehaviour
 {
@@ -23,12 +24,13 @@ public class CreateWalletCheckInPutField : MonoBehaviour
 
     public void NameCheck()
     {
+        _Name.text = Regex.Replace(_Name.text.Trim(), @"\s+", " ");
         IfNameCheckPassed = true;
-        if (_Name.text.Length < 3 || _Name.text.Length > 10)
+        if (_Name.text.Length < 3 || _Name.text.Length > 15)
         {
             IfNameCheckPassed = false;
             _NameGameObject.GetComponent<Image>().sprite = InputFieldWrong;
-            NameErrorText.text = "Было введено неправильное название кошелька. Название должно иметь длину от 3 до 10 символа";
+            NameErrorText.text = "Было введено неправильное название кошелька. Название должно иметь длину от 3 до 15 символа";
         }
         else
         {

@@ -1,0 +1,20 @@
+Font: Inter  Style: Regular
+Point Size: 30   SP/PD Ratio: 16,7%
+
+Characters included: 248/256
+Missing characters: 8
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+ID: 1146	Hex: 47A	Char [Ѻ]
+ID: 1147	Hex: 47B	Char [ѻ]
+ID: 1148	Hex: 47C	Char [Ѽ]
+ID: 1149	Hex: 47D	Char [ѽ]
+ID: 1150	Hex: 47E	Char [Ѿ]
+ID: 1151	Hex: 47F	Char [ѿ]
+ID: 1182	Hex: 49E	Char [Ҟ]
+ID: 1183	Hex: 49F	Char [ҟ]
+
+Characters excluded from packing:
+----------------------------------------

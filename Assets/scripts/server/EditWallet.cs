@@ -20,6 +20,7 @@ public class EditWallet : MonoBehaviour
     public TMP_Text ErrorText;
     public Sprite InputFieldWrong;
     public Sprite InputFieldOk;
+    public Button EditWalletButton;
 
     [System.Serializable]
     public class WalletEditClass
@@ -38,6 +39,7 @@ public class EditWallet : MonoBehaviour
 
     public void SaveWalletEdit()
     {
+        EditWalletButton.interactable = false;
         WalletEditClass WalletEditClassOBJ = new WalletEditClass();
         WalletEditClassOBJ.name = Name.text;
         WalletEditClassOBJ.id_wallet = wallet_id;
@@ -64,6 +66,7 @@ public class EditWallet : MonoBehaviour
         }
         else
         {
+            EditWalletButton.interactable = true;
             ServerResponseAddWallet response = JsonUtility.FromJson<ServerResponseAddWallet>(webRequest.downloadHandler.text);
             Debug.Log(webRequest.downloadHandler.text);
             Debug.Log($"existance: {response.existance} edition:{response.edition}");

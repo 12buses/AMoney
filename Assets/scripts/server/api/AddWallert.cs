@@ -22,6 +22,7 @@ public class AddWallert : MonoBehaviour
     public Sprite InputFieldWrong;
     public GameObject NameOfWallet;
     public Sprite InputFieldOk;
+    public Button buttonCreate;
 
 
     public string Url = "http://195.2.79.241:5000/api_app/add_wallet";
@@ -44,6 +45,7 @@ public class AddWallert : MonoBehaviour
 
     public void AddWallet()
     {
+        buttonCreate.interactable = false;
         StartCoroutine(AddWalletCor());
 
         IEnumerator AddWalletCor()
@@ -72,6 +74,7 @@ public class AddWallert : MonoBehaviour
                 }
                 else
                 {
+                    buttonCreate.interactable = true;
                     ServerResponseAddWallet response = JsonUtility.FromJson<ServerResponseAddWallet>(request.downloadHandler.text);
                     Debug.Log(response.existance + " " + response.creation);
                     if(response.existance == "True" && response.creation == "True")
