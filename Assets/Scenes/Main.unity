@@ -4999,7 +4999,7 @@ MonoBehaviour:
   MainCanvas: {fileID: 1755403129}
   ErrorText: {fileID: 1345200835}
   InputFieldWrong: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
-  InputFieldOk: {fileID: 0}
+  InputFieldOk: {fileID: 21300000, guid: 64e0034453ab8304fbcc56284cd154a1, type: 3}
   EditWalletButton: {fileID: 992790370}
 --- !u!1 &993230810
 GameObject:
@@ -6699,9 +6699,9 @@ RectTransform:
   - {fileID: 1790114261}
   - {fileID: 930872339}
   - {fileID: 1314035366}
-  - {fileID: 746877164}
   - {fileID: 1348294058}
   - {fileID: 1345200837}
+  - {fileID: 746877164}
   m_Father: {fileID: 43168113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
