@@ -17,7 +17,9 @@ public class WalletList : MonoBehaviour
     public TMP_Dropdown CurrencyEdit;
     public GameObject MainMenu;
     public GameObject EditMenu;
+    public GameObject TransactionMenu;
     public GameObject EditWalletSaveButton;
+    public TMP_Text LoginTransactionsMenu;
 
 
     public void FillList(WalletsData WalletsDataObj)
@@ -51,6 +53,8 @@ public class WalletList : MonoBehaviour
             item.GetComponent<WalletListItem>().MainMenu = MainMenu;
             item.GetComponent<WalletListItem>().EditMenu = EditMenu;
             item.GetComponent<WalletListItem>().EditWalletSaveButton = EditWalletSaveButton;
+            item.GetComponent<WalletListItem>().Login = LoginTransactionsMenu;
+            item.GetComponent<WalletListItem>().TransactionMenu = TransactionMenu;
         }
     }
 

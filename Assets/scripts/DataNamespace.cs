@@ -57,5 +57,23 @@ namespace DataNamespace
         public string login;
     }
 
+    [System.Serializable]
+    public class transaction
+    {
+        public int amount;
+        public string comment;
+        public int data_of_creation;
+        public int data_of_transaction;
+        public int id_transaction;
+        public int id_wallet;
+        public int status;
+        public string type;
+    }
 
+    [System.Serializable]
+    public class transactions
+    {
+        public string id;
+        public List<transaction> page0;
+    }
 }

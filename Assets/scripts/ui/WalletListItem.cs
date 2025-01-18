@@ -6,24 +6,31 @@ using UnityEngine.UI;
 
 public class WalletListItem : MonoBehaviour
 {
+    public int WalletId;
+
+    public float BalanceFloat;
+
+    public string NameString;
+    public string CurrencyString;
+
+    public TMP_Text DeletedMenuText;
+    public TMP_Text DeleteMenuText;
     public TMP_Text Name;
     public TMP_Text balance;
     public TMP_Text currency;
-    public int WalletId;
-    public string NameString;
-    public float BalanceFloat;
-    public string CurrencyString;
-    public GameObject DeleteMenu;
-    public TMP_Text DeletedMenuText;
-    public TMP_Text DeleteMenuText;
+    public TMP_Text Login;
 
     public TMP_InputField BalanceEdit;
     public TMP_InputField NameOfWalletEdit;
+    
+
     public TMP_Dropdown CurrencyEdit;
 
     public GameObject EditMenu;
     public GameObject MainMenu;
     public GameObject EditWalletSaveButton;
+    public GameObject DeleteMenu;
+    public GameObject TransactionMenu;
 
     public void EntereEdit()
     {
@@ -32,17 +39,17 @@ public class WalletListItem : MonoBehaviour
         NameOfWalletEdit.text = NameString;
         switch (CurrencyString)
         {
-            case "EUR" :
+            case "EUR":
                 CurrencyEdit.value = 3;
                 break;
             case "BYN":
                 CurrencyEdit.value = 0;
                 break;
-            case "USD" :
+            case "USD":
                 CurrencyEdit.value = 2;
                 break;
             case "RUB":
-                CurrencyEdit.value = 1; 
+                CurrencyEdit.value = 1;
                 break;
             default:
                 CurrencyEdit.value = 0;
@@ -50,5 +57,14 @@ public class WalletListItem : MonoBehaviour
         }
         EditMenu.SetActive(true);
         MainMenu.SetActive(false);
+    }
+
+    public void EnterTransactions()
+    {
+        Login.text = NameString;
+        TransactionMenu.SetActive(true);
+        MainMenu.SetActive(false);
+        TransactionMenu.GetComponent<LoadTransactionMenu>().WalletIdd = WalletId;
+        TransactionMenu.GetComponent<LoadTransactionMenu>().LoadTranasactionMenu();
     }
 }
