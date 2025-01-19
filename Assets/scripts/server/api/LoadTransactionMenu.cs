@@ -26,16 +26,18 @@ public class LoadTransactionMenu : MonoBehaviour
 		WalletId x = new WalletId();
 		x.id_wallet = WalletIdd;
 		string userDataString = JsonUtility.ToJson(x);
-		byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString);
-		StartCoroutine(TransactionData(userDataRaw));
+
+		StartCoroutine(TransactionData(userDataString));
 	}
-	IEnumerator TransactionData(byte[] x)
+	IEnumerator TransactionData(string postJSON)
 	{
 		UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(Url, "POST");
 		webRequest.SetRequestHeader("Content-Type", "application/json");
 
-		webRequest.uploadHandler = new UploadHandlerRaw(x);
+        byte[] userDataRaw = Encoding.UTF8.GetBytes(postJSON);
+        webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
 		webRequest.downloadHandler = new DownloadHandlerBuffer();
+
 		// отправка запроса
 		yield return webRequest.SendWebRequest();
 		if (webRequest.result != UnityWebRequest.Result.Success)
@@ -46,7 +48,7 @@ public class LoadTransactionMenu : MonoBehaviour
 		{
 			Debug.Log(webRequest.downloadHandler.text);
 			transactions transactionsDataOBJ = JsonUtility.FromJson<transactions>(webRequest.downloadHandler.text);
-			if (transactionsDataOBJ.page0.Count != 0)
+			if (transactionsDataOBJ.page0.Count > 0)
 			{
 				FillTransactions(transactionsDataOBJ);
 			}
@@ -55,21 +57,21 @@ public class LoadTransactionMenu : MonoBehaviour
 
 	public void FillTransactions(transactions transactions)
 	{
-		for (int i = 0; i < transactions.page0.Count; i++)
+		foreach (var current_transaction in transactions.page0)
 		{
 			GameObject item = Instantiate(itemPrefab, content.transform);
-			item.GetComponent<TransactionListItem>().transaction = transactions.page0[i];
+			item.GetComponent<TransactionListItem>().transaction = current_transaction;
 			string AmountText = null;
-			switch (transactions.page0[i].type)
+			switch (current_transaction.type)
 			{
 				case "income":
-                    AmountText = "+" + transactions.page0[i].amount;
+                    AmountText = "+" + current_transaction.amount;
 					item.GetComponent<TransactionListItem>().ChangeAmountColor("income");
                     item.GetComponent<TransactionListItem>().Name.text = "Доход";
                     break;
 
 				case "expense":
-					AmountText = "-" + transactions.page0[i].amount;
+					AmountText = "-" + current_transaction.amount;
                     item.GetComponent<TransactionListItem>().ChangeAmountColor("expense");
                     item.GetComponent<TransactionListItem>().Name.text = "Трата";
                     break;
