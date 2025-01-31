@@ -62,11 +62,12 @@ namespace DataNamespace
     [System.Serializable]
     public class transaction
     {
-        public int amount;
+        public double amount;
         public string comment;
         public int data_of_creation;
         public int data_of_transaction;
         public int id_transaction;
+        public string id_category;
         public int id_wallet;
         public string type;
         public string FormattedData_of_Creation;

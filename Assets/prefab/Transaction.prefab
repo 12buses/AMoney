@@ -60,14 +60,15 @@ MonoBehaviour:
     data_of_creation: 0
     data_of_transaction: 0
     id_transaction: 0
+    id_category: 
     id_wallet: 0
     type: 
     FormattedData_of_Creation: 
     FormattedData_of_transaction: 
-  Category: {fileID: 0}
+  Category: {fileID: 3819988783821975443}
   Amount: {fileID: 3592484122830723569}
-  Date: {fileID: 0}
-  Comment: {fileID: 0}
+  Date: {fileID: 2288410676267975098}
+  Comment: {fileID: 192380896212402176}
 --- !u!1 &994049428255317682
 GameObject:
   m_ObjectHideFlags: 0
