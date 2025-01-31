@@ -1,8 +1,7 @@
 using DataNamespace;
 using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -16,6 +15,9 @@ public class LoadTransactionMenu : MonoBehaviour
 
 	public GameObject content;// Объект, содержащий элементы списка
 
+	public TMP_Text WholeIncome;
+	public TMP_Text WholeExpense;
+
 	public class WalletId
 	{
 		public int id_wallet;
@@ -26,7 +28,7 @@ public class LoadTransactionMenu : MonoBehaviour
 		WalletId x = new WalletId();
 		x.id_wallet = WalletIdd;
 		string userDataString = JsonUtility.ToJson(x);
-
+		Debug.Log(userDataString);
 		StartCoroutine(TransactionData(userDataString));
 	}
 	IEnumerator TransactionData(string postJSON)
@@ -46,7 +48,7 @@ public class LoadTransactionMenu : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log(webRequest.downloadHandler.text);
+			Debug.Log("Answer: " + webRequest.downloadHandler.text);
 			transactions transactionsDataOBJ = JsonUtility.FromJson<transactions>(webRequest.downloadHandler.text);
 			if (transactionsDataOBJ.page0.Count > 0)
 			{
@@ -57,29 +59,38 @@ public class LoadTransactionMenu : MonoBehaviour
 
 	public void FillTransactions(transactions transactions)
 	{
-		foreach (var current_transaction in transactions.page0)
+		WholeExpense.text = transactions.expense;
+		WholeIncome.text = transactions.income;
+
+        transactions.ConvertSecondsToDate();
+
+        foreach (var current_transaction in transactions.page0)
 		{
-			GameObject item = Instantiate(itemPrefab, content.transform);
+            GameObject item = Instantiate(itemPrefab, content.transform);
 			item.GetComponent<TransactionListItem>().transaction = current_transaction;
 			string AmountText = null;
+
 			switch (current_transaction.type)
 			{
 				case "income":
                     AmountText = "+" + current_transaction.amount;
 					item.GetComponent<TransactionListItem>().ChangeAmountColor("income");
-                    item.GetComponent<TransactionListItem>().Name.text = "Доход";
+                    item.GetComponent<TransactionListItem>().Category.text = "Доход";
                     break;
 
 				case "expense":
 					AmountText = "-" + current_transaction.amount;
                     item.GetComponent<TransactionListItem>().ChangeAmountColor("expense");
-                    item.GetComponent<TransactionListItem>().Name.text = "Трата";
+                    item.GetComponent<TransactionListItem>().Category.text = "Трата";
                     break;
 
                 default:
 					break;
 			}
+
             item.GetComponent<TransactionListItem>().Amount.text = AmountText;
+			item.GetComponent<TransactionListItem>().Comment.text = current_transaction.comment;
+            item.GetComponent<TransactionListItem>().Date.text = current_transaction.FormattedData_of_transaction;
         }
 	}
 

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 namespace DataNamespace
 {
     [System.Serializable]
@@ -66,14 +68,28 @@ namespace DataNamespace
         public int data_of_transaction;
         public int id_transaction;
         public int id_wallet;
-        public int status;
         public string type;
+        public string FormattedData_of_Creation;
+        public string FormattedData_of_transaction;
     }
 
     [System.Serializable]
     public class transactions
     {
         public string id;
+        public string expense;
+        public string income;
         public List<transaction> page0;
+
+        public void ConvertSecondsToDate()
+        {
+            foreach(transaction transaction in page0)
+            {
+                DateTime dateTime = new DateTime(1970, 1, 1).AddSeconds(transaction.data_of_transaction);
+                transaction.FormattedData_of_transaction = $"{dateTime.Day}-{dateTime.Month}-{dateTime.Year}";
+                dateTime = new DateTime(1970, 1, 1).AddSeconds(transaction.data_of_creation);
+                transaction.FormattedData_of_Creation = $"{dateTime.Day}-{dateTime.Month}-{dateTime.Year}";
+            }
+        }
     }
 }
