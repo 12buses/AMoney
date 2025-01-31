@@ -6388,6 +6388,7 @@ MonoBehaviour:
   WalletIdd: 0
   itemPrefab: {fileID: 48499462897058974, guid: 63abc125afea6534287669307c822f41, type: 3}
   content: {fileID: 144288761}
+  CreateWalletObjScript: {fileID: 3098521558988590715}
   WholeIncome: {fileID: 2067462090}
   WholeExpense: {fileID: 1206762739}
 --- !u!1 &1063576702
@@ -15621,6 +15622,7 @@ GameObject:
   - component: {fileID: 7539210405370191147}
   - component: {fileID: 2331418622427587978}
   - component: {fileID: 7127526533224877716}
+  - component: {fileID: 7539210405370191148}
   m_Layer: 5
   m_Name: save
   m_TagString: Untagged
@@ -18153,7 +18155,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2331418622427587978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7539210405370191148}
+        m_TargetAssemblyTypeName: AddTransactions, Assembly-CSharp
+        m_MethodName: CreateTransaction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1061149650}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1061149654}
+        m_TargetAssemblyTypeName: LoadTransactionMenu, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7069750549739899220}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7143347087978762022
 GameObject:
   m_ObjectHideFlags: 0
@@ -18370,6 +18420,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3098521558988590715}
   m_CullTransparentMesh: 1
+--- !u!114 &7539210405370191148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098521558988590715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d05e3cf84341ec4eb1db9575ed60e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalletId: 
+  AmountInPutField: {fileID: 3133676720181544403}
+  Data: {fileID: 2751295774552257580}
+  Comment: {fileID: 7608602803479763384}
+  Cattegory: {fileID: 6026394448031011203}
+  Type: {fileID: 1301269649126789973}
+  buttonCreate: {fileID: 7127526533224877716}
+  Url: http://195.2.79.241:5000/api_app/transaction_add
 --- !u!114 &7573580935250603110
 MonoBehaviour:
   m_ObjectHideFlags: 0

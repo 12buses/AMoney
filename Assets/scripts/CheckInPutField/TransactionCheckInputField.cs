@@ -51,7 +51,7 @@ public class TransactionCheckInputField : MonoBehaviour
     private bool IsValidDate(string date, out DateTime parsedDate)
     {
         // Проверяем формат даты
-        string[] parts = date.Split('.');
+        string[] parts = date.Split('-');
         if (parts.Length != 3)
         {
             parsedDate = default;

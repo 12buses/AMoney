@@ -8,6 +8,6 @@ public class TransactionFucns : MonoBehaviour
     public TMP_InputField DateInPutField;
     public void ChangeCurrentDate()
     {
-        DateInPutField.text = System.DateTime.Now.ToString("dd.MM.yyyy");
+        DateInPutField.text = System.DateTime.Now.ToString("dd-MM-yyyy");
     }
 }

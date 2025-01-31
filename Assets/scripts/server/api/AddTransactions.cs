@@ -5,12 +5,101 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
 using UnityEngine.UI;
+using System.Xml.Linq;
+using System.Globalization;
+using System;
+using System.Net;
 
 public class AddTransactions : MonoBehaviour
 {
-    public TMP_InputField AmountInPutField;
-    public TMP_InputField Data;
-    public TMP_InputField Comment;
-    public TMP_Dropdown Cattegory;
-    public TMP_Dropdown Type;
+	public GameObject AddTransactionMenu;
+
+	public string WalletId;
+
+	public TMP_InputField AmountInPutField;
+	public TMP_InputField Data;
+	public TMP_InputField Comment;
+
+	public TMP_Dropdown Cattegory;
+	public TMP_Dropdown Type;
+
+	public Button buttonCreate;
+
+	public string Url = "http://195.2.79.241:5000/api_app/transaction_add";
+
+	[System.Serializable]
+	public class Transactions
+	{
+        public string id_wallet;
+        public int id_category;
+		public string amount;
+		public string type;
+		public string comment;
+		public string data_of_transaction;
+	}
+
+	public void CreateTransaction()
+	{
+		buttonCreate.interactable = false;
+		Transactions Transaction;
+		Transaction = new Transactions();
+		Transaction.amount = AmountInPutField.text;
+
+        DateTime dateTime = DateTime.ParseExact(Data.text, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+        long unixTimestamp = (long)(dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
+        Transaction.data_of_transaction = unixTimestamp.ToString();
+
+		Transaction.comment = Comment.text;
+		Transaction.id_category = 13; //Cattegory.itemText.text
+
+		string ConvertedType;
+		switch (Type.itemText.text)
+		{
+			case "Option A":
+				ConvertedType = "income";
+            break;
+
+			case "Option B":
+				ConvertedType = "expense";
+                break;
+
+			default:
+				ConvertedType = " ";
+                break;
+		}
+        Transaction.type = ConvertedType;
+
+		Transaction.id_wallet = WalletId;
+		string TransactionDataString = JsonUtility.ToJson(Transaction);
+		Debug.Log(TransactionDataString);
+		StartCoroutine(CreateTransactionCor(TransactionDataString));
+
+		IEnumerator CreateTransactionCor(string TransactionDataString)
+		{
+			UnityWebRequest request = new UnityWebRequest(Url, "POST");
+			request.SetRequestHeader("Content-Type", "application/json");
+
+            byte[] TransactionDataRaw = Encoding.UTF8.GetBytes(TransactionDataString);
+            request.uploadHandler = new UploadHandlerRaw(TransactionDataRaw);
+			request.downloadHandler = new DownloadHandlerBuffer();
+
+			yield return request.SendWebRequest();
+            Debug.Log("Answer: " + request.downloadHandler.text);
+
+            if (request.result != UnityWebRequest.Result.Success)
+			{
+				Debug.LogError("Œ¯Ë·Í‡:" + request.error);
+			}
+			else
+			{
+				AmountInPutField.text = null;
+				Data.text = null;
+				Comment.text = null;
+				Cattegory.value = -1;
+				Type.value = -1;
+				buttonCreate.interactable = true;
+				AddTransactionMenu.SetActive(false);
+            }
+		}
+	}
 }
