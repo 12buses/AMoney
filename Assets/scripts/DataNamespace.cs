@@ -93,4 +93,19 @@ namespace DataNamespace
             }
         }
     }
+
+    [System.Serializable]
+    public class Category
+    {
+        public int id_category;
+        public string name;
+        public string type;
+        public string value;
+    }
+
+    [System.Serializable]
+    public class Categories
+    {
+        public List<Category> expense;
+    }
 }
