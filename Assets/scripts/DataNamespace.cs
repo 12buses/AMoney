@@ -107,5 +107,6 @@ namespace DataNamespace
     public class Categories
     {
         public List<Category> expense;
+        public List<Category> income;
     }
 }

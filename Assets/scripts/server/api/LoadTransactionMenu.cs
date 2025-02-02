@@ -73,6 +73,7 @@ public class LoadTransactionMenu : MonoBehaviour
     {
         WholeExpense.text = transactions.expense;
         WholeIncome.text = transactions.income;
+        Debug.Log(transactions.income);
 
         transactions.ConvertSecondsToDate();
 
@@ -123,6 +124,15 @@ public class LoadTransactionMenu : MonoBehaviour
         {
             Debug.Log("Answer: " + webRequest.downloadHandler.text);
 			Categories categories = JsonUtility.FromJson<Categories>(webRequest.downloadHandler.text);
+            foreach (var category in categories.expense)
+            {
+                category.name = category.name.ToString();
+            }
+
+            foreach (var category in categories.income)
+            {
+                category.name = category.name.ToString();
+            }
             FillCategoriesObjects(categories);
         }
     }
