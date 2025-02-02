@@ -723,7 +723,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000061035156}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -553.2132}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &144288763
 MonoBehaviour:
@@ -6313,7 +6313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1061149651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14166,7 +14166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.005743738, y: 0.053000003}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.5, y: -5.0000076}
+  m_AnchoredPosition: {x: -10.5, y: -5.000004}
   m_SizeDelta: {x: -29.2, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770363883719398743
@@ -17689,11 +17689,9 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 8316540482216806446}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: -1
   m_Options:
-    m_Options:
-    - m_Text: "\u0435\u0434\u0430"
-      m_Image: {fileID: 21300000, guid: db03e291fac179a4f866195b67102cd8, type: 3}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18056,7 +18054,7 @@ GameObject:
   - component: {fileID: 2652852911584276243}
   - component: {fileID: 1091748895166183232}
   m_Layer: 5
-  m_Name: cansel
+  m_Name: cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18239,18 +18237,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: LoadTransactionMenu, Assembly-CSharp
         m_MethodName: Reload
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7069750549739899220}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18487,7 +18473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d05e3cf84341ec4eb1db9575ed60e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddTransactionMenu: {fileID: 0}
+  AddTransactionMenu: {fileID: 7069750549739899220}
   WalletId: 
   AmountInPutField: {fileID: 3133676720181544403}
   Data: {fileID: 2751295774552257580}

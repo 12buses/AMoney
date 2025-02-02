@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System.Globalization;
 using System;
 using System.Net;
+using DataNamespace;
 
 public class AddTransactions : MonoBehaviour
 {
@@ -50,17 +51,33 @@ public class AddTransactions : MonoBehaviour
         Transaction.data_of_transaction = unixTimestamp.ToString();
 
 		Transaction.comment = Comment.text;
-		Transaction.id_category = 13; //Cattegory.itemText.text
+		
 
 		string ConvertedType;
-		switch (Type.itemText.text)
+		switch (Type.value)
 		{
-			case "Option A":
+			case 0:
 				ConvertedType = "income";
-            break;
+				foreach(Category category in AddTransactionMenu.GetComponent<categories>().categoriesObject.income)
+				{
+					if(Cattegory.captionText.text == category.name)
+					{
+						Transaction.id_category = category.id_category;
+						break;
+                    }
+				}
+                break;
 
-			case "Option B":
+			case 1:
 				ConvertedType = "expense";
+                foreach (Category category in AddTransactionMenu.GetComponent<categories>().categoriesObject.expense)
+                {
+                    if (Cattegory.captionText.text == category.name)
+                    {
+                        Transaction.id_category = category.id_category;
+						break;
+                    }
+                }
                 break;
 
 			default:
