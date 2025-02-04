@@ -47,8 +47,9 @@ public class AddTransactions : MonoBehaviour
 		Transaction.amount = AmountInPutField.text;
 
         DateTime dateTime = DateTime.ParseExact(Data.text, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-        long unixTimestamp = (long)(dateTime - new DateTime(1970, 1, 1)).TotalSeconds;
+        long unixTimestamp = (long)(dateTime - new DateTime(1970, 1, 2)).TotalSeconds;
         Transaction.data_of_transaction = unixTimestamp.ToString();
+		Debug.Log(unixTimestamp.ToString());
 
 		Transaction.comment = Comment.text;
 		
