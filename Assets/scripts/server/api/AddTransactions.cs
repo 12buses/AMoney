@@ -41,7 +41,12 @@ public class AddTransactions : MonoBehaviour
 
 	public void CreateTransaction()
 	{
-		buttonCreate.interactable = false;
+        buttonCreate.interactable = false;
+        if (Cattegory.value == -1 || Type.value == 0)
+		{
+
+		}
+
 		Transactions Transaction;
 		Transaction = new Transactions();
 		Transaction.amount = AmountInPutField.text;
