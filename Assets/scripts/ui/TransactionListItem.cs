@@ -7,8 +7,10 @@ using TMPro;
 public class TransactionListItem : MonoBehaviour
 {
     public transaction transaction;
-    public TMP_Text Name;
+    public TMP_Text Category;
     public TMP_Text Amount;
+    public TMP_Text Date;
+    public TMP_Text Comment;
 
     public void ChangeAmountColor(string type)
     {
