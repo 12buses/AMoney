@@ -121,4 +121,18 @@ public class TransactionCheckInputField : MonoBehaviour
 
 		SaveButton.GetComponent<Image>().sprite = ButtonSprite;
 	}
+
+	public void DateAutoAd()
+	{
+        // Проверяем формат даты
+        string[] parts = Date.text.Split('-');
+		if(parts.Length < 3)
+		{
+			if(parts[^1].Length == 2)
+			{
+				Date.text = Date.text + "-";
+				Date.caretPosition = Date.caretPosition + 1;
+            }
+		}
+    }
 }
