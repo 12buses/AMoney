@@ -65,6 +65,6 @@ public class WalletListItem : MonoBehaviour
         TransactionMenu.SetActive(true);
         MainMenu.SetActive(false);
         TransactionMenu.GetComponent<LoadTransactionMenu>().WalletIdd = WalletId;
-        TransactionMenu.GetComponent<LoadTransactionMenu>().LoadTranasactionMenu();
+        TransactionMenu.GetComponent<LoadTransactionMenu>().Reload();
     }
 }

@@ -351,7 +351,7 @@ RectTransform:
   - {fileID: 1750493860}
   - {fileID: 1054654258}
   - {fileID: 161034824}
-  m_Father: {fileID: 439286746}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2061,11 +2061,11 @@ Transform:
   m_GameObject: {fileID: 227699909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29707444, y: 2.790908, z: -364.5056}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 439286746}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234549611
 GameObject:
@@ -2332,7 +2332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -365.43747, y: 0}
+  m_AnchoredPosition: {x: -365.4375, y: 0}
   m_SizeDelta: {x: -740.875, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245835519
@@ -4039,41 +4039,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424252538}
   m_CullTransparentMesh: 1
---- !u!1 &439286745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 439286746}
-  m_Layer: 0
-  m_Name: prefsb
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &439286746
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439286745}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29707444, y: -2.790908, z: 354.5056}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2126401157}
-  - {fileID: 227699912}
-  - {fileID: 649178713}
-  - {fileID: 43168113}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &444839829
 GameObject:
   m_ObjectHideFlags: 0
@@ -7079,11 +7044,11 @@ Transform:
   m_GameObject: {fileID: 649178711}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.762926, y: 2.7409081, z: -354.5056}
+  m_LocalPosition: {x: -11.06, y: -0.049999952, z: 0}
   m_LocalScale: {x: 1.501092, y: 1.4959998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 439286746}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712446237
 GameObject:
@@ -11642,9 +11607,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Url: http://195.2.79.241:5000/api_app/transactions
+  UrlForCategories: http://195.2.79.241:5000/api_app/categories
   WalletIdd: 0
+  CreateTransactionObject: {fileID: 0}
   itemPrefab: {fileID: 48499462897058974, guid: 63abc125afea6534287669307c822f41, type: 3}
   content: {fileID: 144288761}
+  TransactionEditMenu: {fileID: 0}
+  CreateWalletObjScript: {fileID: 0}
+  WholeIncome: {fileID: 0}
+  WholeExpense: {fileID: 0}
 --- !u!1 &1063576702
 GameObject:
   m_ObjectHideFlags: 0
@@ -19758,21 +19729,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cda2a4fe99ffd48905e03fd18f6559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InPutFieldSprite: {fileID: 21300000, guid: 64e0034453ab8304fbcc56284cd154a1, type: 3}
-  IncorectInputFieldSprite: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
-  ButtonSprite: {fileID: 21300000, guid: eba84b4dc3c27b04a9b95accbef45e56, type: 3}
-  IncorectButtonSprite: {fileID: 21300000, guid: eba84b4dc3c27b04a9b95accbef45e56, type: 3}
-  CharsInComment: {fileID: 920983734}
-  DateErrorMessageText: {fileID: 1032749621}
+  InPutFieldSprite: {fileID: 0}
+  IncorectInputFieldSprite: {fileID: 0}
+  ButtonSprite: {fileID: 0}
+  IncorectButtonSprite: {fileID: 0}
+  CharsInComment: {fileID: 0}
+  DateErrorMessageText: {fileID: 0}
   AmountErrorMessageText: {fileID: 0}
-  Amount: {fileID: 423862390}
-  Date: {fileID: 1873516979}
-  Comment: {fileID: 2137234517}
-  Type: {fileID: 1932309028}
-  Category: {fileID: 642603851}
-  SaveButton: {fileID: 2005645257}
-  amountValidated: 0
-  dateValidated: 1
+  Amount: {fileID: 0}
+  Date: {fileID: 0}
+  Comment: {fileID: 0}
+  Type: {fileID: 0}
+  Category: {fileID: 0}
+  SaveButton: {fileID: 0}
 --- !u!114 &1750493862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19800,7 +19769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e8cbdf3f6ade247b03529750c8f959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DateInPutField: {fileID: 1873516979}
+  DateInPutField: {fileID: 0}
 --- !u!1 &1755235207
 GameObject:
   m_ObjectHideFlags: 0
@@ -20325,7 +20294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.005743738, y: 0.053000003}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.5, y: -5.000004}
+  m_AnchoredPosition: {x: -10.5, y: -5}
   m_SizeDelta: {x: -29.2, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1778439792
@@ -21505,7 +21474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34ebd2009e2ba428f7d3de13d8cea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 1873516979}
+  inputField: {fileID: 0}
 --- !u!114 &1873516979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22445,11 +22414,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OperationCategoruOptionForIncome: []
   OperationCategoruOptionForExpense: []
-  OperationType: {fileID: 1932309028}
-  OperationCategory: {fileID: 642603851}
+  OperationType: {fileID: 0}
+  OperationCategory: {fileID: 0}
   iconsForIncome: []
   iconsForExpense: []
-  ObjectWithCategories: {fileID: 1750493859}
+  ObjectWithCategories: {fileID: 0}
 --- !u!224 &1932309030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23263,14 +23232,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d05e3cf84341ec4eb1db9575ed60e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddTransactionMenu: {fileID: 1750493859}
+  AddTransactionMenu: {fileID: 0}
   WalletId: 
-  AmountInPutField: {fileID: 423862390}
-  Data: {fileID: 1873516979}
-  Comment: {fileID: 2137234517}
-  Cattegory: {fileID: 642603851}
-  Type: {fileID: 1932309028}
-  buttonCreate: {fileID: 2005645257}
+  AmountInPutField: {fileID: 0}
+  Data: {fileID: 0}
+  Comment: {fileID: 0}
+  Cattegory: {fileID: 0}
+  Type: {fileID: 0}
+  buttonCreate: {fileID: 0}
   Url: http://195.2.79.241:5000/api_app/transaction_add
 --- !u!114 &2005645259
 MonoBehaviour:
@@ -24353,11 +24322,11 @@ Transform:
   m_GameObject: {fileID: 2126401154}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29707444, y: 2.790908, z: -354.5056}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 439286746}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131824194
 GameObject:
@@ -25098,7 +25067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.005743738, y: 0.053000003}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.5, y: -5.000004}
+  m_AnchoredPosition: {x: -10.5, y: -5}
   m_SizeDelta: {x: -29.2, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770363883719398743
@@ -28980,11 +28949,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OperationCategoruOptionForIncome: []
   OperationCategoruOptionForExpense: []
-  OperationType: {fileID: 1301269649126789973}
-  OperationCategory: {fileID: 6026394448031011203}
+  OperationType: {fileID: 0}
+  OperationCategory: {fileID: 0}
   iconsForIncome: []
   iconsForExpense: []
-  ObjectWithCategories: {fileID: 7069750549739899220}
+  ObjectWithCategories: {fileID: 0}
 --- !u!1 &7016527591528366150
 GameObject:
   m_ObjectHideFlags: 0
@@ -29065,7 +29034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e8cbdf3f6ade247b03529750c8f959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DateInPutField: {fileID: 2751295774552257580}
+  DateInPutField: {fileID: 0}
 --- !u!114 &7069750549739899222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29078,21 +29047,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cda2a4fe99ffd48905e03fd18f6559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InPutFieldSprite: {fileID: 21300000, guid: 64e0034453ab8304fbcc56284cd154a1, type: 3}
-  IncorectInputFieldSprite: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
-  ButtonSprite: {fileID: 21300000, guid: eba84b4dc3c27b04a9b95accbef45e56, type: 3}
-  IncorectButtonSprite: {fileID: 21300000, guid: eba84b4dc3c27b04a9b95accbef45e56, type: 3}
-  CharsInComment: {fileID: 1063576704}
-  DateErrorMessageText: {fileID: 1321906629}
+  InPutFieldSprite: {fileID: 0}
+  IncorectInputFieldSprite: {fileID: 0}
+  ButtonSprite: {fileID: 0}
+  IncorectButtonSprite: {fileID: 0}
+  CharsInComment: {fileID: 0}
+  DateErrorMessageText: {fileID: 0}
   AmountErrorMessageText: {fileID: 0}
-  Amount: {fileID: 3133676720181544403}
-  Date: {fileID: 2751295774552257580}
-  Comment: {fileID: 7608602803479763384}
-  Type: {fileID: 1301269649126789973}
-  Category: {fileID: 6026394448031011203}
-  SaveButton: {fileID: 7127526533224877716}
-  amountValidated: 0
-  dateValidated: 1
+  Amount: {fileID: 0}
+  Date: {fileID: 0}
+  Comment: {fileID: 0}
+  Type: {fileID: 0}
+  Category: {fileID: 0}
+  SaveButton: {fileID: 0}
 --- !u!114 &7069750549739899223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29265,7 +29232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34ebd2009e2ba428f7d3de13d8cea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 2751295774552257580}
+  inputField: {fileID: 0}
 --- !u!224 &7333129313379275789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29424,14 +29391,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d05e3cf84341ec4eb1db9575ed60e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AddTransactionMenu: {fileID: 7069750549739899220}
+  AddTransactionMenu: {fileID: 0}
   WalletId: 
-  AmountInPutField: {fileID: 3133676720181544403}
-  Data: {fileID: 2751295774552257580}
-  Comment: {fileID: 7608602803479763384}
-  Cattegory: {fileID: 6026394448031011203}
-  Type: {fileID: 1301269649126789973}
-  buttonCreate: {fileID: 7127526533224877716}
+  AmountInPutField: {fileID: 0}
+  Data: {fileID: 0}
+  Comment: {fileID: 0}
+  Cattegory: {fileID: 0}
+  Type: {fileID: 0}
+  buttonCreate: {fileID: 0}
   Url: http://195.2.79.241:5000/api_app/transaction_add
 --- !u!114 &7573580935250603110
 MonoBehaviour:
@@ -30358,4 +30325,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 439286746}
+  - {fileID: 2126401157}
+  - {fileID: 227699912}
+  - {fileID: 649178713}
+  - {fileID: 43168113}
