@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 namespace DataNamespace
 {
     [System.Serializable]
@@ -108,5 +110,63 @@ namespace DataNamespace
     {
         public List<Category> expense;
         public List<Category> income;
+    }
+
+    public class Req : MonoBehaviour
+    {
+        //================= POST Request =================
+        public void PostReq(string jsonData, string url, System.Action<string> onSuccess = null, System.Action<string> onError = null)
+        {
+            StartCoroutine(PostReqCoroutine(jsonData, url, onSuccess, onError));
+        }
+
+        private IEnumerator PostReqCoroutine(string jsonData, string url, System.Action<string> onSuccess, System.Action<string> onError)
+        {
+            using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
+            {
+                webRequest.SetRequestHeader("Content-Type", "application/json");
+                byte[] rawData = Encoding.UTF8.GetBytes(jsonData);
+                webRequest.uploadHandler = new UploadHandlerRaw(rawData);
+                webRequest.downloadHandler = new DownloadHandlerBuffer();
+
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    onError?.Invoke(webRequest.error);
+                    Debug.LogError($"POST Error: {webRequest.error}");
+                }
+                else
+                {
+                    onSuccess?.Invoke(webRequest.downloadHandler.text);
+                    Debug.Log("POST Success: " + webRequest.downloadHandler.text);
+                }
+            }
+        }
+
+        //================= GET Request =================
+        public void GetReq(string url, System.Action<string> onSuccess = null, System.Action<string> onError = null)
+        {
+            StartCoroutine(GetReqCoroutine(url, onSuccess, onError));
+        }
+
+        private IEnumerator GetReqCoroutine(string url, System.Action<string> onSuccess, System.Action<string> onError)
+        {
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+            {
+                yield return webRequest.SendWebRequest();
+
+                if (webRequest.result != UnityWebRequest.Result.Success)
+                {
+                    onError?.Invoke(webRequest.error);
+                    Debug.LogError($"GET Error: {webRequest.error}");
+                }
+                else
+                {
+                    onSuccess?.Invoke(webRequest.downloadHandler.text);
+                    Debug.Log("GET Success: " + webRequest.downloadHandler.text);
+                }
+            }
+        }
     }
 }

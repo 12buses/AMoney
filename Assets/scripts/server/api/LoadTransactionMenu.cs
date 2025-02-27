@@ -15,6 +15,7 @@ public class LoadTransactionMenu : MonoBehaviour
     public GameObject CreateTransactionObject;
 	public GameObject itemPrefab;// Prefab элемента списка
 	public GameObject content;// Объект, содержащий элементы списка
+    public GameObject TransactionEditMenu;
 
 	public GameObject CreateWalletObjScript;
 
@@ -82,6 +83,9 @@ public class LoadTransactionMenu : MonoBehaviour
             GameObject item = Instantiate(itemPrefab, content.transform);
             item.GetComponent<TransactionListItem>().transaction = current_transaction;
             string AmountText = null;
+
+            item.GetComponent<TransactionListItem>().EditTransactionScene = TransactionEditMenu;
+            item.GetComponent<TransactionListItem>().MainTransactionMenu = this;
 
             switch (current_transaction.type)
             {

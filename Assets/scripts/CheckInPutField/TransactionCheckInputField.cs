@@ -9,14 +9,14 @@ public class TransactionCheckInputField : MonoBehaviour
 {
 	public Sprite InPutFieldSprite;
 	public Sprite IncorectInputFieldSprite;
-    public Sprite ButtonSprite;
-    public Sprite IncorectButtonSprite;
+	public Sprite ButtonSprite;
+	public Sprite IncorectButtonSprite;
 
-    public TMP_Text CharsInComment;
+	public TMP_Text CharsInComment;
 	public TMP_Text DateErrorMessageText;
-    public TMP_Text AmountErrorMessageText;
+	public TMP_Text AmountErrorMessageText;
 
-    public TMP_InputField Amount;
+	public TMP_InputField Amount;
 	public TMP_InputField Date;
 	public TMP_InputField Comment;
 
@@ -33,7 +33,7 @@ public class TransactionCheckInputField : MonoBehaviour
 		CharsInComment.text = Comment.text.Length.ToString() + "/300";
 	}
 
-    public void ValidateAmount()
+	public void ValidateAmount()
 	{
 		amountValidated = true;
 		if (Amount.text.Length > 1000000)
@@ -45,7 +45,7 @@ public class TransactionCheckInputField : MonoBehaviour
 		{
 			Amount.GetComponent<Image>().sprite = IncorectInputFieldSprite;
 			AmountErrorMessageText.text = "¬ведите сумму операции!!";
-        }
+		}
 		else
 		{
 			Amount.GetComponent<Image>().sprite = InPutFieldSprite;
@@ -92,15 +92,33 @@ public class TransactionCheckInputField : MonoBehaviour
 
 	private void SetButton()
 	{
-        if (dateValidated == true && amountValidated == true)
-        {
-            SaveButton.interactable = true;
-            SaveButton.GetComponent<Image>().sprite = ButtonSprite;
-        }
-        else
-        {
-            SaveButton.interactable = false;
-            SaveButton.GetComponent<Image>().sprite = IncorectButtonSprite;
-        }
-    }
+		if (dateValidated == true && amountValidated == true)
+		{
+			SaveButton.interactable = true;
+			SaveButton.GetComponent<Image>().sprite = ButtonSprite;
+		}
+		else
+		{
+			SaveButton.interactable = false;
+			SaveButton.GetComponent<Image>().sprite = IncorectButtonSprite;
+		}
+	}
+
+	public void Clean()
+	{
+		DateErrorMessageText.text = "";
+		AmountErrorMessageText.text = "";
+		
+		Amount.text = "";
+		Amount.GetComponent<Image>().sprite = InPutFieldSprite;
+        Date.text = "";
+
+		Date.GetComponent<Image>().sprite = InPutFieldSprite;
+        Comment.text = "";
+
+		Type.value = -1;
+		Category.value = -1;
+
+		SaveButton.GetComponent<Image>().sprite = ButtonSprite;
+	}
 }
