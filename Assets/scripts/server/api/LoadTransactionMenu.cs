@@ -17,7 +17,7 @@ public class LoadTransactionMenu : MonoBehaviour
 	public GameObject content;// Объект, содержащий элементы списка
     public GameObject TransactionEditMenu;
 
-	public GameObject CreateTransactionObjScript;
+	public GameObject CreateTransactionButton;
 
 	public TMP_Text WholeIncome;
 	public TMP_Text WholeExpense;
@@ -36,7 +36,7 @@ public class LoadTransactionMenu : MonoBehaviour
 
     public void LoadTranasactionMenu()
 	{
-		CreateTransactionObjScript.GetComponent<AddTransactions>().WalletId = WalletIdd.ToString();
+		CreateTransactionButton.GetComponent<AddTransactions>().WalletId = WalletIdd.ToString();
         WalletId x = new WalletId();
 		x.id_wallet = WalletIdd;
 		string userDataString = JsonUtility.ToJson(x);
