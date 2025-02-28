@@ -126,13 +126,105 @@ public class TransactionCheckInputField : MonoBehaviour
 	{
         // Проверяем формат даты
         string[] parts = Date.text.Split('-');
-		if(parts.Length < 3)
-		{
-			if(parts[^1].Length == 2)
-			{
-				Date.text = Date.text + "-";
-				Date.caretPosition = Date.caretPosition + 1;
+
+        // Если у нас меньше 3 частей, добавляем дефис
+        if (parts.Length < 3)
+        {
+            if (parts.Length > 0 && parts[^1].Length == 2)
+            {
+                Date.text += "-";
+                Invoke("SetCaretPosition", 0.001f);
             }
-		}
+        }
+
+        // Если у нас 2 части и первая часть состоит из 1 символа, добавляем ноль
+        if (parts.Length >= 2 && parts[0].Length <= 1)
+        {
+            parts[0] = parts[0].PadLeft(2, '0'); // Присваиваем результат обратно
+            UpdateDateText(parts);
+        }
+
+        // Если у нас 3 части и вторая часть состоит из 1 символа, добавляем ноль
+        if (parts.Length >= 3 && parts[1].Length <= 1)
+        {
+            parts[1] = parts[1].PadLeft(2, '0'); // Присваиваем результат обратно
+            UpdateDateText(parts);
+        }
     }
+
+    private void UpdateDateText(string[] parts)
+    {
+        Date.text = string.Join("-", parts); // Обновляем текст
+        Invoke("SetCaretPosition", 0.001f);
+    }
+
+    private void SetCaretPosition()
+    {
+        int newCaretPosition = Date.text.Length;
+        Date.caretPosition = newCaretPosition;
+        Date.selectionAnchorPosition = newCaretPosition;
+        Date.selectionFocusPosition = newCaretPosition;
+    }
+
+	public void OnDateEndEdit()
+	{
+		// Удаляем все символы, кроме цифр и дефисов
+		string sanitizedInput = System.Text.RegularExpressions.Regex.Replace(Date.text, @"[^0-9-]", "");
+
+		// Разбиваем строку на части
+		string[] parts = sanitizedInput.Split('-');
+
+		// Проверяем, что у нас есть три части (день, месяц, год)
+		if (parts.Length == 3)
+		{
+			// Форматируем день
+			parts[0] = parts[0].PadLeft(2, '0'); // Добавляем ноль слева, если нужно
+												 // Форматируем месяц
+			parts[1] = parts[1].PadLeft(2, '0'); // Добавляем ноль слева, если нужно
+
+			// Форматируем год
+			if (parts[2].Length == 1) // Если год состоит из 1 цифры
+			{
+				parts[2] = "200" + parts[2]; // Превращаем в 200X
+			}
+			else if (parts[2].Length == 2) // Если год состоит из 2 цифр
+			{
+				int year = int.Parse(parts[2]);
+				// Проверяем, является ли дата будущей
+				int currentYear = System.DateTime.Now.Year % 100; // Получаем последние 2 цифры текущего года
+				if (year <= currentYear) // Если год больше текущего года, добавляем 2000
+				{
+					parts[2] = "20" + parts[2];
+				}
+				else // Если год меньше или равен текущему, добавляем 1900
+				{
+					parts[2] = "19" + parts[2];
+				}
+			}
+			else if (parts[2].Length == 3) // Если год состоит из 3 цифр
+			{
+                int year = int.Parse(parts[2]);
+                // Проверяем, является ли дата будущей
+                int currentYear = System.DateTime.Now.Year % 1000; // Получаем последние 3 цифры текущего года
+                if (year <= currentYear) // Если год больше текущего года, добавляем 2000
+                {
+                    parts[2] = "20" + parts[2].Substring(1); // Превращаем в 20XXX
+                }
+                else // Если год меньше или равен текущему, добавляем 1900
+                {
+                    parts[2] = "19" + parts[2].Substring(1); // Превращаем в 20XXX
+                }
+
+			}
+
+			// Собираем обратно в строку
+			string formattedDate = $"{parts[0]}-{parts[1]}-{parts[2]}";
+
+			// Проверяем, изменился ли текст, чтобы избежать бесконечного цикла
+			if (Date.text != formattedDate)
+			{
+				Date.text = formattedDate;
+			}
+		}
+	}
 }

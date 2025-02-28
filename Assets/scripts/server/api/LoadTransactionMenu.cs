@@ -59,6 +59,7 @@ public class LoadTransactionMenu : MonoBehaviour
             category.name = category.name.ToString();
         }
         CreateTransactionObject.GetComponent<categories>().categoriesObject = categories;
+        TransactionEditMenu.GetComponent<categories>().categoriesObject = categories;
     }
 
     public void CategoryReqUnsuccess()

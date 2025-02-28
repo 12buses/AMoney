@@ -64,4 +64,13 @@ public class TransactionListItem : MonoBehaviour
         EditTransactionScene.GetComponent<EditTransaction>().WalletId = transaction.id_wallet.ToString();
         EditTransactionScene.GetComponent<EditTransaction>().TransactionId = transaction.id_transaction.ToString();
     }
+
+    public void EnterEdit()
+    {
+        EditTransactionScene.SetActive(true);
+        EditTransactionScene.GetComponent<EditTransaction>().WalletId = transaction.id_wallet.ToString();
+        EditTransactionScene.GetComponent<EditTransaction>().TransactionId = transaction.id_transaction.ToString();
+        EditTransactionScene.GetComponent<OnChangeOperationType>().OnEnterAdd();
+
+    }
 }

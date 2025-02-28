@@ -1531,7 +1531,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000061035156}
-  m_SizeDelta: {x: 0, y: -553.2132}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &144288763
 MonoBehaviour:
@@ -3433,7 +3433,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &279151031
@@ -5206,7 +5206,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -11.569191, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &488509413
@@ -5253,6 +5253,7 @@ RectTransform:
   - {fileID: 590958349}
   - {fileID: 1319404851}
   - {fileID: 920983733}
+  - {fileID: 1701071603}
   - {fileID: 1032749620}
   m_Father: {fileID: 1750493860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12031,7 +12032,7 @@ GameObject:
   - component: {fileID: 1032749622}
   - component: {fileID: 1032749621}
   m_Layer: 5
-  m_Name: DateErrorMessageText
+  m_Name: AmountErrorMessageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12053,7 +12054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13800001, y: 0.3711827}
   m_AnchorMax: {x: 0.8791977, y: 0.3954934}
-  m_AnchoredPosition: {x: -0.44799805, y: -2.2999878}
+  m_AnchoredPosition: {x: -0.44781494, y: -2.3001099}
   m_SizeDelta: {x: -71.46997, y: -0.2599945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032749621
@@ -12569,7 +12570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1061149651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17273,7 +17274,7 @@ MonoBehaviour:
   m_margin: {x: 9.204132, y: 0, z: -16.353676, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1489857322
@@ -20011,6 +20012,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699978246}
   m_CullTransparentMesh: 1
+--- !u!1 &1701071602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1701071603}
+  - component: {fileID: 1701071605}
+  - component: {fileID: 1701071604}
+  m_Layer: 5
+  m_Name: DateErrorMessageText (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1701071603
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701071602}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.4689972}
+  m_LocalScale: {x: 1.0934929, y: 1.0934929, z: 1.0934929}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 492878599}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.13800001, y: 0.3711827}
+  m_AnchorMax: {x: 0.8791977, y: 0.3954934}
+  m_AnchoredPosition: {x: -0.44799805, y: -2.2999878}
+  m_SizeDelta: {x: -71.46997, y: -0.2599945}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1701071604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701071602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4280624576
+  m_fontColor: {r: 0.754717, g: 0.1459594, b: 0.1459594, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 34
+  m_fontSizeBase: 34
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1701071605
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701071602}
+  m_CullTransparentMesh: 1
 --- !u!1 &1712298902
 GameObject:
   m_ObjectHideFlags: 0
@@ -20362,7 +20497,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -11.569191, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1729478482
@@ -20551,6 +20686,8 @@ GameObject:
   - component: {fileID: 1750493863}
   - component: {fileID: 1750493861}
   - component: {fileID: 1750493862}
+  - component: {fileID: 1750493864}
+  - component: {fileID: 1750493865}
   m_Layer: 5
   m_Name: Redakt
   m_TagString: Untagged
@@ -20596,19 +20733,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cda2a4fe99ffd48905e03fd18f6559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InPutFieldSprite: {fileID: 0}
-  IncorectInputFieldSprite: {fileID: 0}
-  ButtonSprite: {fileID: 0}
-  IncorectButtonSprite: {fileID: 0}
-  CharsInComment: {fileID: 0}
-  DateErrorMessageText: {fileID: 0}
-  AmountErrorMessageText: {fileID: 0}
-  Amount: {fileID: 0}
-  Date: {fileID: 0}
-  Comment: {fileID: 0}
-  Type: {fileID: 0}
-  Category: {fileID: 0}
-  SaveButton: {fileID: 0}
+  InPutFieldSprite: {fileID: 21300000, guid: 88a8a5a53bd3a3541bf50bcdad2b97d3, type: 3}
+  IncorectInputFieldSprite: {fileID: 21300000, guid: 0105b680bd59a2243bfc1b3297f7fd96, type: 3}
+  ButtonSprite: {fileID: 21300000, guid: eba84b4dc3c27b04a9b95accbef45e56, type: 3}
+  IncorectButtonSprite: {fileID: 21300000, guid: eba84b4dc3c27b04a9b95accbef45e56, type: 3}
+  CharsInComment: {fileID: 920983734}
+  DateErrorMessageText: {fileID: 1701071604}
+  AmountErrorMessageText: {fileID: 1032749621}
+  Amount: {fileID: 423862390}
+  Date: {fileID: 1873516979}
+  Comment: {fileID: 2137234517}
+  Type: {fileID: 1932309028}
+  Category: {fileID: 642603851}
+  SaveButton: {fileID: 2005645257}
 --- !u!114 &1750493862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20636,7 +20773,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e8cbdf3f6ade247b03529750c8f959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DateInPutField: {fileID: 0}
+  DateInPutField: {fileID: 1873516979}
+--- !u!114 &1750493864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750493859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ecda88ccbda604ab0b905c0e41eddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EditTransactionMenu: {fileID: 1750493859}
+  MainTransactionMenu: {fileID: 1061149650}
+  WalletId: 
+  TransactionId: 
+  AmountInPutField: {fileID: 423862390}
+  Data: {fileID: 1873516979}
+  Comment: {fileID: 2137234517}
+  Cattegory: {fileID: 642603851}
+  Type: {fileID: 1932309028}
+  ButtonEdit: {fileID: 2005645257}
+  ErrorText: {fileID: 1032749621}
+  Url: http://195.2.79.241:5000/api_app/transaction_edit
+--- !u!114 &1750493865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750493859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb31d715964ac31488bfea0dfacee9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OperationCategoruOptionForIncome: []
+  OperationCategoruOptionForExpense: []
+  OperationType: {fileID: 1932309028}
+  OperationCategory: {fileID: 642603851}
+  iconsForIncome: []
+  iconsForExpense: []
+  ObjectWithCategories: {fileID: 1750493859}
 --- !u!1 &1755403129
 GameObject:
   m_ObjectHideFlags: 0
@@ -20652,7 +20832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1755403130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21191,7 +21371,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1778439794
@@ -21865,7 +22045,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -11.569191, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1804809622
@@ -22185,7 +22365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34ebd2009e2ba428f7d3de13d8cea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 0}
+  inputField: {fileID: 1873516979}
 --- !u!114 &1873516979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22277,7 +22457,31 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750493861}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: DateAutoAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1750493861}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: OnDateEndEdit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -22883,7 +23087,6 @@ GameObject:
   - component: {fileID: 1932309032}
   - component: {fileID: 1932309031}
   - component: {fileID: 1932309028}
-  - component: {fileID: 1932309029}
   m_Layer: 5
   m_Name: type operation
   m_TagString: Untagged
@@ -22948,7 +23151,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1932309029}
+      - m_Target: {fileID: 1750493865}
         m_TargetAssemblyTypeName: OnChangeOperationType, Assembly-CSharp
         m_MethodName: OnOperationTypeValueChanged
         m_Mode: 1
@@ -22961,25 +23164,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_AlphaFadeSpeed: 0.15
---- !u!114 &1932309029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932309027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb31d715964ac31488bfea0dfacee9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OperationCategoruOptionForIncome: []
-  OperationCategoruOptionForExpense: []
-  OperationType: {fileID: 0}
-  OperationCategory: {fileID: 0}
-  iconsForIncome: []
-  iconsForExpense: []
-  ObjectWithCategories: {fileID: 0}
 --- !u!224 &1932309030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23693,7 +23877,6 @@ GameObject:
   - component: {fileID: 2005645260}
   - component: {fileID: 2005645259}
   - component: {fileID: 2005645257}
-  - component: {fileID: 2005645258}
   m_Layer: 5
   m_Name: save
   m_TagString: Untagged
@@ -23745,9 +23928,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2005645258}
-        m_TargetAssemblyTypeName: AddTransactions, Assembly-CSharp
-        m_MethodName: CreateTransaction
+      - m_Target: {fileID: 1750493864}
+        m_TargetAssemblyTypeName: EditTransaction, Assembly-CSharp
+        m_MethodName: OnButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23781,27 +23964,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2005645258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005645256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d05e3cf84341ec4eb1db9575ed60e38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AddTransactionMenu: {fileID: 0}
-  WalletId: 
-  AmountInPutField: {fileID: 0}
-  Data: {fileID: 0}
-  Comment: {fileID: 0}
-  Cattegory: {fileID: 0}
-  Type: {fileID: 0}
-  buttonCreate: {fileID: 0}
-  Url: http://195.2.79.241:5000/api_app/transaction_add
 --- !u!114 &2005645259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27285,6 +27447,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7069750549739899222}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: OnDateEndEdit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -27302,7 +27476,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7069750549739899222}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: DateAutoAd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
