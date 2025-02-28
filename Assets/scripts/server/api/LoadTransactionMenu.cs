@@ -1,5 +1,6 @@
 using DataNamespace;
 using System.Collections;
+using System.Net;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -41,108 +42,83 @@ public class LoadTransactionMenu : MonoBehaviour
 		x.id_wallet = WalletIdd;
 		string userDataString = JsonUtility.ToJson(x);
 		Debug.Log(userDataString);
-        StartCoroutine(CategoriesForWallet(userDataString));
-        StartCoroutine(TransactionData(userDataString));
-	}
-	IEnumerator TransactionData(string postJSON)
-	{
-		UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(Url, "POST");
-		webRequest.SetRequestHeader("Content-Type", "application/json");
-
-        byte[] userDataRaw = Encoding.UTF8.GetBytes(postJSON);
-        webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
-		webRequest.downloadHandler = new DownloadHandlerBuffer();
-
-		// отправка запроса
-		yield return webRequest.SendWebRequest();
-		if (webRequest.result != UnityWebRequest.Result.Success)
-		{
-			Debug.LogError("Ошибка: " + webRequest.error);
-		}
-		else
-		{
-			Debug.Log("Answer: " + webRequest.downloadHandler.text);
-			transactions transactionsDataOBJ = JsonUtility.FromJson<transactions>(webRequest.downloadHandler.text);
-			if (transactionsDataOBJ.page0.Count > 0)
-			{
-				FillTransactions(transactionsDataOBJ);
-			}
-		}
-	}
-
-    public void FillTransactions(transactions transactions)
-    {
-        WholeExpense.text = transactions.expense;
-        WholeIncome.text = transactions.income;
-        Debug.Log(transactions.income);
-
-        transactions.ConvertSecondsToDate();
-
-        foreach (var current_transaction in transactions.page0)
-        {
-            GameObject item = Instantiate(itemPrefab, content.transform);
-            item.GetComponent<TransactionListItem>().transaction = current_transaction;
-            string AmountText = null;
-
-            item.GetComponent<TransactionListItem>().EditTransactionScene = TransactionEditMenu;
-            item.GetComponent<TransactionListItem>().MainTransactionMenu = this;
-
-            switch (current_transaction.type)
-            {
-                case "income":
-                    AmountText = "+" + current_transaction.amount;
-                    item.GetComponent<TransactionListItem>().ChangeAmountColor("income");
-                    item.GetComponent<TransactionListItem>().Category.text = "Доход";
-                    break;
-
-                case "expense":
-                    AmountText = "-" + current_transaction.amount;
-                    item.GetComponent<TransactionListItem>().ChangeAmountColor("expense");
-                    item.GetComponent<TransactionListItem>().Category.text = "Трата";
-                    break;
-
-                default:
-                    break;
-            }
-
-            item.GetComponent<TransactionListItem>().Amount.text = AmountText;
-            item.GetComponent<TransactionListItem>().Comment.text = current_transaction.comment;
-            item.GetComponent<TransactionListItem>().Date.text = current_transaction.FormattedData_of_transaction;
-        }
+        Req req = gameObject.AddComponent<Req>();
+        req.PostReq(userDataString, UrlForCategories, result => CategoryReqSuccess(result), error => CategoryReqUnsuccess());
+        req.PostReq(userDataString, Url, result => TransactinDataReqOnSuccess(result), error => TransactinDataReqOnUnuccess());
     }
-
-
-    IEnumerator CategoriesForWallet(string postJSON)
+    public void CategoryReqSuccess(string resultText)
     {
-        UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(UrlForCategories, "POST");
-        webRequest.SetRequestHeader("Content-Type", "application/json");
-        byte[] userDataRaw = Encoding.UTF8.GetBytes(postJSON);
-        webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
-        webRequest.downloadHandler = new DownloadHandlerBuffer();
-        yield return webRequest.SendWebRequest();
-        if (webRequest.result != UnityWebRequest.Result.Success)
+        Categories categories = JsonUtility.FromJson<Categories>(resultText);
+        foreach (var category in categories.expense)
         {
-            Debug.LogError("Ошибка: " + webRequest.error);
+            category.name = category.name.ToString();
         }
-        else
+
+        foreach (var category in categories.income)
         {
-            Debug.Log("Answer: " + webRequest.downloadHandler.text);
-			Categories categories = JsonUtility.FromJson<Categories>(webRequest.downloadHandler.text);
-            foreach (var category in categories.expense)
-            {
-                category.name = category.name.ToString();
-            }
-
-            foreach (var category in categories.income)
-            {
-                category.name = category.name.ToString();
-            }
-            FillCategoriesObjects(categories);
+            category.name = category.name.ToString();
         }
-    }
-
-    public void FillCategoriesObjects(Categories categories)
-    {
         CreateTransactionObject.GetComponent<categories>().categoriesObject = categories;
     }
+
+    public void CategoryReqUnsuccess()
+    { }
+
+    public void TransactinDataReqOnSuccess(string resultText)
+    {
+        transactionsDataOBJ transactionsDataOBJ = JsonUtility.FromJson<transactionsDataOBJ>(resultText);
+        if (transactionsDataOBJ.page0.Count > 0)
+        {
+            IfCountTransactionMoreThan0();
+        }
+
+        void IfCountTransactionMoreThan0()
+        {
+            WholeExpense.text = transactionsDataOBJ.expense;
+            WholeIncome.text = transactionsDataOBJ.income;
+            Debug.Log(transactionsDataOBJ.income);
+
+            transactionsDataOBJ.ConvertSecondsToDate();
+
+            foreach (var current_transaction in transactionsDataOBJ.page0)
+            {
+                GameObject item = Instantiate(itemPrefab, content.transform);
+                item.GetComponent<TransactionListItem>().transaction = current_transaction;
+                string AmountText = null;
+
+                item.GetComponent<TransactionListItem>().EditTransactionScene = TransactionEditMenu;
+                item.GetComponent<TransactionListItem>().MainTransactionMenu = this;
+
+                switch (current_transaction.type)
+                {
+                    case "income":
+                        AmountText = "+" + current_transaction.amount;
+                        item.GetComponent<TransactionListItem>().ChangeAmountColor("income");
+                        item.GetComponent<TransactionListItem>().Category.text = "Доход";
+                        break;
+
+                    case "expense":
+                        AmountText = "-" + current_transaction.amount;
+                        item.GetComponent<TransactionListItem>().ChangeAmountColor("expense");
+                        item.GetComponent<TransactionListItem>().Category.text = "Трата";
+                        break;
+
+                    default:
+                        break;
+                }
+
+                item.GetComponent<TransactionListItem>().Amount.text = AmountText;
+                item.GetComponent<TransactionListItem>().Comment.text = current_transaction.comment;
+                item.GetComponent<TransactionListItem>().Date.text = current_transaction.FormattedData_of_transaction;
+            }
+        }
+        
+    }
+
+    public void TransactinDataReqOnUnuccess()
+    {
+
+    }
+
+    
 }

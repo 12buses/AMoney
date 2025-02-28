@@ -77,7 +77,7 @@ namespace DataNamespace
     }
 
     [System.Serializable]
-    public class transactions
+    public class transactionsDataOBJ
     {
         public string id;
         public string expense;

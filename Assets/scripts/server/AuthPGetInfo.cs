@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.SceneManagement;
+using DataNamespace;
+using System;
+using static UnityEngine.Networking.UnityWebRequest;
+using System.Net;
 
 
 public class AuthPGetInfo : MonoBehaviour
@@ -16,7 +20,6 @@ public class AuthPGetInfo : MonoBehaviour
     public TMP_Text ROUL_InUnityObj;
 
     public string URLAuth = "http://195.2.79.241:5000/api_app/user_authorize";
-    public string URLGetInfo = "http://195.2.79.241:5000/api_app/data";
 
     public class User //класс пользователея
     {
@@ -34,46 +37,35 @@ public class AuthPGetInfo : MonoBehaviour
     {
         User userDataObj = new User(login.text, password.text);
         string userDataString = JsonUtility.ToJson(userDataObj);
-        byte[] userDataRaw = Encoding.UTF8.GetBytes(userDataString);
-        StartCoroutine(Register(userDataRaw));
-        IEnumerator Register(byte[] userDataRaw)
+        Req req = gameObject.AddComponent<Req>();
+        req.PostReq(userDataString, URLAuth, result => reqSuccess(result), error => reqUnsuccess());
+    }
+
+    public void reqSuccess(string result)
+    {
+        Debug.Log("Запрос аунтефикации: успешно.");
+        User UserAuthResult = JsonUtility.FromJson<User>(result);
+        if (UserAuthResult.login == "False" || UserAuthResult.password == "False")
         {
-            using (UnityWebRequest webRequest = UnityWebRequest.PostWwwForm(URLAuth, "POST"))//��������� ������ � �������� ������������ ������ ������������ 
+            Debug.Log(result);
+            if (UserAuthResult.login == "False")
             {
-                // ���������� ������
-                webRequest.SetRequestHeader("Content-Type", "application/json");
-
-                webRequest.uploadHandler = new UploadHandlerRaw(userDataRaw);
-                webRequest.downloadHandler = new DownloadHandlerBuffer();
-
-                yield return webRequest.SendWebRequest();
-                if (webRequest.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.LogError("Ошибка: " + webRequest.error);
-                }
-                else
-                {
-                    Debug.Log("Запрос аунтефикации: успешно.");
-                    User UserAuthResult = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
-                    if (UserAuthResult.login == "False" || UserAuthResult.password == "False")
-                    {
-                        Debug.Log(webRequest.downloadHandler.text);
-                        if (UserAuthResult.login == "False")
-                        {
-                            ROUL_InUnityObj.text = "*Такого пользавателя не существует.";
-                        }
-                        if (UserAuthResult.password == "False")
-                        {
-                            ROUE_InUnityObj.text = "*Неверный пароль.";
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("Аунтификация: успешно");
-                        SceneManager.LoadScene(SceneName);
-                    }
-                }
+                ROUL_InUnityObj.text = "*Такого пользавателя не существует.";
+            }
+            if (UserAuthResult.password == "False")
+            {
+                ROUE_InUnityObj.text = "*Неверный пароль.";
             }
         }
+        else
+        {
+            Debug.Log("Аунтификация: успешно");
+            SceneManager.LoadScene(SceneName);
+        }
+    }
+
+    public void reqUnsuccess()
+    {
+
     }
 }

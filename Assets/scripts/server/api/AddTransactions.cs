@@ -91,34 +91,24 @@ public class AddTransactions : MonoBehaviour
 		Transaction.id_wallet = WalletId;
 		string TransactionDataString = JsonUtility.ToJson(Transaction);
 		Debug.Log(TransactionDataString);
-		StartCoroutine(CreateTransactionCor(TransactionDataString));
 
-		IEnumerator CreateTransactionCor(string TransactionDataString)
-		{
-			UnityWebRequest request = new UnityWebRequest(Url, "POST");
-			request.SetRequestHeader("Content-Type", "application/json");
+        Req req = gameObject.AddComponent<Req>();
+        req.PostReq(TransactionDataString, Url, result => reqSuccess(), error => reqUnsuccess());
+	}
 
-            byte[] TransactionDataRaw = Encoding.UTF8.GetBytes(TransactionDataString);
-            request.uploadHandler = new UploadHandlerRaw(TransactionDataRaw);
-			request.downloadHandler = new DownloadHandlerBuffer();
+	public void reqSuccess()
+	{
+        AmountInPutField.text = null;
+        Data.text = null;
+        Comment.text = null;
+        Cattegory.value = -1;
+        Type.value = -1;
+        buttonCreate.interactable = true;
+        AddTransactionMenu.SetActive(false);
+    }
 
-			yield return request.SendWebRequest();
-            Debug.Log("Answer: " + request.downloadHandler.text);
+	public void reqUnsuccess()
+	{
 
-            if (request.result != UnityWebRequest.Result.Success)
-			{
-				Debug.LogError("Ошибка:" + request.error);
-			}
-			else
-			{
-				AmountInPutField.text = null;
-				Data.text = null;
-				Comment.text = null;
-				Cattegory.value = -1;
-				Type.value = -1;
-				buttonCreate.interactable = true;
-				AddTransactionMenu.SetActive(false);
-            }
-		}
 	}
 }
