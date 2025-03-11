@@ -79,9 +79,10 @@ namespace DataNamespace
     [System.Serializable]
     public class transactionsDataOBJ
     {
+        public int balance;
         public string id;
-        public string expense;
-        public string income;
+        public float expense;
+        public float income;
         public List<transaction> page0;
 
         public void ConvertSecondsToDate()

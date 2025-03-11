@@ -1,3 +1,4 @@
+using DataNamespace;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ public class TransactionCheckInputField : MonoBehaviour
 	public TMP_InputField Comment;
 
 	public TMP_Dropdown Type;
-	public TMP_Dropdown Category;
+	public TMP_Dropdown Cattegory;
 
 	public Button SaveButton;
 
@@ -33,12 +34,22 @@ public class TransactionCheckInputField : MonoBehaviour
 		CharsInComment.text = Comment.text.Length.ToString() + "/300";
 	}
 
+    private void OnEnable()
+    {
+        dateValidated = true;
+		amountValidated = false;
+		ChangeCurrentDate();
+        Cattegory.value = -1;
+		Type.value = -1;
+		AmountErrorMessageText.text = "";
+        Amount.GetComponent<Image>().sprite = InPutFieldSprite;
+    }
+
 	public void ValidateAmount()
 	{
-		amountValidated = true;
+		amountValidated = false;
 		if (Amount.text.Length > 1000000)
 		{
-			amountValidated = false;
 			Amount.GetComponent<Image>().sprite = IncorectInputFieldSprite;
 		}
 		else if (Amount.text.Length < 1)
@@ -49,8 +60,9 @@ public class TransactionCheckInputField : MonoBehaviour
 		else
 		{
 			Amount.GetComponent<Image>().sprite = InPutFieldSprite;
-
-		}
+            amountValidated = true;
+            SetButton();
+        }
 	}
 
 	public void ValidateDate()
@@ -73,10 +85,16 @@ public class TransactionCheckInputField : MonoBehaviour
 		{
 			DateErrorMessageText.text = "Некорректный формат даты. Используйте формат: день.месяц.год";
 		}
-		SetButton();
+		SetButton();	
 	}
 
-	private bool IsValidDate(string date, out DateTime parsedDate)
+    public void ChangeCurrentDate()
+    {
+        Date.text = System.DateTime.Now.ToString("dd-MM-yyyy");
+		ValidateDate();
+    }
+
+    private bool IsValidDate(string date, out DateTime parsedDate)
 	{
 		// Проверяем формат даты
 		string[] parts = date.Split('-');
@@ -117,7 +135,7 @@ public class TransactionCheckInputField : MonoBehaviour
         Comment.text = "";
 
 		Type.value = -1;
-		Category.value = -1;
+		Cattegory.value = -1;
 
 		SaveButton.GetComponent<Image>().sprite = ButtonSprite;
 	}
