@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DataNamespace;
+using JetBrains.Annotations;
 
 public class WalletList : MonoBehaviour
 {
@@ -37,24 +38,26 @@ public class WalletList : MonoBehaviour
                 currency = WalletsDataObj.wallets[i].currency;
             }
             GameObject item = Instantiate(itemPrefab, content.transform);
-			item.GetComponent<WalletListItem>().Name.text = WalletsDataObj.wallets[i].name;
-            item.GetComponent<WalletListItem>().NameString = WalletsDataObj.wallets[i].name;
-            item.GetComponent<WalletListItem>().balance.text = WalletsDataObj.wallets[i].balance.ToString("0.00");
-            item.GetComponent<WalletListItem>().BalanceFloat = WalletsDataObj.wallets[i].balance;
-            item.GetComponent<WalletListItem>().currency.text = currency;   
-            item.GetComponent<WalletListItem>().CurrencyString = currency;
-            item.GetComponent<WalletListItem>().WalletId = WalletsDataObj.wallets[i].id_wallet;
-			item.GetComponent<WalletListItem>().DeleteMenu = DeleteMenu;
-            item.GetComponent<WalletListItem>().DeletedMenuText = DeletedMenuText;
-            item.GetComponent<WalletListItem>().DeleteMenuText = DeleteMenuText;
-            item.GetComponent<WalletListItem>().BalanceEdit = BalanceEdit;
-            item.GetComponent<WalletListItem>().NameOfWalletEdit = NameOfWalletEdit;
-            item.GetComponent<WalletListItem>().CurrencyEdit = CurrencyEdit;
-            item.GetComponent<WalletListItem>().MainMenu = MainMenu;
-            item.GetComponent<WalletListItem>().EditMenu = EditMenu;
-            item.GetComponent<WalletListItem>().EditWalletSaveButton = EditWalletSaveButton;
-            item.GetComponent<WalletListItem>().Login = LoginTransactionsMenu;
-            item.GetComponent<WalletListItem>().TransactionMenu = TransactionMenu;
+            WalletListItem walletListItem = item.GetComponent<WalletListItem>();
+
+            walletListItem.Name.text = WalletsDataObj.wallets[i].name;
+            walletListItem.NameString = WalletsDataObj.wallets[i].name;
+            walletListItem.balance.text = WalletsDataObj.wallets[i].balance.ToString("0.00");
+            walletListItem.BalanceFloat = WalletsDataObj.wallets[i].balance;
+            walletListItem.currency.text = currency;
+            walletListItem.CurrencyString = currency;
+            walletListItem.WalletId = WalletsDataObj.wallets[i].id_wallet;
+            walletListItem.DeleteMenu = DeleteMenu;
+            walletListItem.DeletedMenuText = DeletedMenuText;
+            walletListItem.DeleteMenuText = DeleteMenuText;
+            walletListItem.BalanceEdit = BalanceEdit;
+            walletListItem.NameOfWalletEdit = NameOfWalletEdit;
+            walletListItem.CurrencyEdit = CurrencyEdit;
+            walletListItem.MainMenu = MainMenu;
+            walletListItem.EditMenu = EditMenu;
+            walletListItem.EditWalletSaveButton = EditWalletSaveButton;
+            walletListItem.Login = LoginTransactionsMenu;
+            walletListItem.TransactionMenu = TransactionMenu;
         }
     }
 

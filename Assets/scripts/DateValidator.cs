@@ -11,8 +11,6 @@ public class DateValidator : MonoBehaviour
         inputField.onValidateInput += ValidateInput;
     }
 
-
-
     private char ValidateInput(string text, int charIndex, char addedChar)
     {
         // Разрешаем вводить цифры, точки и символы управления (например, Backspace)

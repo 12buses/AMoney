@@ -1531,7 +1531,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000061035156}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -553.2132}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &144288763
 MonoBehaviour:
@@ -12570,7 +12570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1061149651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12660,9 +12660,11 @@ MonoBehaviour:
   itemPrefab: {fileID: 48499462897058974, guid: 63abc125afea6534287669307c822f41, type: 3}
   content: {fileID: 144288761}
   TransactionEditMenu: {fileID: 1750493859}
+  DeletePopUp: {fileID: 0}
   CreateTransactionButton: {fileID: 3098521558988590715}
   WholeIncome: {fileID: 2067462090}
   WholeExpense: {fileID: 1206762739}
+  Balance: {fileID: 1300380210}
 --- !u!1 &1063576702
 GameObject:
   m_ObjectHideFlags: 0
@@ -20744,7 +20746,7 @@ MonoBehaviour:
   Date: {fileID: 1873516979}
   Comment: {fileID: 2137234517}
   Type: {fileID: 1932309028}
-  Category: {fileID: 642603851}
+  Cattegory: {fileID: 0}
   SaveButton: {fileID: 2005645257}
 --- !u!114 &1750493862
 MonoBehaviour:
@@ -20832,7 +20834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1755403130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30323,7 +30325,7 @@ MonoBehaviour:
   Date: {fileID: 2751295774552257580}
   Comment: {fileID: 7608602803479763384}
   Type: {fileID: 1301269649126789973}
-  Category: {fileID: 6026394448031011203}
+  Cattegory: {fileID: 6026394448031011203}
   SaveButton: {fileID: 7127526533224877716}
 --- !u!114 &7069750549739899223
 MonoBehaviour:

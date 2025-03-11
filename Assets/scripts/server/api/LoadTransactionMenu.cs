@@ -17,11 +17,12 @@ public class LoadTransactionMenu : MonoBehaviour
 	public GameObject itemPrefab;// Prefab элемента списка
 	public GameObject content;// Объект, содержащий элементы списка
     public GameObject TransactionEditMenu;
-
+    public GameObject DeletePopUp;
 	public GameObject CreateTransactionButton;
 
 	public TMP_Text WholeIncome;
 	public TMP_Text WholeExpense;
+    public TMP_Text Balance;
 
 	public class WalletId
 	{
@@ -68,6 +69,7 @@ public class LoadTransactionMenu : MonoBehaviour
     public void TransactinDataReqOnSuccess(string resultText)
     {
         transactionsDataOBJ transactionsDataOBJ = JsonUtility.FromJson<transactionsDataOBJ>(resultText);
+        Balance.text = "Твой баланс: " + transactionsDataOBJ.balance.ToString("0.00");
         if (transactionsDataOBJ.page0.Count > 0)
         {
             IfCountTransactionMoreThan0();
@@ -75,8 +77,8 @@ public class LoadTransactionMenu : MonoBehaviour
 
         void IfCountTransactionMoreThan0()
         {
-            WholeExpense.text = transactionsDataOBJ.expense;
-            WholeIncome.text = transactionsDataOBJ.income;
+            WholeExpense.text = transactionsDataOBJ.expense.ToString("0.00");
+            WholeIncome.text = transactionsDataOBJ.income.ToString("0.00");
             Debug.Log(transactionsDataOBJ.income);
 
             transactionsDataOBJ.ConvertSecondsToDate();
@@ -109,6 +111,7 @@ public class LoadTransactionMenu : MonoBehaviour
                 }
 
                 item.GetComponent<TransactionListItem>().Amount.text = AmountText;
+                item.GetComponent<TransactionListItem>().DeletePopUp = DeletePopUp;
                 item.GetComponent<TransactionListItem>().Comment.text = current_transaction.comment;
                 item.GetComponent<TransactionListItem>().Date.text = current_transaction.FormattedData_of_transaction;
             }

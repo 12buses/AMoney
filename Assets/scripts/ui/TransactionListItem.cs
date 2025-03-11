@@ -7,6 +7,7 @@ using System;
 
 public class TransactionListItem : MonoBehaviour
 {
+    public GameObject DeletePopUp;
     public GameObject EditTransactionScene;
     public LoadTransactionMenu MainTransactionMenu;
 
@@ -28,8 +29,7 @@ public class TransactionListItem : MonoBehaviour
 
     public void OnDeleteButtonClicked()
     {
-        Root Root;
-        Root = new Root();
+        Root Root = new Root();
         Root.id_wallet = transaction.id_wallet;
         Root.id_transaction = transaction.id_transaction;
         string RootDataString = JsonUtility.ToJson(Root);
@@ -40,6 +40,7 @@ public class TransactionListItem : MonoBehaviour
     public void reqSuccess()
     {
         MainTransactionMenu.Reload();
+        DeletePopUp.SetActive(true);
     }
 
     public void reqUnsuccess()
@@ -61,8 +62,19 @@ public class TransactionListItem : MonoBehaviour
 
     public void LoadTransactionEditMenu()
     {
-        EditTransactionScene.GetComponent<EditTransaction>().WalletId = transaction.id_wallet.ToString();
-        EditTransactionScene.GetComponent<EditTransaction>().TransactionId = transaction.id_transaction.ToString();
+        EditTransaction EditTransaction = EditTransactionScene.GetComponent<EditTransaction>();
+        EditTransaction.WalletId = transaction.id_wallet.ToString();
+        EditTransaction.TransactionId = transaction.id_transaction.ToString();
+        TransactionCheckInputField TransactionCheckInputField = EditTransactionScene.GetComponent<TransactionCheckInputField>();
+        TransactionCheckInputField.Date.text = transaction.FormattedData_of_transaction;
+        if(transaction.type = "expense")
+        {
+
+        }
+        TransactionCheckInputField.Type.value = transaction.type;
+        TransactionCheckInputField.Cattegory.value;
+        TransactionCheckInputField.Amount.text;
+        TransactionCheckInputField.Comment.text ;
     }
 
     public void EnterEdit()

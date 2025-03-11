@@ -103,7 +103,6 @@ public class AddTransactions : MonoBehaviour
         Comment.text = null;
         Cattegory.value = -1;
         Type.value = -1;
-        buttonCreate.interactable = true;
         AddTransactionMenu.SetActive(false);
     }
 
