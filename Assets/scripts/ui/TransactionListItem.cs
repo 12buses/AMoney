@@ -60,29 +60,38 @@ public class TransactionListItem : MonoBehaviour
         }
     }
 
-    public void LoadTransactionEditMenu()
+    public void EnterEdit()
     {
+        EditTransactionScene.SetActive(true);
+        EditTransactionScene.GetComponent<OnChangeOperationType>().OnEnterAdd();
         EditTransaction EditTransaction = EditTransactionScene.GetComponent<EditTransaction>();
         EditTransaction.WalletId = transaction.id_wallet.ToString();
         EditTransaction.TransactionId = transaction.id_transaction.ToString();
         TransactionCheckInputField TransactionCheckInputField = EditTransactionScene.GetComponent<TransactionCheckInputField>();
         TransactionCheckInputField.Date.text = transaction.FormattedData_of_transaction;
-        if(transaction.type = "expense")
+        if (transaction.type == "expense")
         {
-
+            TransactionCheckInputField.Type.value = 1;
+            for (int i = 0; i < EditTransactionScene.GetComponent<categories>().categoriesObject.expense.Count; i++)
+            {
+                if (EditTransactionScene.GetComponent<categories>().categoriesObject.expense[i].id_category.ToString() == transaction.id_category)
+                {
+                    TransactionCheckInputField.Cattegory.value = i;
+                }
+            }
         }
-        TransactionCheckInputField.Type.value = transaction.type;
-        TransactionCheckInputField.Cattegory.value;
-        TransactionCheckInputField.Amount.text;
-        TransactionCheckInputField.Comment.text ;
-    }
-
-    public void EnterEdit()
-    {
-        EditTransactionScene.SetActive(true);
-        EditTransactionScene.GetComponent<EditTransaction>().WalletId = transaction.id_wallet.ToString();
-        EditTransactionScene.GetComponent<EditTransaction>().TransactionId = transaction.id_transaction.ToString();
-        EditTransactionScene.GetComponent<OnChangeOperationType>().OnEnterAdd();
-
+        else
+        {
+            TransactionCheckInputField.Type.value = 0;
+            for (int i = 0; i < EditTransactionScene.GetComponent<categories>().categoriesObject.income.Count; i++)
+            {
+                if (EditTransactionScene.GetComponent<categories>().categoriesObject.income[i].id_category.ToString() == transaction.id_category)
+                {
+                    TransactionCheckInputField.Cattegory.value = i;
+                }
+            }
+        }
+        TransactionCheckInputField.Amount.text = transaction.amount.ToString("0.00");
+        TransactionCheckInputField.Comment.text = transaction.comment;
     }
 }

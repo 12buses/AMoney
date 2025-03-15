@@ -50,17 +50,9 @@ public class LoadTransactionMenu : MonoBehaviour
     public void CategoryReqSuccess(string resultText)
     {
         Categories categories = JsonUtility.FromJson<Categories>(resultText);
-        foreach (var category in categories.expense)
-        {
-            category.name = category.name.ToString();
-        }
-
-        foreach (var category in categories.income)
-        {
-            category.name = category.name.ToString();
-        }
         CreateTransactionObject.GetComponent<categories>().categoriesObject = categories;
         TransactionEditMenu.GetComponent<categories>().categoriesObject = categories;
+        Debug.Log("Categories!!!!!!" + resultText);
     }
 
     public void CategoryReqUnsuccess()
