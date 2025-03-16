@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9773368771a31c49ab3ab9fd03b1fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeletePopUp: {fileID: 0}
   EditTransactionScene: {fileID: 0}
   MainTransactionMenu: {fileID: 0}
   transaction:
@@ -1165,7 +1166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.046674464, y: 0.19938534}
   m_AnchorMax: {x: 0.40751174, y: 0.52554137}
-  m_AnchoredPosition: {x: 0, y: -0.045215607}
+  m_AnchoredPosition: {x: 0, y: -0.045211792}
   m_SizeDelta: {x: 17.17691, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6699867752654571149
