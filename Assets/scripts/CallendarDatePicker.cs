@@ -21,7 +21,7 @@ public class CalendarDatePicker : MonoBehaviour
     private void OnDatePicked(int year, int month, int day)
     {
         string formattedDate = FormatAndValidateDate(day, month, year);
-
+        
         if (DateInputfield.text != formattedDate)
         {
             DateInputfield.text = formattedDate;
@@ -35,11 +35,11 @@ public class CalendarDatePicker : MonoBehaviour
         {
             // Собираем дату с ведущими нулями
             string dateStr = $"{day:00}-{month:00}-{year}";
-
+            
             // Проверка парсинга
-            if (!DateTime.TryParseExact(dateStr, "dd-MM-yyyy",
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
+            if (!DateTime.TryParseExact(dateStr, "dd-MM-yyyy", 
+                CultureInfo.InvariantCulture, 
+                DateTimeStyles.None, 
                 out DateTime parsedDate))
             {
                 return DateTime.Now.ToString("dd-MM-yyyy");
@@ -54,7 +54,7 @@ public class CalendarDatePicker : MonoBehaviour
             // Проверка валидности дня для месяца
             int daysInMonth = DateTime.DaysInMonth(year, month);
             day = Math.Clamp(day, 1, daysInMonth);
-
+            
             return $"{day:00}-{month:00}-{year}";
         }
         catch
@@ -83,7 +83,7 @@ public class CalendarDatePicker : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            canvasGroup.alpha = Mathf.Lerp(1f, targetAlpha, elapsed / duration);
+            canvasGroup.alpha = Mathf.Lerp(1f, targetAlpha, elapsed/duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -92,7 +92,7 @@ public class CalendarDatePicker : MonoBehaviour
         elapsed = 0f;
         while (elapsed < duration)
         {
-            canvasGroup.alpha = Mathf.Lerp(targetAlpha, 1f, elapsed / duration);
+            canvasGroup.alpha = Mathf.Lerp(targetAlpha, 1f, elapsed/duration);
             elapsed += Time.deltaTime;
             yield return null;
         }

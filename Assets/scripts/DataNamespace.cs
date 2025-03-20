@@ -1,9 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Windows;
 namespace DataNamespace
 {
     [System.Serializable]
@@ -111,6 +115,35 @@ namespace DataNamespace
     {
         public List<Category> expense;
         public List<Category> income;
+    }
+
+    [System.Serializable]
+    public class StatsLists
+    {
+        public List<Stats> ListExpense;
+        public List<Stats> ListIncome;
+        public void FormateName()
+        {
+            foreach (Stats stats in ListExpense)
+            {
+                stats.FormatedName = Regex.Replace(stats.name, @"\\u([0-9A-Fa-f]{4})", match =>
+                ((char)Int32.Parse(match.Groups[1].Value, NumberStyles.HexNumber)).ToString());
+            }
+
+            foreach (Stats stats in ListIncome)
+            {
+                stats.FormatedName = Regex.Replace(stats.name, @"\\u([0-9A-Fa-f]{4})", match =>
+                ((char)Int32.Parse(match.Groups[1].Value, NumberStyles.HexNumber)).ToString());
+            }
+        }
+    }
+
+    [System.Serializable]
+    public class Stats
+    {
+        public string name;
+        public float sum;
+        public string FormatedName;
     }
 
     public class Req : MonoBehaviour

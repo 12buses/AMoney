@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DataNamespace;
+using UnityEditor.PackageManager.Requests;
+using System.Linq;
 
 public class stats : MonoBehaviour
 {
     public GameObject ObjectWithWaletId;
+    public PieChart PieChartExpense;
+    public PieChart PieChartIncome;
 
     public string URL = "http://195.2.79.241:5000/api_app/statistics";
 
@@ -17,21 +21,11 @@ public class stats : MonoBehaviour
         public int id_wallet;
     }
 
-    [SerializeField]
-    public class CattegoryStat
+    public void Start()
     {
-        public string name;
-        public string sum;
+        GetStat();
     }
-
-    [SerializeField]
-    public class Root
-    {
-        public List<CattegoryStat> ListIncome;
-        public List<CattegoryStat> ListExpense;
-    }
-
-    private void Start()
+    private void OnEnable()
     {
         GetStat();
     }
@@ -47,7 +41,17 @@ public class stats : MonoBehaviour
 
     void GetStatSucseed(string result)
     {
-        
+        StatsLists statsLists = JsonUtility.FromJson<StatsLists>(result);
+        statsLists.FormateName();
+        PieChartExpense.testCategories = null;
+        PieChartExpense.testCategories = statsLists.ListExpense.Select(stat => stat.FormatedName).ToArray();
+        PieChartExpense.testValues = statsLists.ListExpense.Select(stat => stat.sum).ToArray();
+        PieChartExpense.Restart();
+
+        //PieChartIncome.testCategories = null;
+        //PieChartIncome.testCategories = statsLists.ListExpense.Select(stat => stat.FormatedName).ToArray();
+        //PieChartIncome.testValues = statsLists.ListExpense.Select(stat => stat.sum).ToArray();
+        //PieChartIncome.Restart();
     }
 
     void GetStatUnsucseed()

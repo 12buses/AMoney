@@ -30,6 +30,13 @@ public class PieChart : MonoBehaviour
         CreateLegend();
     }
 
+    public void Restart()
+    {
+        InitializeCategoryVisibility();
+        CreatePieChart();
+        CreateLegend();
+    }
+
     private void InitializeCategoryVisibility()
     {
         categoryVisibility.Clear();
@@ -60,6 +67,8 @@ public class PieChart : MonoBehaviour
         }
         createdSegments.Clear();
 
+        percentage = new float[testValues.Length];
+
         // Вычисляем общий объем
         float totalValue = 0f;
         for (int i = 0; i < testValues.Length; i++)
@@ -69,26 +78,22 @@ public class PieChart : MonoBehaviour
                 totalValue += testValues[i];
             }
         }
-
         if (totalValue == 0) return;
 
         float currentFill = 0f;
         for (int i = 0; i < testValues.Length; i++)
         {
             if (!categoryVisibility[testCategories[i]]) continue;
-
             // Создаем сегмент
             GameObject newSegment = Instantiate(segmentPrefab, transform);
             newSegment.name = testCategories[i];
             Image segmentImage = newSegment.GetComponent<Image>();
             createdSegments.Add(segmentImage);
-
             percentage[i] = testValues[i] / totalValue;
             segmentImage.type = Image.Type.Filled;
             segmentImage.fillMethod = Image.FillMethod.Radial360;
             segmentImage.fillAmount = percentage[i];
             segmentImage.color = colors[i % colors.Length];
-
             // Поворачиваем сегмент
             newSegment.transform.rotation = Quaternion.Euler(0, 0, -currentFill * 360f);
             currentFill += percentage[i];
@@ -110,7 +115,6 @@ public class PieChart : MonoBehaviour
             legend.Initialize(this, testCategories[i], colors[i % colors.Length], testValues[i], percentage[i]);
             legendItems.Add(legend);
         }
-
         UpdateLegendColors();
     }
 

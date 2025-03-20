@@ -439,8 +439,6 @@ RectTransform:
   m_Children:
   - {fileID: 98746442}
   - {fileID: 1199608946}
-  - {fileID: 334443856}
-  - {fileID: 1102404827}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4503,16 +4501,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334443855}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -197.50616}
+  m_LocalScale: {x: 0.0020768782, y: 0.0020768782, z: 0.0020768782}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 43168113}
+  m_Father: {fileID: 369165713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.060669, y: -2.2628043}
   m_SizeDelta: {x: 1000, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &334443857
@@ -4654,6 +4652,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365756678}
   m_CullTransparentMesh: 1
+--- !u!1 &369165712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369165713}
+  m_Layer: 0
+  m_Name: piechartExpense
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &369165713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369165712}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.613521, y: 2.2628043, z: 287.50616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 334443856}
+  - {fileID: 1102404827}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &376216241
 GameObject:
   m_ObjectHideFlags: 0
@@ -13740,6 +13771,7 @@ GameObject:
   - component: {fileID: 1061149653}
   - component: {fileID: 1061149652}
   - component: {fileID: 1061149654}
+  - component: {fileID: 1061149655}
   m_Layer: 5
   m_Name: TranasactionMenu
   m_TagString: Untagged
@@ -13842,6 +13874,22 @@ MonoBehaviour:
   WholeIncome: {fileID: 2067462090}
   WholeExpense: {fileID: 1206762739}
   Balance: {fileID: 1300380210}
+--- !u!114 &1061149655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061149650}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a37c0dd6bda51547b5af4678451ca58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectWithWaletId: {fileID: 1061149650}
+  PieChartExpense: {fileID: 1102404828}
+  PieChartIncome: {fileID: 0}
+  URL: http://195.2.79.241:5000/api_app/statistics
 --- !u!1 &1063576702
 GameObject:
   m_ObjectHideFlags: 0
@@ -14411,16 +14459,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102404826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -197.50616}
+  m_LocalScale: {x: 0.0052057304, y: 0.0052057304, z: 0.0052057304}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 43168113}
+  m_Father: {fileID: 369165713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 550}
+  m_AnchoredPosition: {x: 1.060669, y: 0.6003418}
   m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1102404828
@@ -14437,10 +14485,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 8518030939737482873, guid: d9fd5337ea115a843a301c355d8de77d, type: 3}
   colors:
-  - {r: 1, g: 0.13348551, b: 0, a: 1}
-  - {r: 0, g: 0.11260939, b: 1, a: 1}
-  - {r: 0.0048570633, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.99906826, b: 0, a: 1}
+  - {r: 0.4056604, g: 0.19173193, b: 0.15881987, a: 1}
+  - {r: 0.18934675, g: 0.20931047, b: 0.3490566, a: 1}
+  - {r: 0.2634725, g: 0.4528302, b: 0.26272696, a: 1}
+  - {r: 0.17030083, g: 0.4056604, b: 0.36872077, a: 1}
+  - {r: 0.3679245, g: 0.22387859, b: 0.3545395, a: 1}
+  - {r: 0.25845498, g: 0.33169612, b: 0.4528302, a: 1}
+  - {r: 0.2735849, g: 0.12517801, b: 0.12517801, a: 1}
+  - {r: 0.13305448, g: 0.4339623, b: 0.3193098, a: 1}
   legendContainer: {fileID: 334443856}
   legendItemPrefab: {fileID: 843161125561842560, guid: f8960449f85082846aa2d87850f1a5f0, type: 3}
   textColor: {r: 0, g: 0, b: 0, a: 1}
@@ -19551,7 +19603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DateInputfield: {fileID: 2751295774552257580}
-  transactionCheckInputField: {fileID: 7069750549739899222}
+  canvasGroup: {fileID: 0}
 --- !u!114 &1555549627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22894,7 +22946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1750493860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23033,7 +23085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1755403130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24460,7 +24512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DateInputfield: {fileID: 1873516979}
-  transactionCheckInputField: {fileID: 1750493861}
+  canvasGroup: {fileID: 0}
 --- !u!114 &1861964697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34204,3 +34256,4 @@ SceneRoots:
   - {fileID: 2126401157}
   - {fileID: 227699912}
   - {fileID: 43168113}
+  - {fileID: 369165713}
