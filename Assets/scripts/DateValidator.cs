@@ -1,65 +1,82 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Globalization;
 
 public class DateValidator : MonoBehaviour
 {
     public TMP_InputField inputField;
+
     void Start()
     {
-        // Назначаем валидатор
         inputField.onValidateInput += ValidateInput;
     }
 
     private char ValidateInput(string text, int charIndex, char addedChar)
     {
-        // Разрешаем вводить цифры, точки и символы управления (например, Backspace)
         if (char.IsDigit(addedChar) || addedChar == '-' || addedChar == '\b')
         {
-            // Проверяем, соответствует ли текущий текст формату "день.месяц.год"
-            string[] parts = text.Split('-');
-            if (parts.Length > 3)
+            string newText = text.Insert(charIndex, addedChar.ToString());
+            if (addedChar == '\b' && charIndex > 0)
             {
-                return '\0'; // Запрещаем ввод, если уже 3 части
+                newText = text.Remove(charIndex - 1, 1);
             }
 
-            // Проверяем, что каждая часть не превышает допустимую длину
-            if (parts.Length == 1 && parts[0].Length >= 2 && addedChar != '-') // День
+            string[] parts = newText.Split('-');
+
+            // Запрет более 3 частей
+            if (parts.Length > 3) return '\0';
+
+            // Проверка дефисов
+            if (addedChar == '-')
             {
-                return '\0'; // Запрещаем ввод, если длина дня превышает 2
-            }
-            else if (parts.Length == 2 && parts[1].Length >= 2 && addedChar != '-') // Месяц
-            {
-                return '\0'; // Запрещаем ввод, если длина месяца превышает 2
-            }
-            else if (parts.Length == 3 && parts[2].Length >= 4 && addedChar != '-') // Год
-            {
-                return '\0'; // Запрещаем ввод, если длина года превышает 4
+                // Дефис не может быть первым или повторяться
+                if (charIndex == 0 || text.EndsWith("-")) return '\0';
+
+                // Проверка длины предыдущей части
+                string currentPart = parts[parts.Length - 2];
+                if (currentPart.Length != 2) return '\0';
             }
 
-            // Если вводится точка, проверяем, что она не вводится подряд
-            if (addedChar == '-' && (text.EndsWith(".") || text.Length == 0))
+            // Проверка длины и значений частей
+            for (int i = 0; i < parts.Length; i++)
             {
-                return '\0'; // Запрещаем ввод точки
-            }
+                if (i == 0 && parts[i].Length > 2) return '\0'; // День
+                if (i == 1 && parts[i].Length > 2) return '\0'; // Месяц
+                if (i == 2 && parts[i].Length > 4) return '\0'; // Год
 
-            // Проверка на корректность даты
-            if (parts.Length == 3 && parts[0].Length == 2 && parts[1].Length == 2 && parts[2].Length == 4)
-            {
-                string dateString = $"{parts[0]}.{parts[1]}.{parts[2]}";
-                if (DateTime.TryParse(dateString, out DateTime date))
+                // Проверка числовых значений
+                if (parts[i].Length > 0 && !int.TryParse(parts[i], out int num)) return '\0';
+
+                // Проверка диапазонов
+                if (i == 0 && parts[i].Length == 2) // День
                 {
-                    // Проверяем, что дата не из будущего
-                    if (date > DateTime.Now)
-                    {
-                        return '\0'; // Запрещаем ввод, если дата из будущего
-                    }
+                    int day = int.Parse(parts[i]);
+                    if (day < 1 || day > 31) return '\0';
+                }
+                if (i == 1 && parts[i].Length == 2) // Месяц
+                {
+                    int month = int.Parse(parts[i]);
+                    if (month < 1 || month > 12) return '\0';
                 }
             }
 
-            
-            return addedChar; // Разрешаем ввод
+            // Проверка полной даты
+            if (parts.Length == 3 && parts[2].Length == 4)
+            {
+                if (!DateTime.TryParseExact(
+                    $"{parts[0]}-{parts[1]}-{parts[2]}",
+                    "dd-MM-yyyy",
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None,
+                    out DateTime date) || date > DateTime.Now)
+                {
+                    return '\0';
+                }
+            }
+
+            return addedChar;
         }
-        return '\0'; // Запрещаем ввод других символов
+        return '\0';
     }
 }
