@@ -1,4 +1,4 @@
-Library: D:\unity\projects\AMoney\Temp\BurstOutput\tempburstlibs\x86_64\lib_burst_generated
+Library: E:\unity projects\AMoney\Temp\BurstOutput\tempburstlibs\x86_64\lib_burst_generated
 --platform=Android
 --backend=burst-llvm-16
 --target=X64_SSE4
@@ -8,10 +8,10 @@ Library: D:\unity\projects\AMoney\Temp\BurstOutput\tempburstlibs\x86_64\lib_burs
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=D:\unity\projects\AMoney\Temp\Burst
---key-folder=D:/unity/2022.3.49f1/Editor/Data/PlaybackEngines/AndroidPlayer
---decode-folder=D:\unity\projects\AMoney\Library\Burst
---output=D:\unity\projects\AMoney\Temp\BurstOutput\tempburstlibs\x86_64\lib_burst_generated
+--temp-folder=E:\unity projects\AMoney\Temp\Burst
+--key-folder=F:/2022.3.49f1/Editor/Data/PlaybackEngines/AndroidPlayer
+--decode-folder=E:\unity projects\AMoney\Library\Burst
+--output=E:\unity projects\AMoney\Temp\BurstOutput\tempburstlibs\x86_64\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
