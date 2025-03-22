@@ -62,9 +62,9 @@ public class WalletListItem : MonoBehaviour
     public void EnterTransactions()
     {
         Login.text = NameString;
-        TransactionMenu.SetActive(true);
-        MainMenu.SetActive(false);
         TransactionMenu.GetComponent<LoadTransactionMenu>().WalletIdd = WalletId;
+        TransactionMenu.SetActive(true);
         TransactionMenu.GetComponent<LoadTransactionMenu>().Reload();
+        MainMenu.SetActive(false);
     }
 }

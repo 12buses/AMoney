@@ -21,14 +21,11 @@ public class stats : MonoBehaviour
         public int id_wallet;
     }
 
-    public void Start()
-    {
-        GetStat();
-    }
     private void OnEnable()
     {
         GetStat();
     }
+
     public void GetStat()
     {
         WalletId = ObjectWithWaletId.GetComponent<LoadTransactionMenu>().WalletIdd;
@@ -48,10 +45,10 @@ public class stats : MonoBehaviour
         PieChartExpense.testValues = statsLists.ListExpense.Select(stat => stat.sum).ToArray();
         PieChartExpense.Restart();
 
-        //PieChartIncome.testCategories = null;
-        //PieChartIncome.testCategories = statsLists.ListExpense.Select(stat => stat.FormatedName).ToArray();
-        //PieChartIncome.testValues = statsLists.ListExpense.Select(stat => stat.sum).ToArray();
-        //PieChartIncome.Restart();
+        PieChartIncome.testCategories = null;
+        PieChartIncome.testCategories = statsLists.ListIncome.Select(stat => stat.FormatedName).ToArray();
+        PieChartIncome.testValues = statsLists.ListIncome.Select(stat => stat.sum).ToArray();
+        PieChartIncome.Restart();
     }
 
     void GetStatUnsucseed()
