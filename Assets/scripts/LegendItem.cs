@@ -20,7 +20,7 @@ public class LegendItem : MonoBehaviour
         CategoryName = category;
         categoryText.text = category;
         valueText.text = value.ToString("0.00");  // Отображаем значение рядом с категорией
-        percentageText.text = percentage.ToString("0.00") + "%";
+        percentageText.text = (percentage * 100).ToString("0.00") + "%";
         originalColor = color;
         colorBox.color = color;
 

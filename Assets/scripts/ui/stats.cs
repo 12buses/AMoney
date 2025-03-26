@@ -14,7 +14,7 @@ public class stats : MonoBehaviour
     public string URL = "http://195.2.79.241:5000/api_app/statistics";
 
     private int WalletId;
-    public Color[] colors;
+    [SerializeField] private Color[] colors;
     private Dictionary<string, Color> TransactionsColors;
 
     [SerializeField]
@@ -49,33 +49,53 @@ public class stats : MonoBehaviour
         string j = JsonUtility.ToJson(myClass);
         Req req = gameObject.AddComponent<Req>();
         req.PostReq(j, URL, result => GetStatSucseed(result), error => GetStatUnsucseed());
+
     }
 
     void GetStatSucseed(string result)
     {
-        PieChartExpense.colors = new Color[6];
         StatsLists statsLists = JsonUtility.FromJson<StatsLists>(result);
         statsLists.FormateName();
-        PieChartExpense.testCategories = null;
+
         PieChartExpense.testCategories = statsLists.ListExpense.Select(stat => stat.FormatedName).ToArray();
         PieChartExpense.testValues = statsLists.ListExpense.Select(stat => stat.sum).ToArray();
-        foreach(var cat in PieChartExpense.testCategories)
+        List<Color> expenseColors = new List<Color>();
+        foreach (var cat in PieChartExpense.testCategories)
         {
-            Color value;
-            TransactionsColors.TryGetValue(cat, out value);
-            //PieChartExpense.color;
+            if (TransactionsColors.TryGetValue(cat, out Color color))
+            {
+                expenseColors.Add(color);
+            }
+            else
+            {
+                expenseColors.Add(Color.gray);
+            }
         }
+        PieChartExpense.colors = expenseColors.ToArray();
         PieChartExpense.Restart();
-        
 
-        PieChartIncome.testCategories = null;
+        // Handle Income Pie Chart
         PieChartIncome.testCategories = statsLists.ListIncome.Select(stat => stat.FormatedName).ToArray();
         PieChartIncome.testValues = statsLists.ListIncome.Select(stat => stat.sum).ToArray();
+        List<Color> incomeColors = new List<Color>();
+        foreach (var cat in PieChartIncome.testCategories)
+        {
+            if (TransactionsColors.TryGetValue(cat, out Color color))
+            {
+                incomeColors.Add(color);
+            }
+            else
+            {
+                incomeColors.Add(Color.gray);
+            }
+        }
+        PieChartIncome.colors = incomeColors.ToArray();
         PieChartIncome.Restart();
+        Destroy(GetComponent<Req>());
     }
 
     void GetStatUnsucseed()
     {
-
+        Destroy(GetComponent<Req>());
     }
 }

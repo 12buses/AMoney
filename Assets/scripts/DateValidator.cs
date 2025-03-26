@@ -1,82 +1,86 @@
+using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using TMPro;
-using System;
-using System.Globalization;
+using Unity.Mathematics;
 
 public class DateValidator : MonoBehaviour
 {
-    public TMP_InputField inputField;
+    public TMP_InputField dateInput;
 
-    void Start()
+    private void Start()
     {
-        inputField.onValidateInput += ValidateInput;
+        dateInput = GetComponent<TMP_InputField>();
+
+        dateInput.onValueChanged.AddListener(FormatInput);
+        dateInput.onEndEdit.AddListener(ValidateDateOnEndEdit);
     }
 
-    private char ValidateInput(string text, int charIndex, char addedChar)
+    private void FormatInput(string input)
     {
-        if (char.IsDigit(addedChar) || addedChar == '-' || addedChar == '\b')
+        string cleaned = Regex.Replace(input, "[^0-9]", ""); // Оставляем только цифры
+
+        if (cleaned.Length > 2) cleaned = cleaned.Insert(2, "-");
+        if (cleaned.Length > 5) cleaned = cleaned.Insert(5, "-");
+
+        if (cleaned.Length > 10) cleaned = cleaned.Substring(0, 10); // Ограничение на 10 символов
+
+        dateInput.text = cleaned;
+
+        Invoke(nameof(UpdateCaretPosition), Time.deltaTime / 100);
+    }
+
+    private void UpdateCaretPosition()
+    {
+        dateInput.caretPosition = dateInput.text.Length;
+    }
+
+    private bool IsValidDate(string date)
+    {
+        string[] parts = date.Split('-');
+        if (parts.Length != 3 || parts[2].Length < 4) return false; // Год должен быть 4-значным
+
+        if (!int.TryParse(parts[0], out int day) ||
+            !int.TryParse(parts[1], out int month) ||
+            !int.TryParse(parts[2], out int year)) return false;
+
+        if (year < 1900 || year > DateTime.Now.Year) return false; // Год в адекватном диапазоне
+        if (month < 1 || month > 12) return false;
+        if (day < 1 || day > DateTime.DaysInMonth(year, month)) return false;
+
+        return true;
+    }
+
+    private void ValidateDateOnEndEdit(string input)
+    {
+        if (string.IsNullOrEmpty(input) || !IsValidDate(input))
         {
-            string newText = text.Insert(charIndex, addedChar.ToString());
-            if (addedChar == '\b' && charIndex > 0)
-            {
-                newText = text.Remove(charIndex - 1, 1);
-            }
-
-            string[] parts = newText.Split('-');
-
-            // Запрет более 3 частей
-            if (parts.Length > 3) return '\0';
-
-            // Проверка дефисов
-            if (addedChar == '-')
-            {
-                // Дефис не может быть первым или повторяться
-                if (charIndex == 0 || text.EndsWith("-")) return '\0';
-
-                // Проверка длины предыдущей части
-                string currentPart = parts[parts.Length - 2];
-                if (currentPart.Length != 2) return '\0';
-            }
-
-            // Проверка длины и значений частей
-            for (int i = 0; i < parts.Length; i++)
-            {
-                if (i == 0 && parts[i].Length > 2) return '\0'; // День
-                if (i == 1 && parts[i].Length > 2) return '\0'; // Месяц
-                if (i == 2 && parts[i].Length > 4) return '\0'; // Год
-
-                // Проверка числовых значений
-                if (parts[i].Length > 0 && !int.TryParse(parts[i], out int num)) return '\0';
-
-                // Проверка диапазонов
-                if (i == 0 && parts[i].Length == 2) // День
-                {
-                    int day = int.Parse(parts[i]);
-                    if (day < 1 || day > 31) return '\0';
-                }
-                if (i == 1 && parts[i].Length == 2) // Месяц
-                {
-                    int month = int.Parse(parts[i]);
-                    if (month < 1 || month > 12) return '\0';
-                }
-            }
-
-            // Проверка полной даты
-            if (parts.Length == 3 && parts[2].Length == 4)
-            {
-                if (!DateTime.TryParseExact(
-                    $"{parts[0]}-{parts[1]}-{parts[2]}",
-                    "dd-MM-yyyy",
-                    CultureInfo.InvariantCulture,
-                    DateTimeStyles.None,
-                    out DateTime date) || date > DateTime.Now)
-                {
-                    return '\0';
-                }
-            }
-
-            return addedChar;
+            ResetToToday();
         }
-        return '\0';
+    }
+
+    public DateTime GetValidatedDate()
+    {
+        if (string.IsNullOrEmpty(dateInput.text) || !IsValidDate(dateInput.text))
+        {
+            ResetToToday();
+        }
+
+        return DateTime.ParseExact(dateInput.text, "dd.MM.yyyy", null);
+    }
+
+    public string GetValidatedDateStr()
+    {
+        if (string.IsNullOrEmpty(dateInput.text) || !IsValidDate(dateInput.text))
+        {
+            ResetToToday();
+        }
+
+        return dateInput.text;
+    }
+
+    private void ResetToToday()
+    {
+        dateInput.text = DateTime.Now.ToString("dd.MM.yyyy");
     }
 }

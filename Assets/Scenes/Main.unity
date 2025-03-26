@@ -13978,10 +13978,10 @@ MonoBehaviour:
   PieChartIncome: {fileID: 262777690}
   URL: http://195.2.79.241:5000/api_app/statistics
   colors:
-  - {r: 0.92156863, g: 0.4862745, b: 0.34901962, a: 0}
-  - {r: 0.32156864, g: 0.40784314, b: 0.654902, a: 0}
-  - {r: 0.92941177, g: 0.6862745, b: 0.019607844, a: 0}
-  - {r: 0.5921569, g: 0.2784314, b: 1, a: 0}
+  - {r: 0.92156863, g: 0.4862745, b: 0.34901962, a: 1}
+  - {r: 0.32156864, g: 0.40784314, b: 0.654902, a: 1}
+  - {r: 0.92941177, g: 0.6862745, b: 0.019607844, a: 1}
+  - {r: 0.5921569, g: 0.2784314, b: 1, a: 1}
   - {r: 0.32156864, g: 0.8509804, b: 0.2509804, a: 1}
   - {r: 0.40392157, g: 0.6392157, b: 0.99607843, a: 1}
 --- !u!1 &1063576702
@@ -24909,7 +24909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34ebd2009e2ba428f7d3de13d8cea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 1873516979}
+  dateInput: {fileID: 1873516979}
 --- !u!114 &1873516979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24958,44 +24958,20 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 9
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 8
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1750493861}
-        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
-        m_MethodName: OnDateEndEdit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1750493861}
-        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
-        m_MethodName: DateAutoAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -25013,19 +24989,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1750493861}
-        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
-        m_MethodName: DateAutoAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -30288,44 +30252,20 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 9
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 2
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 8
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7069750549739899222}
-        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
-        m_MethodName: DateAutoAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7069750549739899222}
-        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
-        m_MethodName: OnDateEndEdit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -30343,19 +30283,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7069750549739899222}
-        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
-        m_MethodName: DateAutoAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -33391,7 +33319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34ebd2009e2ba428f7d3de13d8cea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField: {fileID: 2751295774552257580}
+  dateInput: {fileID: 2751295774552257580}
 --- !u!225 &7179940374929593358
 CanvasGroup:
   m_ObjectHideFlags: 0
