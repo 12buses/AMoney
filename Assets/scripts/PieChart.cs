@@ -6,7 +6,6 @@ using TMPro;  // Для использования TextMeshPro
 public class PieChart : MonoBehaviour
 {
     [SerializeField] private GameObject segmentPrefab;
-    [SerializeField] private Color[] colors;
     [SerializeField] private Transform legendContainer;
     [SerializeField] private GameObject legendItemPrefab;
 
@@ -18,6 +17,7 @@ public class PieChart : MonoBehaviour
     private List<Image> createdSegments = new List<Image>();
     private Dictionary<string, bool> categoryVisibility = new Dictionary<string, bool>();
     private List<LegendItem> legendItems = new List<LegendItem>();
+    [SerializeField] public Color[] colors;
 
     public string[] testCategories;
     public float[] testValues;

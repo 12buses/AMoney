@@ -3458,6 +3458,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 8518030939737482873, guid: d9fd5337ea115a843a301c355d8de77d, type: 3}
+  legendContainer: {fileID: 1916669365}
+  legendItemPrefab: {fileID: 843161125561842560, guid: f8960449f85082846aa2d87850f1a5f0, type: 3}
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  textFontSize: 24
+  textRadius: 120
   colors:
   - {r: 0.4056604, g: 0.19173193, b: 0.15881987, a: 1}
   - {r: 0.18934675, g: 0.20931047, b: 0.3490566, a: 1}
@@ -3467,11 +3472,6 @@ MonoBehaviour:
   - {r: 0.25845498, g: 0.33169612, b: 0.4528302, a: 1}
   - {r: 0.2735849, g: 0.12517801, b: 0.12517801, a: 1}
   - {r: 0.13305448, g: 0.4339623, b: 0.3193098, a: 1}
-  legendContainer: {fileID: 1916669365}
-  legendItemPrefab: {fileID: 843161125561842560, guid: f8960449f85082846aa2d87850f1a5f0, type: 3}
-  textColor: {r: 0, g: 0, b: 0, a: 1}
-  textFontSize: 24
-  textRadius: 120
   testCategories:
   - asdf
   - klj
@@ -12485,7 +12485,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984088820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &984088820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13965,6 +13977,13 @@ MonoBehaviour:
   PieChartExpense: {fileID: 1102404828}
   PieChartIncome: {fileID: 262777690}
   URL: http://195.2.79.241:5000/api_app/statistics
+  colors:
+  - {r: 0.92156863, g: 0.4862745, b: 0.34901962, a: 0}
+  - {r: 0.32156864, g: 0.40784314, b: 0.654902, a: 0}
+  - {r: 0.92941177, g: 0.6862745, b: 0.019607844, a: 0}
+  - {r: 0.5921569, g: 0.2784314, b: 1, a: 0}
+  - {r: 0.32156864, g: 0.8509804, b: 0.2509804, a: 1}
+  - {r: 0.40392157, g: 0.6392157, b: 0.99607843, a: 1}
 --- !u!1 &1063576702
 GameObject:
   m_ObjectHideFlags: 0
@@ -14559,6 +14578,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 8518030939737482873, guid: d9fd5337ea115a843a301c355d8de77d, type: 3}
+  legendContainer: {fileID: 334443856}
+  legendItemPrefab: {fileID: 843161125561842560, guid: f8960449f85082846aa2d87850f1a5f0, type: 3}
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  textFontSize: 24
+  textRadius: 120
   colors:
   - {r: 0.4056604, g: 0.19173193, b: 0.15881987, a: 1}
   - {r: 0.18934675, g: 0.20931047, b: 0.3490566, a: 1}
@@ -14568,11 +14592,6 @@ MonoBehaviour:
   - {r: 0.25845498, g: 0.33169612, b: 0.4528302, a: 1}
   - {r: 0.2735849, g: 0.12517801, b: 0.12517801, a: 1}
   - {r: 0.13305448, g: 0.4339623, b: 0.3193098, a: 1}
-  legendContainer: {fileID: 334443856}
-  legendItemPrefab: {fileID: 843161125561842560, guid: f8960449f85082846aa2d87850f1a5f0, type: 3}
-  textColor: {r: 0, g: 0, b: 0, a: 1}
-  textFontSize: 24
-  textRadius: 120
   testCategories:
   - asdf
   - klj
@@ -16049,6 +16068,7 @@ GameObject:
   - component: {fileID: 1257067072}
   - component: {fileID: 1257067074}
   - component: {fileID: 1257067073}
+  - component: {fileID: 1257067075}
   m_Layer: 5
   m_Name: delete
   m_TagString: Untagged
@@ -16114,6 +16134,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257067071}
   m_CullTransparentMesh: 1
+--- !u!114 &1257067075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257067071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3087b9a71ed7e6443b5e0882140b6260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 984088819}
 --- !u!1 &1279080011
 GameObject:
   m_ObjectHideFlags: 0

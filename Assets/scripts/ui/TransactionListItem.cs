@@ -4,6 +4,7 @@ using UnityEngine;
 using DataNamespace;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class TransactionListItem : MonoBehaviour
 {
@@ -19,12 +20,18 @@ public class TransactionListItem : MonoBehaviour
     public TMP_Text Amount;
     public TMP_Text Date;
     public TMP_Text Comment;
-
+    public Button deleteButton;
     [System.Serializable]
     public class Root
     {
         public int id_wallet;
         public int id_transaction;
+    }
+
+    public void ShowDeletePopUp()
+    {
+        DeletePopUp.SetActive(true);
+        DeletePopUp.GetComponent<deleteButton>().button.onClick.AddListener(OnDeleteButtonClicked);
     }
 
     public void OnDeleteButtonClicked()

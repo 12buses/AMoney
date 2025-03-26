@@ -60,8 +60,11 @@ public class LoadTransactionMenu : MonoBehaviour
 
     public void TransactinDataReqOnSuccess(string resultText)
     {
+        Debug.Log($"answer: {resultText}");
         transactionsDataOBJ transactionsDataOBJ = JsonUtility.FromJson<transactionsDataOBJ>(resultText);
         Balance.text = "Твой баланс: " + transactionsDataOBJ.balance.ToString("0.00");
+        WholeExpense.text = transactionsDataOBJ.expense.ToString("0.00");
+        WholeIncome.text = transactionsDataOBJ.income.ToString("0.00");
         if (transactionsDataOBJ.page0.Count > 0)
         {
             IfCountTransactionMoreThan0();
@@ -69,8 +72,9 @@ public class LoadTransactionMenu : MonoBehaviour
 
         void IfCountTransactionMoreThan0()
         {
-            WholeExpense.text = transactionsDataOBJ.expense.ToString("0.00");
-            WholeIncome.text = transactionsDataOBJ.income.ToString("0.00");
+#if true
+
+#endif
             Debug.Log(transactionsDataOBJ.income);
 
             transactionsDataOBJ.ConvertSecondsToDate();

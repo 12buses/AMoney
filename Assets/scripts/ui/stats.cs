@@ -14,11 +14,26 @@ public class stats : MonoBehaviour
     public string URL = "http://195.2.79.241:5000/api_app/statistics";
 
     private int WalletId;
+    public Color[] colors;
+    private Dictionary<string, Color> TransactionsColors;
 
     [SerializeField]
     class MyClass
     {
         public int id_wallet;
+    }
+
+    private void Start()
+    {
+        TransactionsColors = new Dictionary<string, Color>() 
+        {
+            {"Развлечения", colors[0]},
+            {"Магазин", colors[1]},
+            {"Еда", colors[2]},
+            {"Другое", colors[3]},
+            {"Зарплата", colors[4]},
+            {"Пополнение кошелька", colors[5]}
+        };
     }
 
     private void OnEnable()
@@ -38,12 +53,20 @@ public class stats : MonoBehaviour
 
     void GetStatSucseed(string result)
     {
+        PieChartExpense.colors = new Color[6];
         StatsLists statsLists = JsonUtility.FromJson<StatsLists>(result);
         statsLists.FormateName();
         PieChartExpense.testCategories = null;
         PieChartExpense.testCategories = statsLists.ListExpense.Select(stat => stat.FormatedName).ToArray();
         PieChartExpense.testValues = statsLists.ListExpense.Select(stat => stat.sum).ToArray();
+        foreach(var cat in PieChartExpense.testCategories)
+        {
+            Color value;
+            TransactionsColors.TryGetValue(cat, out value);
+            //PieChartExpense.color;
+        }
         PieChartExpense.Restart();
+        
 
         PieChartIncome.testCategories = null;
         PieChartIncome.testCategories = statsLists.ListIncome.Select(stat => stat.FormatedName).ToArray();
