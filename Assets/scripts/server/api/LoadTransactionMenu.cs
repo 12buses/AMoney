@@ -108,7 +108,10 @@ public class LoadTransactionMenu : MonoBehaviour
 
                 item.GetComponent<TransactionListItem>().Amount.text = AmountText;
                 item.GetComponent<TransactionListItem>().DeletePopUp = DeletePopUp;
-                item.GetComponent<TransactionListItem>().Comment.text = current_transaction.comment;
+                string FormatedComment = current_transaction.comment;
+                if(FormatedComment.Length > 12) { FormatedComment = FormatedComment.Remove(12); FormatedComment = FormatedComment + "..."; item.GetComponent<TransactionListItem>().FullCommentPopUp.SetActive(true); }
+                item.GetComponent<TransactionListItem>().Comment.text = FormatedComment;
+                item.GetComponent<TransactionListItem>().PopUpComentText.text = current_transaction.comment;
                 item.GetComponent<TransactionListItem>().Date.text = current_transaction.FormattedData_of_transaction;
             }
         }

@@ -20,6 +20,8 @@ public class TransactionListItem : MonoBehaviour
     public TMP_Text Amount;
     public TMP_Text Date;
     public TMP_Text Comment;
+    public TMP_Text PopUpComentText;
+    public GameObject FullCommentPopUp;
     public Button deleteButton;
     [System.Serializable]
     public class Root
