@@ -20,8 +20,9 @@ public class TransactionListItem : MonoBehaviour
     public TMP_Text Amount;
     public TMP_Text Date;
     public TMP_Text Comment;
-    public TMP_Text PopUpComentText;
+    public TMP_Text FullComment;
     public GameObject FullCommentPopUp;
+    public GameObject FullCommentButton;
     public Button deleteButton;
     [System.Serializable]
     public class Root
@@ -33,7 +34,8 @@ public class TransactionListItem : MonoBehaviour
     public void ShowDeletePopUp()
     {
         DeletePopUp.SetActive(true);
-        DeletePopUp.GetComponent<deleteButton>().button.onClick.AddListener(OnDeleteButtonClicked);
+        deleteButton = DeletePopUp.GetComponent<deleteButton>().button;
+        deleteButton.onClick.AddListener(OnDeleteButtonClicked);
     }
 
     public void OnDeleteButtonClicked()
@@ -49,7 +51,7 @@ public class TransactionListItem : MonoBehaviour
     public void reqSuccess()
     {
         MainTransactionMenu.Reload();
-        DeletePopUp.SetActive(true);
+        deleteButton.onClick.RemoveListener(OnDeleteButtonClicked);
     }
 
     public void reqUnsuccess()
@@ -102,5 +104,11 @@ public class TransactionListItem : MonoBehaviour
         }
         TransactionCheckInputField.Amount.text = transaction.amount.ToString("0.00");
         TransactionCheckInputField.Comment.text = transaction.comment;
+    }
+
+    public void ShowFullComment()
+    {
+        FullComment.text = transaction.comment;
+        FullCommentPopUp.SetActive(true);
     }
 }

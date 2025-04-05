@@ -5,6 +5,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class LoadTransactionMenu : MonoBehaviour
 {
@@ -18,13 +19,14 @@ public class LoadTransactionMenu : MonoBehaviour
 	public GameObject content;// Объект, содержащий элементы списка
     public GameObject TransactionEditMenu;
     public GameObject DeletePopUp;
-	public GameObject CreateTransactionButton;
+    public GameObject CreateTransactionButton;
     public GameObject LokingForTransactionIcon;
-
+    public GameObject FullCommentPopUp;
 
     public TMP_Text WholeIncome;
 	public TMP_Text WholeExpense;
     public TMP_Text Balance;
+    public TMP_Text FullCommentText;
 
 	public class WalletId
 	{
@@ -112,13 +114,14 @@ public class LoadTransactionMenu : MonoBehaviour
                 item.GetComponent<TransactionListItem>().Amount.text = AmountText;
                 item.GetComponent<TransactionListItem>().DeletePopUp = DeletePopUp;
                 string FormatedComment = current_transaction.comment;
-                if(FormatedComment.Length > 12) { FormatedComment = FormatedComment.Remove(12); FormatedComment = FormatedComment + "..."; item.GetComponent<TransactionListItem>().FullCommentPopUp.SetActive(true); }
+                if (FormatedComment.Length > 12) { FormatedComment = FormatedComment.Remove(12); FormatedComment = FormatedComment + "..."; item.GetComponent<TransactionListItem>().FullCommentButton.SetActive(true); }
+                else { item.GetComponent<TransactionListItem>().FullCommentButton.SetActive(false); }
                 item.GetComponent<TransactionListItem>().Comment.text = FormatedComment;
-                item.GetComponent<TransactionListItem>().PopUpComentText.text = current_transaction.comment;
+                item.GetComponent<TransactionListItem>().FullComment = FullCommentText;
                 item.GetComponent<TransactionListItem>().Date.text = current_transaction.FormattedData_of_transaction;
+                item.GetComponent<TransactionListItem>().FullCommentPopUp = FullCommentPopUp;
             }
         }
-        
     }
 
     public void TransactinDataReqOnUnuccess()
