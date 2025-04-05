@@ -19,8 +19,10 @@ public class LoadTransactionMenu : MonoBehaviour
     public GameObject TransactionEditMenu;
     public GameObject DeletePopUp;
 	public GameObject CreateTransactionButton;
+    public GameObject LokingForTransactionIcon;
 
-	public TMP_Text WholeIncome;
+
+    public TMP_Text WholeIncome;
 	public TMP_Text WholeExpense;
     public TMP_Text Balance;
 
@@ -75,6 +77,7 @@ public class LoadTransactionMenu : MonoBehaviour
 #if true
 
 #endif
+            LokingForTransactionIcon.SetActive(false);
             Debug.Log(transactionsDataOBJ.income);
 
             transactionsDataOBJ.ConvertSecondsToDate();
