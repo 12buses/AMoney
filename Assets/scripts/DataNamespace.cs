@@ -93,10 +93,10 @@ namespace DataNamespace
         {
             foreach(transaction transaction in page0)
             {
-                DateTime dateTime = new DateTime(1970, 1, 2).AddSeconds(transaction.data_of_transaction);
-                transaction.FormattedData_of_transaction = $"{dateTime.Day}-{dateTime.Month}-{dateTime.Year}";
-                dateTime = new DateTime(1970, 1, 2).AddSeconds(transaction.data_of_creation);
-                transaction.FormattedData_of_Creation = $"{dateTime.Day}-{dateTime.Month}-{dateTime.Year}";
+                DateTime dateTime = new DateTime(1970, 01, 02).AddSeconds(transaction.data_of_transaction);
+                transaction.FormattedData_of_transaction = dateTime.ToString("dd-MM-yyyy");
+                dateTime = new DateTime(1970, 01, 02).AddSeconds(transaction.data_of_creation);
+                transaction.FormattedData_of_Creation = dateTime.ToString("dd-MM-yyyy");
             }
         }
     }
