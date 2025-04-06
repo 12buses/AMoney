@@ -21,6 +21,8 @@ public class WalletList : MonoBehaviour
     public GameObject TransactionMenu;
     public GameObject EditWalletSaveButton;
     public TMP_Text LoginTransactionsMenu;
+    public TMP_Text TransactionNameAddMenu;
+    public TMP_Text TransactionNameEditMenu;
 
 
     public void FillList(WalletsData WalletsDataObj)
@@ -56,7 +58,9 @@ public class WalletList : MonoBehaviour
             walletListItem.MainMenu = MainMenu;
             walletListItem.EditMenu = EditMenu;
             walletListItem.EditWalletSaveButton = EditWalletSaveButton;
-            walletListItem.Login = LoginTransactionsMenu;
+            walletListItem.TransactionNameMainMenu = LoginTransactionsMenu;
+            walletListItem.TransactionNameAddMenu = TransactionNameAddMenu;
+            walletListItem.TransactionNameEditMenu = TransactionNameEditMenu;
             walletListItem.TransactionMenu = TransactionMenu;
         }
     }

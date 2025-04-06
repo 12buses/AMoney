@@ -8,14 +8,16 @@ using UnityEngine;
 
 public class ExchangeRate : MonoBehaviour
 {
+    [System.Serializable]
     public class ExchangeRateList
     {
         public List<ExchangeRateJson> ExchangeRates;
     }
+    [System.Serializable]
     public class ExchangeRateJson
     {
         public int Cur_ID;
-        public DateTime Date;
+        public string Date;
         public string Cur_Abbreviation;
         public int Cur_Scale;
         public string Cur_Name;
@@ -37,13 +39,11 @@ public class ExchangeRate : MonoBehaviour
 
     public void ReqSuccess(string result)
     {
-        string NewString = "{\r\n    \"ExchangeRates\": " + result + "\r\n}";
-        ExchangeRateList list = new ExchangeRateList();
-        list = JsonUtility.FromJson<ExchangeRateList>(NewString);
-        Debug.Log(list.ExchangeRates[0]);
+        string NewString = "{\"ExchangeRates\": " + result + "}";
+        Debug.Log(NewString);
+        ExchangeRateList list = JsonUtility.FromJson<ExchangeRateList>(NewString);
         foreach (var exchangeRateJson in list.ExchangeRates)
         {
-            Debug.Log(exchangeRateJson.Cur_Abbreviation);
             if (exchangeRateJson.Cur_Abbreviation == "EUR")
             {
                 EUR_buy.text = exchangeRateJson.Cur_OfficialRate.ToString();
@@ -57,6 +57,6 @@ public class ExchangeRate : MonoBehaviour
                 RUB_buy.text = exchangeRateJson.Cur_OfficialRate.ToString();
             }
         }
-        Date.text = list.ExchangeRates[0].Date.ToString();
+        Date.text = list.ExchangeRates[0].Date.ToString().Remove(10);
     }
 }
