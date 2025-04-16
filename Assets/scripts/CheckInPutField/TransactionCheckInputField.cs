@@ -52,10 +52,12 @@ public class TransactionCheckInputField : MonoBehaviour
 
     public void ValidateAmount()
     {
+
         amountValidated = false;
         if (Amount.text.Length > 1000000)
         {
             Amount.GetComponent<Image>().sprite = IncorectInputFieldSprite;
+            AmountErrorMessageText.text = "Сумма операции слишком большая!!";
         }
         else if (Amount.text.Length < 1)
         {
@@ -66,11 +68,12 @@ public class TransactionCheckInputField : MonoBehaviour
         {
             Amount.GetComponent<Image>().sprite = InPutFieldSprite;
             amountValidated = true;
-            SetButton();
+            AmountErrorMessageText.text = "";
         }
+        SetButton();
     }
 
-    public void ValidateDate()
+    /*public void ValidateDate()
     {
         dateValidated = true;
         string inputDate = Date.text;
@@ -79,7 +82,7 @@ public class TransactionCheckInputField : MonoBehaviour
         {
             if (parsedDate > DateTime.Now)
             {
-                DateErrorMessageText.text = "Дата не должна быть из будущего.";
+                //DateErrorMessageText.text = "Дата не должна быть из будущего.";
             }
             else
             {
@@ -88,15 +91,15 @@ public class TransactionCheckInputField : MonoBehaviour
         }
         else
         {
-            DateErrorMessageText.text = "Некорректный формат даты. Используйте формат: день.месяц.год";
+            //DateErrorMessageText.text = "Некорректный формат даты. Используйте формат: день.месяц.год";
         }
         SetButton();
-    }
+    }*/
 
     public void ChangeCurrentDate()
     {
         Date.text = System.DateTime.Now.ToString("dd-MM-yyyy");
-        ValidateDate();
+        //ValidateDate();
     }
 
     private bool IsValidDate(string date, out DateTime parsedDate)

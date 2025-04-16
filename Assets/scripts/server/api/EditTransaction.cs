@@ -83,8 +83,7 @@ public class EditTransaction : MonoBehaviour
 
         Transaction.id_wallet = WalletId;
         string TransactionDataString = JsonUtility.ToJson(Transaction);
-        Debug.Log(TransactionDataString);
-
+        Debug.Log("!!!!!!TransactionDataString!!!!!!!!!!!!!!!!!! " + TransactionDataString);
         Req req = gameObject.AddComponent<Req>();
         req.PostReq(TransactionDataString, Url, result => reqSuccess(), error => reqUnsuccess());
     }

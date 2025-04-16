@@ -21,6 +21,7 @@ public class WalletListItem : MonoBehaviour
     public TMP_Text TransactionNameMainMenu;
     public TMP_Text TransactionNameAddMenu;
     public TMP_Text TransactionNameEditMenu;
+    public TMP_Text TransactionNameStatsMenu;
 
     public TMP_InputField BalanceEdit;
     public TMP_InputField NameOfWalletEdit;
@@ -66,6 +67,7 @@ public class WalletListItem : MonoBehaviour
         TransactionNameMainMenu.text = NameString;
         TransactionNameAddMenu.text = NameString;
         TransactionNameEditMenu.text = NameString;
+        TransactionNameStatsMenu.text = NameString;
         TransactionMenu.GetComponent<LoadTransactionMenu>().WalletIdd = WalletId;
         TransactionMenu.SetActive(true);
         TransactionMenu.GetComponent<LoadTransactionMenu>().Reload();

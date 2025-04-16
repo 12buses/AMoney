@@ -23,6 +23,7 @@ public class WalletList : MonoBehaviour
     public TMP_Text LoginTransactionsMenu;
     public TMP_Text TransactionNameAddMenu;
     public TMP_Text TransactionNameEditMenu;
+    public TMP_Text TransactionNameStatsMenu;
 
 
     public void FillList(WalletsData WalletsDataObj)
@@ -61,6 +62,7 @@ public class WalletList : MonoBehaviour
             walletListItem.TransactionNameMainMenu = LoginTransactionsMenu;
             walletListItem.TransactionNameAddMenu = TransactionNameAddMenu;
             walletListItem.TransactionNameEditMenu = TransactionNameEditMenu;
+            walletListItem.TransactionNameStatsMenu = TransactionNameStatsMenu;
             walletListItem.TransactionMenu = TransactionMenu;
         }
     }
