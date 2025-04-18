@@ -24,6 +24,7 @@ public class OnChangeOperationType : MonoBehaviour
             OperationCategoruOptionForExpense.Add(optionData);
         }
 
+        OperationCategoruOptionForIncome.Clear();
         foreach (Category category in ObjectWithCategories.GetComponent<categories>().categoriesObject.income)
         {
             TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
