@@ -176,6 +176,12 @@ namespace DataNamespace
                     Debug.Log("POST Success: " + webRequest.downloadHandler.text);
                 }
             }
+            Invoke("DestroyThis", 1f);
+        }
+
+        private void DestroyThis()
+        {
+            Destroy(this);
         }
 
         //================= GET Request =================
@@ -201,6 +207,7 @@ namespace DataNamespace
                     Debug.Log("GET Success: " + webRequest.downloadHandler.text);
                 }
             }
+            Invoke("DestroyThis", 0.7f);
         }
     }
 }
