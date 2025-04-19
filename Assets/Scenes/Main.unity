@@ -7334,7 +7334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.071, y: 0.45449337}
   m_AnchorMax: {x: 0.27600002, y: 0.48849338}
-  m_AnchoredPosition: {x: -4.7192383, y: -38}
+  m_AnchoredPosition: {x: -4.7192383, y: -38.000004}
   m_SizeDelta: {x: 96.52879, y: 25.5615}
   m_Pivot: {x: 0.50000006, y: 0.50000006}
 --- !u!114 &590958350
@@ -8184,7 +8184,19 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750493861}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: ValdateCatt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!224 &642603852
 RectTransform:
@@ -9167,7 +9179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26000002, y: 0.016634071}
   m_AnchorMax: {x: 0.33244902, y: 0.058000002}
-  m_AnchoredPosition: {x: -208.70006, y: -3.769287}
+  m_AnchoredPosition: {x: -208.70004, y: -3.769287}
   m_SizeDelta: {x: 144.2, y: 56.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768957206
@@ -21042,7 +21054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15522222, y: 0.24431486}
   m_AnchorMax: {x: 0.8392223, y: 0.72700006}
-  m_AnchoredPosition: {x: 3.0075073, y: -84}
+  m_AnchoredPosition: {x: 3.0075073, y: -83.99997}
   m_SizeDelta: {x: 339.69995, y: 990.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1608044284
@@ -24868,7 +24880,19 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7069750549739899222}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: ValdateCatt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1833567288
 MonoBehaviour:
@@ -26323,7 +26347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26000002, y: 0.016634071}
   m_AnchorMax: {x: 0.33244902, y: 0.058000002}
-  m_AnchoredPosition: {x: -208.70006, y: -3.769287}
+  m_AnchoredPosition: {x: -208.70004, y: -3.769287}
   m_SizeDelta: {x: 144.2, y: 56.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931470434
@@ -26511,6 +26535,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1750493865}
         m_TargetAssemblyTypeName: OnChangeOperationType, Assembly-CSharp
         m_MethodName: OnOperationTypeValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1750493861}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: ValdateType
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29994,6 +30030,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7000198702852939792}
         m_TargetAssemblyTypeName: OnChangeOperationType, Assembly-CSharp
         m_MethodName: OnOperationTypeValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7069750549739899222}
+        m_TargetAssemblyTypeName: TransactionCheckInputField, Assembly-CSharp
+        m_MethodName: ValdateType
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

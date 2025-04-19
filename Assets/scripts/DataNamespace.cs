@@ -68,7 +68,8 @@ namespace DataNamespace
     [System.Serializable]
     public class transaction
     {
-        public double amount;
+        public string amount;
+        public float ReadyAmount;
         public string comment;
         public int data_of_creation;
         public int data_of_transaction;
@@ -78,12 +79,24 @@ namespace DataNamespace
         public string type;
         public string FormattedData_of_Creation;
         public string FormattedData_of_transaction;
+
+        public void ConvertAmount()
+        {
+            try
+            {
+                ReadyAmount = float.Parse(amount.Replace(',', '.'), CultureInfo.InvariantCulture);
+            }
+            catch (FormatException)
+            {
+                Debug.Log("Ошибка: Некорректный формат строки.");
+            }
+        }
     }
 
     [System.Serializable]
     public class transactionsDataOBJ
     {
-        public int balance;
+        public float balance;
         public string id;
         public float expense;
         public float income;
@@ -93,6 +106,7 @@ namespace DataNamespace
         {
             foreach(transaction transaction in page0)
             {
+                transaction.ConvertAmount();
                 DateTime dateTime = new DateTime(1970, 01, 02).AddSeconds(transaction.data_of_transaction);
                 transaction.FormattedData_of_transaction = dateTime.ToString("dd-MM-yyyy");
                 dateTime = new DateTime(1970, 01, 02).AddSeconds(transaction.data_of_creation);

@@ -31,6 +31,8 @@ public class TransactionCheckInputField : MonoBehaviour
 
     private bool amountValidated = false;
     private bool dateValidated = true;
+    private bool TypeValidated = false;
+    private bool CattegoryValidated = false;
 
     private Coroutine fadeCoroutine;
 
@@ -43,9 +45,15 @@ public class TransactionCheckInputField : MonoBehaviour
     {
         dateValidated = true;
         amountValidated = false;
+        TypeValidated = false;
+        CattegoryValidated = false;
+        SetButton();
         ChangeCurrentDate();
         Cattegory.value = -1;
         Type.value = -1;
+        ValidateAmount();
+        ValdateType();
+        ValdateCatt();
         AmountErrorMessageText.text = "";
         Amount.GetComponent<Image>().sprite = InPutFieldSprite;
     }
@@ -70,6 +78,20 @@ public class TransactionCheckInputField : MonoBehaviour
             amountValidated = true;
             AmountErrorMessageText.text = "";
         }
+        SetButton();
+    }
+
+    public void ValdateType()
+    {
+        TypeValidated = false;
+        if(Type.value >= 0) { TypeValidated = true; }
+        SetButton();
+    }
+
+    public void ValdateCatt()
+    {
+        CattegoryValidated = false;
+        if (Cattegory.value >= 0) { CattegoryValidated = true; }
         SetButton();
     }
 
@@ -118,7 +140,8 @@ public class TransactionCheckInputField : MonoBehaviour
 
     private void SetButton()
     {
-        if (dateValidated == true && amountValidated == true)
+
+        if (dateValidated == true && amountValidated == true && TypeValidated == true && CattegoryValidated == true)
         {
             SaveButton.interactable = true;
             SaveButton.GetComponent<Image>().sprite = ButtonSprite;

@@ -96,13 +96,13 @@ public class LoadTransactionMenu : MonoBehaviour
                 switch (current_transaction.type)
                 {
                     case "income":
-                        AmountText = "+" + current_transaction.amount;
+                        AmountText = "+" + current_transaction.ReadyAmount.ToString("0.00");
                         item.GetComponent<TransactionListItem>().ChangeAmountColor("income");
                         item.GetComponent<TransactionListItem>().Category.text = "Доход";
                         break;
 
                     case "expense":
-                        AmountText = "-" + current_transaction.amount;
+                        AmountText = "-" + current_transaction.ReadyAmount.ToString("0.00");
                         item.GetComponent<TransactionListItem>().ChangeAmountColor("expense");
                         item.GetComponent<TransactionListItem>().Category.text = "Трата";
                         break;

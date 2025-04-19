@@ -16,8 +16,10 @@ public class OnChangeOperationType : MonoBehaviour
 
 	public void OnEnterAdd()
 	{
-        OperationCategoruOptionForExpense.Clear();
-		foreach (Category category in ObjectWithCategories.GetComponent<categories>().categoriesObject.expense)
+		OperationCategoruOptionForExpense.Clear();
+        OperationType.value = -1;
+        OperationCategory.value = -1;
+        foreach (Category category in ObjectWithCategories.GetComponent<categories>().categoriesObject.expense)
 		{
             TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
 			optionData.text = category.name;
@@ -25,17 +27,18 @@ public class OnChangeOperationType : MonoBehaviour
         }
 
         OperationCategoruOptionForIncome.Clear();
-        foreach (Category category in ObjectWithCategories.GetComponent<categories>().categoriesObject.income)
-        {
-            TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
-            optionData.text = category.name;
-            OperationCategoruOptionForIncome.Add(optionData);
-        }
+		foreach (Category category in ObjectWithCategories.GetComponent<categories>().categoriesObject.income)
+		{
+			TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
+			optionData.text = category.name;
+			OperationCategoruOptionForIncome.Add(optionData);
+		}
     }
 	public void OnOperationTypeValueChanged()
 	{
 		OperationCategory.ClearOptions();
-		if(OperationType.value == 0)
+        OperationCategory.value = -1;
+        if (OperationType.value == 0)
 		{
 			OperationCategory.AddOptions(OperationCategoruOptionForIncome);
 		}
@@ -43,6 +46,5 @@ public class OnChangeOperationType : MonoBehaviour
 		{
 			OperationCategory.AddOptions(OperationCategoruOptionForExpense);
 		}
-        OperationCategory.value = -1;
     }
 }

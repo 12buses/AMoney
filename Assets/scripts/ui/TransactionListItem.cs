@@ -102,7 +102,7 @@ public class TransactionListItem : MonoBehaviour
                 }
             }
         }
-        TransactionCheckInputField.Amount.text = transaction.amount.ToString("0.00");
+        TransactionCheckInputField.Amount.text = transaction.ReadyAmount.ToString("0.00");
         TransactionCheckInputField.Comment.text = transaction.comment;
     }
 
